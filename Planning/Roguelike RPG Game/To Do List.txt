@@ -1,0 +1,70 @@
+Art
+- Rooms
+- - Combat
+- - Shop
+- - Max Health Up
+- - Full Heal
+- - Coin/Mimic Chest
+- - Follower Room
+- Characters
+- - Player
+- - Enemies
+- UI
+- - HP
+- - Coins
+- Items
+- - Skills
+- - Supports
+
+Mapping
+- Room Generation
+- - Combat
+- - Shop
+- - Max Health Up
+- - Full Heal
+- - Coin/Mimic Chest
+- - Follower Room
+- Floor Generation System
+- Doors To Move Between Rooms
+- Save State Of Rooms On Leaving
+
+Quiz System
+- Cyber Security Questions
+- - Heal On Correct Answer
+- Journal
+
+Score System
+- Floor Tracker
+- Ending Screen
+- - Appears On Player Death
+
+Tutorial System
+
+Skill System
+- Locked/Unlocked Skills/Supports
+- Unlock A New Random Skill After Clearing A Floor
+- Skill Grid Menu
+- - Equip Skills In The Grid
+- - Equip Supports In The Grid
+
+Money System
+- Money Tracker
+- Shop
+- - Random Items To Buy
+
+Follower System
+- Party
+- Leave On Death
+
+Combat System
+- Start Combat When Near Enemies
+- Turns Based On Speed Where Each Combatant Has A Time Until Their Turn Which Is Calculated Based On Max Possible 
+  Speed - Their Speed Which The Counts Down And When It Hits 0 It's Their Turn.
+- Follower Turns
+- - Pick From Their Skills
+- Enemy Turns
+- - Attacks Picked From Pool Based On Type
+- Player Turns
+- - Pick From Player Equipped Skills
+
+Player Movement

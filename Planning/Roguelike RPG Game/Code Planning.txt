@@ -1,0 +1,52 @@
+Skill System
+Structure:
+Class: Skill Manager
+- Attribute: [Skill] skillList[] // The List Of Skills The User Can Use In Battle
+
+Class: Skill Grid
+- Attribute: ([[Space]]) grid[] // A Grid Of Space Objects
+
+Class: Modifier
+- Attribute: (SkillOrSupport) targetType // What This Modifier Targets
+- Attribute: (Effect) effect
+
+AbstractClass: Effect // Used To Cause Something To Happen In Combat
+- Class SpecificEffect // Create A Unique Class Which Replaces An Abstract Method In The Abstract Class To Cause Its Effect
+
+AbstractClass: SkillOrSupport
+- Class: Skill // An Ability The Player Can Use In Combat That Can Be Modified By SupportForSkills
+- - Attribute: (Effect) effect
+- Class: SupportForSkills // A Object That Modifys Certain Grid Locations Relative To Itself That Can Be Modified By SupportForSupport
+- - Attribute: ([(int,int)]) targets[] // Relative Coordinate Tuples That This Targets
+- - Attribute: (Modifier) modifier
+- Class: SupportForSupport // A Object That Modifys Certain Grid Locations Relative To Itself That Cannot Be Modified
+- - Attribute: ([(int,int)]) targets[] // Relative Coordinate Tuples That This Targets
+- - Attribute: (Modifier) modifier
+AbstractClass: Space
+- Class: OpenGridSpace // A Space That Can Have A Skill Or Support In It
+- - Attribute: ([Modifier]) modifiers[] // Modifiers That Are Affecting This Space
+- - Attribute: (SkillOrSupport) content // The Skill or Support That Is In This Space
+- Class: ClosedGridSpace // A Space That Cannot Be Used
+
+
+
+
+Action FlowChart:
+On GameStart:
+- Create Empty Grid And Create Empty Skill List
+
+On Opening Grid Editor: 
+- Get Skills/Supports Owned By Player 
+- Load The Grid State
+- Put Unequiped Skills/Supports In Area Ready To Equip By Compairing Owned Skills/Supports With The Grid
+
+On Editing The Grid:
+- Allow the User to either: (Add The Item To The Grid In An Open Grid Space)/(Swap An Item With An Unequipped Item)/(Remove Item From The Grid)
+
+On Saving The Grid:
+// to be re-opened for the player to edit
+- Save The Grid State
+// this is temp work to calculate the effects of all the skills and doesn't get saved only the final skills will be sent out to the skill list
+- SupportsForSupports Apply Their Modifiers To Their Target Spaces
+- SupportForSkills Apply Their Space's Modifiers To Themselves Then Send Their Modifier To Their Target Spaces
+- Skills Apply Their Space's Modifiers To Themselves Then Are Added To The Skill List
