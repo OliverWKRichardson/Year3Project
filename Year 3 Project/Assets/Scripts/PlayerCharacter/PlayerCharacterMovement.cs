@@ -25,7 +25,11 @@ public class PlayerCharacterMovement : MonoBehaviour
         // Create empty Vector2
         Vector2 direction = Vector2.zero;
         // Evaluate horizontal input
-        if(Input.GetKey(KeyCode.A))
+        if(Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
+        {
+            direction.x = 0;
+        }
+        else if(Input.GetKey(KeyCode.A))
         {
             direction.x = -1;
         }
@@ -33,14 +37,26 @@ public class PlayerCharacterMovement : MonoBehaviour
         {
             direction.x = 1;
         }
+        else
+        {
+            direction.x = 0;
+        }
         // Evaluate verticle input
-        if(Input.GetKey(KeyCode.S))
+        if(Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.W))
+        {
+            direction.y = 0;
+        }
+        else if(Input.GetKey(KeyCode.S))
         {
             direction.y = -1;
         }
         else if(Input.GetKey(KeyCode.W))
         {
             direction.y = 1;
+        }
+        else
+        {
+            direction.y = 0;
         }
         // Normalize Vector2 so that it isn't faster to travel diagonally
         direction.Normalize();
