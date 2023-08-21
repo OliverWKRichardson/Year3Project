@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerCharacterMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 3;
+    [SerializeField] private float SPEED = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class PlayerCharacterMovement : MonoBehaviour
     }
 
     // FixedUpdate is called 50 times per second
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         // Create empty Vector2
         Vector2 direction = Vector2.zero;
@@ -61,6 +61,6 @@ public class PlayerCharacterMovement : MonoBehaviour
         // Normalize Vector2 so that it isn't faster to travel diagonally
         direction.Normalize();
         // Add velocity to the character
-        GetComponent<Rigidbody2D>().velocity = speed * direction;
+        GetComponent<Rigidbody2D>().velocity = SPEED * direction;
     }
 }
