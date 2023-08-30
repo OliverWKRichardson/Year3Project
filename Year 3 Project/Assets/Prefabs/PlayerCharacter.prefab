@@ -32,6 +32,7 @@ Transform:
   m_Children:
   - {fileID: 675210353434766301}
   - {fileID: 675210353947026364}
+  - {fileID: 6993430898899942812}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -68,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86bef7623d5fd044ea8b00ae4829ca66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  SPEED: 3
 --- !u!58 &7258729143177579345
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -250,3 +251,53 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 675210353947026367}
   m_Enabled: 1
+--- !u!1001 &8600509423887953377
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 675210353054303076}
+    m_Modifications:
+    - target: {fileID: 1609629606713118845, guid: 836df5e44fa8849419a28de945b20036, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1609629606713118845, guid: 836df5e44fa8849419a28de945b20036, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1609629606713118845, guid: 836df5e44fa8849419a28de945b20036, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1609629606713118845, guid: 836df5e44fa8849419a28de945b20036, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1609629606713118845, guid: 836df5e44fa8849419a28de945b20036, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1609629606713118845, guid: 836df5e44fa8849419a28de945b20036, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1609629606713118845, guid: 836df5e44fa8849419a28de945b20036, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1609629606713118845, guid: 836df5e44fa8849419a28de945b20036, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1609629606713118847, guid: 836df5e44fa8849419a28de945b20036, type: 3}
+      propertyPath: m_Name
+      value: Combat Detector
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 836df5e44fa8849419a28de945b20036, type: 3}
+--- !u!4 &6993430898899942812 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1609629606713118845, guid: 836df5e44fa8849419a28de945b20036, type: 3}
+  m_PrefabInstance: {fileID: 8600509423887953377}
+  m_PrefabAsset: {fileID: 0}
