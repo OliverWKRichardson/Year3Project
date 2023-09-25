@@ -326,64 +326,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7338446971395573057, guid: 0cc396594e89cc044a9c1611ff97dc9e, type: 3}
   m_PrefabInstance: {fileID: 793640598}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &826989420 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 619045241466588927, guid: 5d00a8da03315934680962040fb0ba2a, type: 3}
-  m_PrefabInstance: {fileID: 619045242200798554}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &826989421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 826989420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 637f3ada94407894d8605a9b249a45c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SPD: 2
-  HP: 0
-  MP: 0
-  ATK: 0
---- !u!50 &826989423
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 826989420}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!58 &826989424
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 826989420}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!4 &885341095 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 619045241466588925, guid: 5d00a8da03315934680962040fb0ba2a, type: 3}
@@ -668,14 +610,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1970943372}
     m_Modifications:
-    - target: {fileID: 80268986605037664, guid: 5d00a8da03315934680962040fb0ba2a, type: 3}
-      propertyPath: SPD
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 512118397309304448, guid: 5d00a8da03315934680962040fb0ba2a, type: 3}
-      propertyPath: m_Name
-      value: Combat Seeker
-      objectReference: {fileID: 0}
     - target: {fileID: 619045241466588925, guid: 5d00a8da03315934680962040fb0ba2a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -722,22 +656,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 619045241466588927, guid: 5d00a8da03315934680962040fb0ba2a, type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Placeholder Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 619045243122761624, guid: 5d00a8da03315934680962040fb0ba2a, type: 3}
-      propertyPath: enemy
-      value: 
-      objectReference: {fileID: 826989420}
-    - target: {fileID: 619045243122761630, guid: 5d00a8da03315934680962040fb0ba2a, type: 3}
-      propertyPath: m_Radius
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 619045243122761630, guid: 5d00a8da03315934680962040fb0ba2a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 80268986605037664, guid: 5d00a8da03315934680962040fb0ba2a, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d00a8da03315934680962040fb0ba2a, type: 3}
 --- !u!1001 &675210353216665519
 PrefabInstance:
@@ -793,18 +714,6 @@ PrefabInstance:
     - target: {fileID: 675210353054303079, guid: d03f6dfd47955ff4f9d06e5f1a83422d, type: 3}
       propertyPath: m_Name
       value: PlayerCharacter
-      objectReference: {fileID: 0}
-    - target: {fileID: 2138939326416296714, guid: d03f6dfd47955ff4f9d06e5f1a83422d, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6993430898899942813, guid: d03f6dfd47955ff4f9d06e5f1a83422d, type: 3}
-      propertyPath: m_Radius
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7258729143177579345, guid: d03f6dfd47955ff4f9d06e5f1a83422d, type: 3}
-      propertyPath: m_Radius
-      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d03f6dfd47955ff4f9d06e5f1a83422d, type: 3}
