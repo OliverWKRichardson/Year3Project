@@ -6,6 +6,9 @@ public class CombatStarter : MonoBehaviour
 {
     bool lineOfSightTesting = false;
 
+    [SerializeField]
+    GameObject enemy;
+
     // Update is called once per frame
     void Update()
     {
@@ -24,7 +27,8 @@ public class CombatStarter : MonoBehaviour
                 {
                     // start combat
                     // WIP put code to enter combat here
-                    Debug.Log("Entered Combat");
+                    Debug.Log("Chasing Player");
+                    chasePlayer(playerTransform);
                     // stop line of sight testing
                     lineOfSightTesting = false;
                 }
@@ -51,8 +55,42 @@ public class CombatStarter : MonoBehaviour
         // if leave range with player to enter combat stop testing line of sight
         if(other.gameObject.name == "Combat Detector")
         {
-            Debug.Log("Nolonger Near Enemy");
+            Debug.Log("No longer Near Enemy");
             lineOfSightTesting = false;
+            ignorePlayer();
         }
+    }
+    
+    void chasePlayer(Transform playerTransform)
+    {
+        Debug.Log("Chasing Player");
+        Rigidbody rb = GetComponent<Rigidbody>();
+        EnemyStats stats = GetComponent<EnemyStats>();
+
+        if (transform.position.x < playerTransform.position.x)
+        {
+            rb.velocity = new Vector2(stats.getSPD(), 0);
+        }
+        else if (transform.position.x > playerTransform.position.x)
+        {
+            rb.velocity = new Vector2(-stats.getSPD(), 0);
+        }
+        if (transform.position.y < playerTransform.position.y)
+        {
+            rb.velocity = new Vector2(0, stats.getSPD());
+        }
+        else if (transform.position.y > playerTransform.position.y)
+        {
+            rb.velocity = new Vector2(0, -stats.getSPD());
+        }
+        else if (transform.position.x == playerTransform.position.x & transform.position.y == playerTransform.position.y)
+        {
+            Debug.Log("Initiating Combat");
+        }
+    }
+
+    void ignorePlayer()
+    {
+        Debug.Log("Ignoring Player");
     }
 }
