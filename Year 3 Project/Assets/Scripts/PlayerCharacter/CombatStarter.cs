@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class CombatStarter : MonoBehaviour
 {
     bool lineOfSightTesting = false;
+    bool inCombat = false;
+    bool combatCleanUp = false;
+    [SerializeField] GameObject combatScreenPrefab;
+    GameObject combatScreen;
 
     // Update is called once per frame
     void Update()
@@ -22,12 +27,34 @@ public class CombatStarter : MonoBehaviour
                 // if is the player
                 if(hit.collider.gameObject == GameObject.Find("PlayerCharacter"))
                 {
-                    // start combat
-                    // WIP put code to enter combat here
                     Debug.Log("Entered Combat");
+                    inCombat = true;
+                    combatCleanUp = true;
+                    // start combat
+                    combatScreen = Instantiate(combatScreenPrefab, playerTransform);
+                    // Disable movement for the player
+                    GameObject.Find("PlayerCharacter").GetComponent<PlayerCharacterMovement>().DisablePlayerMovement();
                     // stop line of sight testing
                     lineOfSightTesting = false;
                 }
+            }
+        }
+
+        // Exit Combat Screen and let the player move on Combat End
+        if(!inCombat && combatCleanUp)
+        {
+            Debug.Log("Left Combat");
+            Destroy(combatScreen);
+            GameObject.Find("PlayerCharacter").GetComponent<PlayerCharacterMovement>().EnablePlayerMovement();
+            combatCleanUp = false;
+        }
+
+        // WIP for testing
+        if(inCombat)
+        {
+            if(Input.GetKey(KeyCode.Q))
+            {
+                inCombat = false;
             }
         }
     }

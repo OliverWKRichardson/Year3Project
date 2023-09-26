@@ -82,3 +82,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 066affc06f5bb364994286d4e0d20f32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatScreenPrefab: {fileID: 1723381297295401806, guid: c059692f8a9484149bea122cab4b3065, type: 3}

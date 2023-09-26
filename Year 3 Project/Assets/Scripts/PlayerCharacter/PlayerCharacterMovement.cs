@@ -6,6 +6,17 @@ using UnityEngine;
 public class PlayerCharacterMovement : MonoBehaviour
 {
     [SerializeField] private float SPEED = 3;
+    [SerializeField] private bool movementDisabled = false;
+
+    public void DisablePlayerMovement()
+    {
+        movementDisabled = true;
+    }
+
+    public void EnablePlayerMovement()
+    {
+        movementDisabled = false;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +71,12 @@ public class PlayerCharacterMovement : MonoBehaviour
         }
         // Normalize Vector2 so that it isn't faster to travel diagonally
         direction.Normalize();
+        // Check Player Movement is not disabled
+        if(movementDisabled)
+        {
+            // If it is stop movement
+            direction = Vector2.zero;
+        }
         // Add velocity to the character
         GetComponent<Rigidbody2D>().velocity = SPEED * direction;
     }
