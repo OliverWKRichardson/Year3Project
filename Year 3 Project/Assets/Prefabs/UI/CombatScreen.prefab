@@ -195,6 +195,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56d6ead6554561a4eaaaacd3f68ffdb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerSpriteSpawn: {fileID: 1723381298056676415}
+  EnemySpriteSpawn1: {fileID: 1723381296530845610}
+  EnemySpriteSpawn2: {fileID: 1723381296711861254}
+  EnemySpriteSpawn3: {fileID: 1723381297809945052}
+  EnemySpriteSpawn4: {fileID: 1723381298378146608}
+  EnemySpriteSpawn5: {fileID: 1723381298024158169}
+  MenuCenter: {fileID: 7558474874051876076}
 --- !u!1 &1723381297367394383
 GameObject:
   m_ObjectHideFlags: 0
