@@ -10,7 +10,7 @@ public class MapgenScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //generateMap();
+        generateMap();
     }
 
     // Update is called once per frame
@@ -69,6 +69,11 @@ public class MapgenScript : MonoBehaviour
         return roomgen;
 
 
+    }
+
+    public Room[,] getMap()
+    {
+        return roomgen;
     }
 
     [ContextMenu ("test print random map")]
