@@ -1,0 +1,41 @@
+Year 3 Project/[Ll]ibrary/
+Year 3 Project/[Tt]emp/
+Year 3 Project/[Oo]bj/
+Year 3 Project/[Bb]uild/
+Year 3 Project/[Bb]uilds/
+Year 3 Project/[Ll]ogs/
+Year 3 Project/[Uu]ser[Ss]ettings/
+Year 3 Project/[Mm]emoryCaptures/
+Year 3 Project/[Rr]ecordings/
+Year 3 Project/[Aa]ssets/Plugins/Editor/JetBrains*
+.vs/
+.gradle/
+ExportedObj/
+.consulo/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+sysinfo.txt
+*.apk
+*.aab
+*.unitypackage
+*.app
+crashlytics-build.properties
+Year 3 Project/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+Year 3 Project/[Aa]ssets/[Ss]treamingAssets/aa.meta
+Year 3 Project/[Aa]ssets/[Ss]treamingAssets/aa/*
+
