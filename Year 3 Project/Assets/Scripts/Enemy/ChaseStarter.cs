@@ -104,3 +104,4 @@ public class ChaseStarter : MonoBehaviour
         Debug.Log("Ignoring Player");
     }
 }
+
