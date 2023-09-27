@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStats : MonoBehaviour
+public class Stats : MonoBehaviour
 {
     // Speed of enemy
     [SerializeField]
@@ -57,4 +57,5 @@ public class EnemyStats : MonoBehaviour
     {
         return ATK;
     }
+
 }
