@@ -32,6 +32,7 @@ public class CombatStarter : MonoBehaviour
                     combatCleanUp = true;
                     // start combat
                     combatScreen = Instantiate(combatScreenPrefab, playerTransform);
+                    Cursor.visible = true; 
                     // Disable movement for the player
                     GameObject.Find("PlayerCharacter").GetComponent<PlayerCharacterMovement>().DisablePlayerMovement();
                     // stop line of sight testing
@@ -46,6 +47,7 @@ public class CombatStarter : MonoBehaviour
             Debug.Log("Left Combat");
             Destroy(combatScreen);
             GameObject.Find("PlayerCharacter").GetComponent<PlayerCharacterMovement>().EnablePlayerMovement();
+            Cursor.visible = false; 
             combatCleanUp = false;
         }
 

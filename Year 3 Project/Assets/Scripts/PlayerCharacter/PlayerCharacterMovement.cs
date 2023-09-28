@@ -21,7 +21,8 @@ public class PlayerCharacterMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Hide Mouse
+        Cursor.visible = false; 
     }
 
     // Update is called once per frame
