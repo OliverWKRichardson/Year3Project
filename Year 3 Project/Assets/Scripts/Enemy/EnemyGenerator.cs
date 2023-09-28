@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyGenerator : MonoBehaviour
 {
+    // Enemy Type
+    public enum enemyType{light, heavy}
 
     // Enemy class
     [SerializeField]
@@ -12,28 +14,32 @@ public class EnemyGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // createEnemy();
+        createEnemy();
     }
 
     void createEnemy()
     {
-        GameObject hostile = Instantiate(enemy); // Add Vector2(x, y) for the position of the newly generated enemy
+        Transform pos = gameObject.transform;
+        GameObject hostile = Instantiate(enemy, pos); // Add Vector2(x, y) for the position of the newly generated enemy
 
-        int enemyType = Random.Range(1,3);
+        enemyType enemyType = (enemyType)Random.Range(0, 2);
 
-        if (enemyType == 1)
+        switch(enemyType)
         {
-            hostile.GetComponent<Stats>().setSPD(Random.Range(3, 5));
-            hostile.GetComponent<Stats>().setHP(Random.Range(500, 800));
-            hostile.GetComponent<Stats>().setMP(Random.Range(100, 150));
-            hostile.GetComponent<Stats>().setATK(Random.Range(50, 100));
-        }
-        else if (enemyType == 2)
-        {
-            hostile.GetComponent<Stats>().setSPD(Random.Range(4, 7));
-            hostile.GetComponent<Stats>().setHP(Random.Range(750, 1000));
-            hostile.GetComponent<Stats>().setMP(Random.Range(200, 350));
-            hostile.GetComponent<Stats>().setATK(Random.Range(80, 180));
+            case enemyType.light:
+                hostile.GetComponent<Stats>().setType(enemyType.light);
+                hostile.GetComponent<Stats>().setSPD(Random.Range(5, 11));
+                hostile.GetComponent<Stats>().setHP(Random.Range(200, 600));
+                hostile.GetComponent<Stats>().setMP(Random.Range(100, 150));
+                hostile.GetComponent<Stats>().setATK(Random.Range(50, 100));
+                break;
+            case enemyType.heavy:
+                hostile.GetComponent<Stats>().setType(enemyType.heavy);
+                hostile.GetComponent<Stats>().setSPD(Random.Range(1, 5));
+                hostile.GetComponent<Stats>().setHP(Random.Range(750, 1000));
+                hostile.GetComponent<Stats>().setMP(Random.Range(100, 150));
+                hostile.GetComponent<Stats>().setATK(Random.Range(80, 180));
+                break;
         }
 
     }

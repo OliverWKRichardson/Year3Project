@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static EnemyGenerator.enemyType;
 
 public class Stats : MonoBehaviour
 {
+    // Type of enemy
+    [SerializeField]
+    EnemyGenerator.enemyType type;
     // Speed of enemy
     [SerializeField]
     float SPD;
@@ -17,6 +21,16 @@ public class Stats : MonoBehaviour
     [SerializeField]
     float ATK;
 
+    // Sets attack of enemy
+    public void setType(EnemyGenerator.enemyType setType)
+    {
+        type = setType;
+    }
+    // Gets attack of enemy
+    public EnemyGenerator.enemyType getType()
+    {
+        return type;
+    }
     // Sets speed of enemy
     public void setSPD(float speed)
     {
