@@ -32,6 +32,7 @@ public class CombatStarter : MonoBehaviour
                     combatCleanUp = true;
                     // start combat
                     combatScreen = Instantiate(combatScreenPrefab, playerTransform);
+                    combatScreen.GetComponent<CombatScreen>().setEnemy(gameObject.transform.parent.gameObject);
                     Cursor.visible = true; 
                     // Disable movement for the player
                     GameObject.Find("PlayerCharacter").GetComponent<PlayerCharacterMovement>().DisablePlayerMovement();
