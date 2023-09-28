@@ -11,6 +11,11 @@ public class CombatStarter : MonoBehaviour
     [SerializeField] GameObject combatScreenPrefab;
     GameObject combatScreen;
 
+    public void endCombat()
+    {
+        inCombat = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -33,7 +38,6 @@ public class CombatStarter : MonoBehaviour
                     // start combat
                     combatScreen = Instantiate(combatScreenPrefab, playerTransform);
                     combatScreen.GetComponent<CombatScreen>().setEnemy(gameObject.transform.parent.gameObject);
-                    Cursor.visible = true; 
                     // Disable movement for the player
                     GameObject.Find("PlayerCharacter").GetComponent<PlayerCharacterMovement>().DisablePlayerMovement();
                     // stop line of sight testing
@@ -48,17 +52,9 @@ public class CombatStarter : MonoBehaviour
             Debug.Log("Left Combat");
             Destroy(combatScreen);
             GameObject.Find("PlayerCharacter").GetComponent<PlayerCharacterMovement>().EnablePlayerMovement();
-            Cursor.visible = false; 
             combatCleanUp = false;
-        }
-
-        // WIP for testing
-        if(inCombat)
-        {
-            if(Input.GetKey(KeyCode.Q))
-            {
-                inCombat = false;
-            }
+            // delete enemy
+            Destroy(gameObject.transform.parent.gameObject);
         }
     }
 
