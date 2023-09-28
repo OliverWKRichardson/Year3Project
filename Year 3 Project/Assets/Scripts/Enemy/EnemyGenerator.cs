@@ -29,7 +29,7 @@ public class EnemyGenerator : MonoBehaviour
             case enemyType.light:
                 hostile.GetComponent<Stats>().setType(enemyType.light);
                 hostile.GetComponent<Stats>().setSPD(Random.Range(5, 11));
-                hostile.GetComponent<Stats>().setHP(Random.Range(200, 600));
+                hostile.GetComponent<Stats>().setHP(Random.Range(400, 600));
                 hostile.GetComponent<Stats>().setMP(Random.Range(100, 150));
                 hostile.GetComponent<Stats>().setATK(Random.Range(50, 100));
                 break;

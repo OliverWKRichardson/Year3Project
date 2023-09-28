@@ -22,7 +22,13 @@ public class PlayerCharacterMovement : MonoBehaviour
     void Start()
     {
         // Hide Mouse
-        Cursor.visible = false; 
+        Cursor.visible = false;
+        // set initial stats for player
+        Stats playerStats = GetComponent<Stats>();
+        playerStats.setSPD(7);
+        playerStats.setHP(400);
+        playerStats.setMP(200);
+        playerStats.setATK(200);
     }
 
     // Update is called once per frame
