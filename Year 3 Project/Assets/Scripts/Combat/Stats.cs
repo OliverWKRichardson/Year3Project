@@ -14,6 +14,9 @@ public class Stats : MonoBehaviour
     // Health of enemy
     [SerializeField]
     float HP;
+    // Max Health of enemy
+    [SerializeField]
+    float MaxHP;
     // Mana of enemy
     [SerializeField]
     float MP;
@@ -21,12 +24,22 @@ public class Stats : MonoBehaviour
     [SerializeField]
     float ATK;
 
-    // Sets attack of enemy
+    // Sets MaxHP of enemy
+    public void setMaxHP(float setMaxHP)
+    {
+        MaxHP = setMaxHP;
+    }
+    // Gets MaxHP of enemy
+    public float getMaxHP()
+    {
+        return MaxHP;
+    }
+    // Sets type of enemy
     public void setType(EnemyGenerator.enemyType setType)
     {
         type = setType;
     }
-    // Gets attack of enemy
+    // Gets type of enemy
     public EnemyGenerator.enemyType getType()
     {
         return type;
@@ -44,7 +57,7 @@ public class Stats : MonoBehaviour
     // Sets health of enemy
     public void setHP(float health)
     {
-        HP = health;
+        HP = Mathf.Clamp(health, 0, MaxHP);
     }
     // Gets health of enemy
     public float getHP()

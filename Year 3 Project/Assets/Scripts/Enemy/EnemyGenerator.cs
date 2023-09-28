@@ -29,14 +29,16 @@ public class EnemyGenerator : MonoBehaviour
             case enemyType.light:
                 hostile.GetComponent<Stats>().setType(enemyType.light);
                 hostile.GetComponent<Stats>().setSPD(Random.Range(5, 11));
-                hostile.GetComponent<Stats>().setHP(Random.Range(400, 600));
+                hostile.GetComponent<Stats>().setMaxHP(Random.Range(400, 600));
+                hostile.GetComponent<Stats>().setHP(hostile.GetComponent<Stats>().getMaxHP());
                 hostile.GetComponent<Stats>().setMP(Random.Range(100, 150));
                 hostile.GetComponent<Stats>().setATK(Random.Range(50, 100));
                 break;
             case enemyType.heavy:
                 hostile.GetComponent<Stats>().setType(enemyType.heavy);
                 hostile.GetComponent<Stats>().setSPD(Random.Range(1, 5));
-                hostile.GetComponent<Stats>().setHP(Random.Range(750, 1000));
+                hostile.GetComponent<Stats>().setMaxHP(Random.Range(750, 1000));
+                hostile.GetComponent<Stats>().setHP(hostile.GetComponent<Stats>().getMaxHP());
                 hostile.GetComponent<Stats>().setMP(Random.Range(100, 150));
                 hostile.GetComponent<Stats>().setATK(Random.Range(80, 180));
                 break;
