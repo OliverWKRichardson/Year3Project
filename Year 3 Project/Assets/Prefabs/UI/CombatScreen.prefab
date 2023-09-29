@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 6261504030198819319}
   - component: {fileID: 2255320887906919715}
   - component: {fileID: 434885867632797059}
+  - component: {fileID: 7224892074180383692}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -223,6 +224,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7224892074180383692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494812467823967784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b0f5930047c6744a076bc93ab01918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button1: {fileID: 9150882876173320842}
+  button2: {fileID: 5685146408241136571}
+  button3: {fileID: 4733977204447843658}
 --- !u!1 &1723381296530845610
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,7 +615,7 @@ GameObject:
   - component: {fileID: 1144903406625486024}
   - component: {fileID: 5685146408241136571}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Text 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -665,7 +681,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Skill 2
+  m_Text: Error
 --- !u!1 &6794102286549545766
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,7 +694,7 @@ GameObject:
   - component: {fileID: 7951711053031244988}
   - component: {fileID: 9150882876173320842}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Text 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -744,7 +760,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Skill 1
+  m_Text: Error
 --- !u!1 &7456452212979919111
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,7 +1046,7 @@ GameObject:
   - component: {fileID: 5356483281265947017}
   - component: {fileID: 4733977204447843658}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Text 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1096,4 +1112,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Skill 3
+  m_Text: Error
