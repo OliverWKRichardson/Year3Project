@@ -28,6 +28,7 @@ public class PlayerCharacterMovement : MonoBehaviour
         playerStats.setSPD(7);
         playerStats.setMaxHP(400);
         playerStats.setHP(400);
+        playerStats.setMaxMP(200);
         playerStats.setMP(200);
         playerStats.setATK(200);
     }

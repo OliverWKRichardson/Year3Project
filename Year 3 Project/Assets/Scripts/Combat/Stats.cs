@@ -20,6 +20,9 @@ public class Stats : MonoBehaviour
     // Mana of enemy
     [SerializeField]
     float MP;
+    // Max Mana of enemy
+    [SerializeField]
+    float MaxMP;
     // Attack of enemy
     [SerializeField]
     float ATK;
@@ -33,6 +36,16 @@ public class Stats : MonoBehaviour
     public float getMaxHP()
     {
         return MaxHP;
+    }
+    // Sets MaxMP of enemy
+    public void setMaxMP(float setMaxMP)
+    {
+        MaxMP = setMaxMP;
+    }
+    // Gets MaxMP of enemy
+    public float getMaxMP()
+    {
+        return MaxMP;
     }
     // Sets type of enemy
     public void setType(EnemyGenerator.enemyType setType)
@@ -67,7 +80,7 @@ public class Stats : MonoBehaviour
     // Sets mana of enemy
     public void setMP(float mana)
     {
-        MP = mana;
+        MP = Mathf.Clamp(mana, 0, MaxMP);
     }
     // Gets mana of enemy
     public float getMP()
