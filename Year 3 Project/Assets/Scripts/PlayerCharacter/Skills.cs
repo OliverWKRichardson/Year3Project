@@ -12,9 +12,13 @@ public class Skills : MonoBehaviour
         skill1Name = "Light";
         skill2Name = "Heavy";
         skill3Name = "Heal";
+        skill1cost = 0;
+        skill2cost = 20;
+        skill3cost = 50;
     }
 
     public String skill1Name; //Light
+    public float skill1cost; // 0
     public void skill1(GameObject target)
     {
         Debug.Log(skill1Name+" Used By Player");
@@ -25,6 +29,7 @@ public class Skills : MonoBehaviour
     }
 
     public String skill2Name; // Heavy
+    public float skill2cost; // 20
     public void skill2(GameObject target)
     {
         Debug.Log(skill2Name+" Used By Player");
@@ -38,6 +43,7 @@ public class Skills : MonoBehaviour
     }
 
     public String skill3Name; // Heal
+    public float skill3cost; // 50
     public void skill3(GameObject target)
     {
         Debug.Log(skill3Name+" Used By Player");

@@ -59,6 +59,11 @@ public class CombatScreen : MonoBehaviour
     // Player Turns
     public void useSkill1()
     {
+        if(player.GetComponent<Skills>().skill1cost > player.GetComponent<Stats>().getMP())
+        {
+            Debug.Log("Out Of MP");
+            return;
+        }
         if(turn == TurnType.playerTurn)
         {
             skill1(enemy);
@@ -67,6 +72,11 @@ public class CombatScreen : MonoBehaviour
     }
     public void useSkill2()
     {
+        if(player.GetComponent<Skills>().skill2cost > player.GetComponent<Stats>().getMP())
+        {
+            Debug.Log("Out Of MP");
+            return;
+        }
         if(turn == TurnType.playerTurn)
         {
             skill2(enemy);
@@ -75,6 +85,11 @@ public class CombatScreen : MonoBehaviour
     }
     public void useSkill3()
     {
+        if(player.GetComponent<Skills>().skill3cost > player.GetComponent<Stats>().getMP())
+        {
+            Debug.Log("Out Of MP");
+            return;
+        }
         if(turn == TurnType.playerTurn)
         {
             skill3(enemy);
@@ -110,6 +125,8 @@ public class CombatScreen : MonoBehaviour
         {
             // pick enemy move
             Debug.Log("Enemy Move");
+            // regen player mana
+            player.GetComponent<Stats>().regenMP();
             // WIP add enemy move here
             turn = TurnType.playerTurn;
         }
