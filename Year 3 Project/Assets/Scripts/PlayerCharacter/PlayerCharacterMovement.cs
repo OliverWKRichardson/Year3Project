@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 public class PlayerCharacterMovement : MonoBehaviour
 {
-    [SerializeField] private float SPEED = 3;
-    [SerializeField] private bool movementDisabled = false;
+    public float SPEED = 3;
+    public bool movementDisabled = false;
 
     public void DisablePlayerMovement()
     {

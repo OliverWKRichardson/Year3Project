@@ -5,19 +5,19 @@ using UnityEngine.EventSystems;
 
 public class CombatScreen : MonoBehaviour
 {
-    [SerializeField] private GameObject PlayerSpriteSpawn;
-    [SerializeField] private GameObject EnemySpriteSpawn;
-    [SerializeField] private GameObject MenuCenter;
-    [SerializeField] private GameObject enemy;
-    [SerializeField] private GameObject player;
-    [SerializeField] private GameObject button1;
-    [SerializeField] private GameObject button2;
-    [SerializeField] private GameObject button3;
+    public GameObject PlayerSpriteSpawn;
+    public GameObject EnemySpriteSpawn;
+    public GameObject MenuCenter;
+    public GameObject enemy;
+    public GameObject player;
+    public GameObject button1;
+    public GameObject button2;
+    public GameObject button3;
     private System.Action<GameObject> skill1;
     private System.Action<GameObject> skill2;
     private System.Action<GameObject> skill3;
-    enum TurnType{playerTurn, enemyTurn, END, START};
-    [SerializeField] private TurnType turn = TurnType.START;
+    public enum TurnType{playerTurn, enemyTurn, END, START};
+    public TurnType turn = TurnType.START;
 
     // Start is called before the first frame update
     // Initiate Combat Here

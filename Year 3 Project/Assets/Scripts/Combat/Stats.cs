@@ -6,26 +6,19 @@ using static EnemyGenerator.enemyType;
 public class Stats : MonoBehaviour
 {
     // Type of enemy
-    [SerializeField]
-    EnemyGenerator.enemyType type;
+    public EnemyGenerator.enemyType type;
     // Speed of enemy
-    [SerializeField]
-    float SPD;
+    public float SPD;
     // Health of enemy
-    [SerializeField]
-    float HP;
+    public float HP;
     // Max Health of enemy
-    [SerializeField]
-    float MaxHP;
+    public float MaxHP;
     // Mana of enemy
-    [SerializeField]
-    float MP;
+    public float MP;
     // Max Mana of enemy
-    [SerializeField]
-    float MaxMP;
+    public float MaxMP;
     // Attack of enemy
-    [SerializeField]
-    float ATK;
+    public float ATK;
 
     // Sets MaxHP of enemy
     public void setMaxHP(float setMaxHP)

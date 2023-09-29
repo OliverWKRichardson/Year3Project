@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 public class CombatStarter : MonoBehaviour
 {
     bool lineOfSightTesting = false;
     bool inCombat = false;
     bool combatCleanUp = false;
-    [SerializeField] GameObject combatScreenPrefab;
+    public GameObject combatScreenPrefab;
     GameObject combatScreen;
 
     public void endCombat()

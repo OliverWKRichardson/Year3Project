@@ -8,8 +8,7 @@ public class EnemyGenerator : MonoBehaviour
     public enum enemyType{light, heavy}
 
     // Enemy class
-    [SerializeField]
-    private GameObject enemy;
+    public GameObject enemy;
 
     // Start is called before the first frame update
     void Start()
