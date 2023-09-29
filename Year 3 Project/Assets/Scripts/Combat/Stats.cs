@@ -72,6 +72,26 @@ public class Stats : MonoBehaviour
     {
         HP = Mathf.Clamp(health, 0, MaxHP);
     }
+    // deal damage to self
+    public void Damage(float amount)
+    {
+        // no negative damage
+        if(amount < 0)
+        {
+            return;
+        }
+        // reduce hp by amount 
+        HP = Mathf.Clamp(HP - amount, 0, MaxHP);
+    }
+    // heal self
+    public void Heal(float amount)
+    {
+        if(amount < 0)
+        {
+            return;
+        }
+        HP = Mathf.Clamp(HP + amount, 0, MaxHP);
+    }
     // Gets health of enemy
     public float getHP()
     {
@@ -97,5 +117,13 @@ public class Stats : MonoBehaviour
     {
         return ATK;
     }
-
+    public void spendMP(float amount)
+    {
+        MP = Mathf.Clamp(MP - amount, 0, MaxMP);
+    }
+    public void regenMP()
+    {
+        // regen 5% mp
+        MP = Mathf.Clamp(MP + (MaxMP/20), 0, MaxMP);
+    }
 }

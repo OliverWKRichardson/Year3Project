@@ -5,24 +5,48 @@ using System;
 
 public class Skills : MonoBehaviour
 {
-    public String skill1Name = "Skill 1";
+    GameObject player;
+    void Start()
+    {
+        player = GameObject.Find("PlayerCharacter");
+        skill1Name = "Light";
+        skill2Name = "Heavy";
+        skill3Name = "Heal";
+    }
+
+    public String skill1Name; //Light
     public void skill1(GameObject target)
     {
-        Debug.Log("Skill 1 Used By Player");
-        // WIP add skill functionality here
+        Debug.Log(skill1Name+" Used By Player");
+        // get player attack value
+        float amount = player.GetComponent<Stats>().getATK();
+        // damage enemy
+        target.GetComponent<Stats>().Damage(amount);
     }
 
-    public String skill2Name = "Skill 2";
+    public String skill2Name; // Heavy
     public void skill2(GameObject target)
     {
-        Debug.Log("Skill 2 Used By Player");
-        // WIP add skill functionality here
+        Debug.Log(skill2Name+" Used By Player");
+        // get player attack value
+        float amount = player.GetComponent<Stats>().getATK();
+        float MULT = 2;
+        // damage enemy
+        target.GetComponent<Stats>().Damage(amount*MULT);
+        // reduce player MP
+        player.GetComponent<Stats>().spendMP(20);
     }
 
-    public String skill3Name = "Skill 3";
+    public String skill3Name; // Heal
     public void skill3(GameObject target)
     {
-        Debug.Log("Skill 3 Used By Player");
-        // WIP add skill functionality here
+        Debug.Log(skill3Name+" Used By Player");
+        // get player attack value
+        float amount = player.GetComponent<Stats>().getATK();
+        float MULT = 4;
+        // heal player
+        player.GetComponent<Stats>().Heal(amount*MULT);
+        // reduce player MP
+        player.GetComponent<Stats>().spendMP(50);
     }
 }
