@@ -19,6 +19,9 @@ public class CombatScreen : MonoBehaviour
     public enum TurnType{playerTurn, enemyTurn, END, START};
     public TurnType turn = TurnType.START;
 
+    float enemyTurnTimer;
+    bool enemyTurnTimerDone;
+
     // Start is called before the first frame update
     // Initiate Combat Here
     // Use Sprite Spawn Empties to create sprites of combatants
@@ -31,6 +34,8 @@ public class CombatScreen : MonoBehaviour
         button1.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(useSkill1);
         button2.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(useSkill2);
         button3.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(useSkill3);
+        enemyTurnTimerDone = true;
+        enemyTurnTimer = 0;
     }
 
     public void setEnemy(GameObject setEnemy)
@@ -102,6 +107,25 @@ public class CombatScreen : MonoBehaviour
     // Change turn indicator when turn changes
     void Update()
     {
+        if (!enemyTurnTimerDone)
+        {
+            enemyTurnTimer = enemyTurnTimer - Time.deltaTime;
+        }
+
+        if (!enemyTurnTimerDone && enemyTurnTimer < 0)
+        {
+            // -- Continued from enemy turn --
+            // regen player mana
+            Debug.Log("Player Mana Regens");
+            player.GetComponent<Stats>().regenMP();
+            // Becomes Players turn again
+            Debug.Log("Player Turn");
+            turn = TurnType.playerTurn;
+
+            //Set to false so that We don't run this again
+            enemyTurnTimerDone = true;
+        }
+
         // WIP testing
         if(turn != TurnType.START)
         {
@@ -121,14 +145,18 @@ public class CombatScreen : MonoBehaviour
             Cursor.visible = false;
             enemy.transform.GetChild(0).GetComponent<CombatStarter>().endCombat();
         }
-        else if(turn == TurnType.enemyTurn)
+        else if((turn == TurnType.enemyTurn)&&(enemyTurnTimerDone == true))
         {
-            // pick enemy move
+            Debug.Log("Enemy Turn");
+            // Enemy moves
             Debug.Log("Enemy Move");
-            // regen player mana
-            player.GetComponent<Stats>().regenMP();
-            // WIP add enemy move here
-            turn = TurnType.playerTurn;
+            // WIP put enemy move here
+            
+            // Wait for 3 seconds
+            Debug.Log("Waiting for 3 seconds");
+            enemyTurnTimer = 3;
+            enemyTurnTimerDone = false;
+            // -- Continued in timer --
         }
     }
 }
