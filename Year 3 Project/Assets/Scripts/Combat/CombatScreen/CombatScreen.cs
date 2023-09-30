@@ -22,6 +22,9 @@ public class CombatScreen : MonoBehaviour
     float enemyTurnTimer;
     bool enemyTurnTimerDone;
 
+    float playerTurnTimer;
+    bool playerTurnTimerDone;
+
     // Start is called before the first frame update
     // Initiate Combat Here
     // Use Sprite Spawn Empties to create sprites of combatants
@@ -36,6 +39,8 @@ public class CombatScreen : MonoBehaviour
         button3.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(useSkill3);
         enemyTurnTimerDone = true;
         enemyTurnTimer = 0;
+        playerTurnTimerDone = true;
+        playerTurnTimer = 0;
     }
 
     public void setEnemy(GameObject setEnemy)
@@ -64,42 +69,66 @@ public class CombatScreen : MonoBehaviour
     // Player Turns
     public void useSkill1()
     {
+        if(playerTurnTimerDone != true)
+        {
+            return;
+        }
         if(player.GetComponent<Skills>().skill1cost > player.GetComponent<Stats>().getMP())
         {
-            Debug.Log("Out Of MP");
+            Debug.Log("Not Enough MP");
             return;
         }
         if(turn == TurnType.playerTurn)
         {
             skill1(enemy);
+            // Wait for 3 seconds
+            Debug.Log("Waiting for 3 seconds");
+            playerTurnTimer = 3;
+            playerTurnTimerDone = false;
+            // -- Continued in player timer --
         }
-        turn = TurnType.enemyTurn;
     }
     public void useSkill2()
     {
+        if(playerTurnTimerDone != true)
+        {
+            return;
+        }
         if(player.GetComponent<Skills>().skill2cost > player.GetComponent<Stats>().getMP())
         {
-            Debug.Log("Out Of MP");
+            Debug.Log("Not Enough MP");
             return;
         }
         if(turn == TurnType.playerTurn)
         {
             skill2(enemy);
+            // Wait for 3 seconds
+            Debug.Log("Waiting for 3 seconds");
+            playerTurnTimer = 3;
+            playerTurnTimerDone = false;
+            // -- Continued in player timer --
         }
-        turn = TurnType.enemyTurn;
     }
     public void useSkill3()
     {
+        if(playerTurnTimerDone != true)
+        {
+            return;
+        }
         if(player.GetComponent<Skills>().skill3cost > player.GetComponent<Stats>().getMP())
         {
-            Debug.Log("Out Of MP");
+            Debug.Log("Not Enough MP");
             return;
         }
         if(turn == TurnType.playerTurn)
         {
             skill3(enemy);
+            // Wait for 3 seconds
+            Debug.Log("Waiting for 3 seconds");
+            playerTurnTimer = 3;
+            playerTurnTimerDone = false;
+            // -- Continued in player timer --
         }
-        turn = TurnType.enemyTurn;
     }
 
     // Update is called once per frame
@@ -107,6 +136,20 @@ public class CombatScreen : MonoBehaviour
     // Change turn indicator when turn changes
     void Update()
     {
+        if (!playerTurnTimerDone)
+        {
+            playerTurnTimer = playerTurnTimer - Time.deltaTime;
+        }
+
+        if (!playerTurnTimerDone && playerTurnTimer < 0)
+        {
+            // -- Continued from player action --
+            turn = TurnType.enemyTurn;
+
+            //Set to false so that We don't run this again
+            playerTurnTimerDone = true;
+        }
+
         if (!enemyTurnTimerDone)
         {
             enemyTurnTimer = enemyTurnTimer - Time.deltaTime;
@@ -156,7 +199,7 @@ public class CombatScreen : MonoBehaviour
             Debug.Log("Waiting for 3 seconds");
             enemyTurnTimer = 3;
             enemyTurnTimerDone = false;
-            // -- Continued in timer --
+            // -- Continued in enemy timer --
         }
     }
 }
