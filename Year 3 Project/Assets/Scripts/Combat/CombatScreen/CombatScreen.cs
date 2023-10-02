@@ -8,16 +8,25 @@ public class CombatScreen : MonoBehaviour
     public GameObject PlayerSpriteSpawn;
     public GameObject EnemySpriteSpawn;
     public GameObject MenuCenter;
+
     public GameObject enemy;
     public GameObject player;
+
     public GameObject button1;
     public GameObject button2;
     public GameObject button3;
+
     private System.Action<GameObject> skill1;
     private System.Action<GameObject> skill2;
     private System.Action<GameObject> skill3;
+
     public enum TurnType{playerTurn, enemyTurn, END, START};
     public TurnType turn = TurnType.START;
+
+    public TurnType getTurn()
+    {
+        return turn;
+    }
 
     float enemyTurnTimer;
     bool enemyTurnTimerDone;
