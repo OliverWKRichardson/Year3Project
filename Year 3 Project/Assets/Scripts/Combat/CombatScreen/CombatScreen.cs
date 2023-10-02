@@ -194,14 +194,14 @@ public class CombatScreen : MonoBehaviour
         }
 
         // WIP testing stuff
-        if(turn != TurnType.START)
-        {
-            if(Input.GetKey(KeyCode.Q))
-            {
-                // end combat if not in start and press q
-                turn = TurnType.END;
-            }
-        }
+        //if(turn != TurnType.START)
+        //{
+        //    if(Input.GetKey(KeyCode.Q))
+        //    {
+        //        // end combat if not in start and press q
+        //        turn = TurnType.END;
+        //    }
+        //}
 
         // check turn
         if(turn == TurnType.START)
