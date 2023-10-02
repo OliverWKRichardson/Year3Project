@@ -145,6 +145,21 @@ public class CombatScreen : MonoBehaviour
     // Change turn indicator when turn changes
     void Update()
     {
+        // Determine If Combat is Over
+        if(player.GetComponent<Stats>().getHP() == 0) // player dies(hp doesn't go below 0 as it is clamped)
+        {
+            // Game Over Screen
+            // WIP need to make gameover screen
+        }
+        if(enemy.GetComponent<Stats>().getHP() == 0) // enemy dies(hp doesn't go below 0 as it is clamped)
+        {
+            // End Combat
+            turn = TurnType.END;
+            // Reward Player
+            // WIP need to decide rewards
+        }
+
+        // Timers
         if (!playerTurnTimerDone)
         {
             playerTurnTimer = playerTurnTimer - Time.deltaTime;
@@ -178,7 +193,7 @@ public class CombatScreen : MonoBehaviour
             enemyTurnTimerDone = true;
         }
 
-        // WIP testing
+        // WIP testing stuff
         if(turn != TurnType.START)
         {
             if(Input.GetKey(KeyCode.Q))
@@ -187,6 +202,7 @@ public class CombatScreen : MonoBehaviour
                 turn = TurnType.END;
             }
         }
+
         // check turn
         if(turn == TurnType.START)
         {
