@@ -1,10 +1,50 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 
 public class MapgenScript : MonoBehaviour
-{   
+{
+
+    public struct coordinates
+    {
+        private int x, y;
+
+        public coordinates(int x, int y)
+        {
+            this.x = x; this.y = y;
+        }
+        public int getx() { return x; }
+        public int gety() { return y; }
+
+
+    }
+    [SerializeField]
+    private int MAX_ROOMS = 26;
+    [SerializeField]
+    private int minMap = 5;
+    [SerializeField]
+    private int maxMap = 11;
+
+    private int mapX;
+    private int mapY;
+
+    private Stack<coordinates> coordstack = new Stack<coordinates>();
     private Room[,] roomgen;
+    private coordinates bosscoords;
+    [SerializeField]
+    private int MAX_SHOPS = 2;
+    private int shopcounter = 0;
+    [SerializeField]
+    private int MAX_COINS = 2;
+    private int coincounter = 0;
+    private int roomcounter = 0;
+
+    private Boolean spawnroomexists = false;
+
     //private Room room;
 
     // Start is called before the first frame update
@@ -16,57 +56,234 @@ public class MapgenScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public Room[,] generateMap()
+    //Modern Fisher-Yates shuffle algo, Richard Durstenfeld in 1964
+    //An unbiased permutation order for which way to travel when generating rooms.
+
+    [ContextMenu("testshuffe")]
+    public void testShuffle()
     {
-        roomgen = new Room[4,4];
-        Room boss = new Room(0, null, null, null, null);
-        int x = Random.Range(0, 3);
-        int y = Random.Range(0, 3);
-        Debug.Log(boss.getType());
-        roomgen[x, y] = boss;
+        int[] order = orderShuffle();
 
-        for (int i = 0; i < 4; i++)
+        foreach (int i in order)
         {
-            for (int k = 0; k < 4; k++)
-            {
+            Debug.Log(i);
+        }
+    }
 
-                if (roomgen[i, k] != null)
-                {
-                    continue;
-                }
-                //At the moment room type is completely even chance of 50% type 1 50% type 2
-                //Need to make type 2 more rare as we don't want an abundance of shops -> Mess with the RNG.
-                int roomtype = Random.Range(1, 3);
+    //Modern Fisher-Yates shuffle algo, Richard Durstenfeld in 1964
+    //An unbiased permutation order for which way to travel when generating rooms.
+    public List<coordinates> coordsshuffle(List<coordinates> coords)
+    {
+
+        for (int i = coords.Count - 1; i >= 1; i--)
+        {
+
+            int gen = Random.Range(0, i+1);
+
+            //Tuple swap of values is a way of swapping values in C#
+
+
+
+
+            (coords[i], coords[gen]) = (coords[gen], coords[i]);
+
+
+        }
+
+        return coords;
+    }
+
+
+    public int[] orderShuffle()
+    {
+
+        int[] order = { 1, 2, 3, 4 };
+
+        for (int i = 3; i >= 1; i--)
+        {
+
+            int gen = Random.Range(0, i+1);
+
+            //Tuple swap of values is a way of swapping values in C#
+
+
+
+
+            (order[i], order[gen]) = (order[gen], order[i]);
+
+        }
+        return order;
+    }
+
+    public double bossDistance(int x, int y)
+    {
+        //Euclidean Distance Formula
+        int bossx = bosscoords.getx();
+        int bossy = bosscoords.gety();
+
+        return Math.Sqrt(((bossx - x) ^ 2 + (bossy - y) ^ 2));
+
+
+
+    }
+
+
+
+    public Room generateRoom(int x, int y)
+    //null == Empty Room
+    //1 == Boss Room
+    //2 == Attack Room
+    //3 == Shop Room
+    //4 == Coin Room
+    {
+
+        //Could clean up code here and remove some of the room counters place it after the first conditional.
+        
+        if (roomcounter == 0) {
+            roomcounter++;
+            return new Room(1, null, null, null, null);
+        }
+
+        //Primitive case for spawn room not existing when there are no rooms left. Doesn't factor distance from Boss room, this could be a potential issue.
+        // Potential fix -> Run generations until spawn room exists randomly or use math to determine when you get last "ideal spawn room chance".
+        if (roomcounter == 25 && spawnroomexists == false)
+        {
+            roomcounter++;
+            spawnroomexists = true;
+            return new Room(5, null, null, null, null);
+
+        }
+        //Formula for spawning start Room is  if rng <= (1.2 * Distance) 
+        //Start Room spawning
+
+        int sprng = Random.Range(3, 15);
+       
+        if (sprng < 1.3 * bossDistance(x, y) && spawnroomexists == false)
+        {
+
+            roomcounter++;
+            spawnroomexists = true;
+            return new Room(5, null, null, null, null);
+        }
+
+        if (coordstack.Count == 0 && spawnroomexists == false)
+        {
+            roomcounter++;
+            spawnroomexists = true;
+            return new Room(5, null, null, null, null);
+        }
+
+
+        int rng = Random.Range(0, 20);
+           if ((rng > 17) && (shopcounter < MAX_SHOPS) && (bossDistance(x, y) >= 2))
+        {
+            roomcounter++;
+            shopcounter++;
+            return new Room(3, null, null, null, null);
+        }
+        if (rng < 16 && rng > 13 && (coincounter < MAX_COINS))
+        {
+            roomcounter++;
+            coincounter++;
+            return new Room(4, null, null, null, null);
+
+        }
+
+
+        roomcounter++;
+        return new Room(2, null, null, null, null);
+        
+    
+    }
+
+    public void fillMap(int x, int y)
+    {
+
+        //Debug.Log("Int x:" + x + " Int y: " + y);
+        if (roomgen[x, y] == null)
+
+        {
+            //Debug.Log("Coords : " + x + " "+ y);
+           // Debug.Log("Maxes : " + mapX + " " + mapY);
+            roomgen[x, y] = generateRoom(x,y);
+            List<coordinates> coordlist = new List<coordinates>(4);
+
+
+            if (x > 0) {
+                coordinates up = new coordinates(x - 1, y);
+                coordlist.Add(up);
                 
+            }
 
-                Room room = new Room(roomtype, null, null, null, null);
-
-                // Set neighbours of rooms depending on their position on the 2D Array
-                // Keeping neighbour fields incase they are useful, will delete if i only end up using their actual array positions to determine neighbour in code.
-                if (i > 0)
-                {
-                    room.setRoom("up", roomgen[i - 1, k]);
-                }
-                if (i < 3)
-                {
-                    room.setRoom("down", roomgen[i + 1, k]);
-                }
-                if (k > 0)
-                {
-                    room.setRoom("left", roomgen[i, k - 1]);
-                }
-                if (k < 3)
-                {
-                    room.setRoom("right", roomgen[i, k + 1]);
-                }
-                roomgen[i, k] = room;
+            if (x < mapX-1) {
+                coordinates down = new coordinates(x + 1, y);
+                coordlist.Add(down);
 
             }
+
+            if (y > 0) {
+                coordinates left = new coordinates(x, y - 1); 
+                coordlist.Add(left);
+
+            }
+            if (y < mapY-1) {
+                coordinates right = new coordinates(x, y + 1);
+                coordlist.Add(right);
+
+            }
+
+
+            coordlist = coordsshuffle(coordlist);
+            //Put them on stack after shuffling
+
+            foreach(coordinates i in coordlist)
+            {
+                coordstack.Push( i);
+
+            }
+
+            coordinates next = coordstack.Pop();
+            fillMap(next.getx(), next.gety());
+
+
+            
         }
-        return roomgen;
+        else if (coordstack.Count > 0)
+        {
+            coordinates next = coordstack.Pop();
+            fillMap(next.getx(), next.gety());
+
+        }
+
+        
+
+
+
+
+
+
+
+
+    }
+    public void generateMap()
+    {
+        //Randomly Define Map X & Y Size
+        mapX = Random.Range(minMap, maxMap);
+        mapY = Random.Range(minMap, maxMap);
+        roomgen = new Room[mapX, mapY];
+
+        bosscoords = new coordinates(Random.Range(0,mapX), Random.Range(0,mapY));
+
+        //Now we have boss coords **SOMEWHERE** on the map.
+
+
+        fillMap(bosscoords.getx(),bosscoords.gety());
+
+
+        
 
 
     }
@@ -79,16 +296,15 @@ public class MapgenScript : MonoBehaviour
     [ContextMenu ("test print random map")]
     public void testprint()
     {
-        Room[,] myrooms = generateMap();
+        
 
         
-        for (int i = 0; i<4; i++)
+        for (int i = 0; i<mapX; i++)
         {
-            System.Console.WriteLine("Can you see this?");
             Debug.Log("-------");
-            for (int j =0; j<4; j++)
+            for (int j =0; j<mapY; j++)
             {
-                Debug.Log(myrooms[i, j].getType());
+                Debug.Log(roomgen[i, j].getType());
             }
         }
 
