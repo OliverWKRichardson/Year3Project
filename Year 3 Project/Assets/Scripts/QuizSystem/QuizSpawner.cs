@@ -21,7 +21,7 @@ public class QuizSpawner : MonoBehaviour
         quiz.transform.position = new Vector3(0, 0, 0);
         // set quiz parent
         quiz.transform.parent = GameObject.Find("Canvas").transform;
-        // set quiz name ??
+        // set quiz name
         quiz.name = "Quiz";
- ??    } ??
+    }
 }

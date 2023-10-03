@@ -26,7 +26,7 @@ public class Stats : MonoBehaviour
         MaxHP = setMaxHP;
     }
     // Gets MaxHP of enemy
-    public float getMaxHP()
+    public float getMaxHP() const
     {
         return MaxHP;
     }
@@ -36,7 +36,7 @@ public class Stats : MonoBehaviour
         MaxMP = setMaxMP;
     }
     // Gets MaxMP of enemy
-    public float getMaxMP()
+    public float getMaxMP() const
     {
         return MaxMP;
     }
@@ -46,7 +46,7 @@ public class Stats : MonoBehaviour
         type = setType;
     }
     // Gets type of enemy
-    public EnemyGenerator.enemyType getType()
+    public EnemyGenerator.enemyType getType() const
     {
         return type;
     }
@@ -56,7 +56,7 @@ public class Stats : MonoBehaviour
         SPD = speed;
     }
     // Gets speed of enemy
-    public float getSPD()
+    public float getSPD() const
     {
         return SPD;
     }
@@ -86,7 +86,7 @@ public class Stats : MonoBehaviour
         HP = Mathf.Clamp(HP + amount, 0, MaxHP);
     }
     // Gets health of enemy
-    public float getHP()
+    public float getHP() const
     {
         return HP;
     }
@@ -96,7 +96,7 @@ public class Stats : MonoBehaviour
         MP = Mathf.Clamp(mana, 0, MaxMP);
     }
     // Gets mana of enemy
-    public float getMP()
+    public float getMP() const
     {
         return MP;
     }
@@ -106,7 +106,7 @@ public class Stats : MonoBehaviour
         ATK = attack;
     }
     // Gets attack of enemy
-    public float getATK()
+    public float getATK() const
     {
         return ATK;
     }
