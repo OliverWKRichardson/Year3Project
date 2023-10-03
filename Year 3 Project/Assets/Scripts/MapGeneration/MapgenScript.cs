@@ -22,11 +22,8 @@ public class MapgenScript : MonoBehaviour
 
 
     }
-    [SerializeField]
     private int MAX_ROOMS = 26;
-    [SerializeField]
     private int minMap = 5;
-    [SerializeField]
     private int maxMap = 11;
 
     private int mapX;
@@ -35,10 +32,8 @@ public class MapgenScript : MonoBehaviour
     private Stack<coordinates> coordstack = new Stack<coordinates>();
     private Room[,] roomgen;
     private coordinates bosscoords;
-    [SerializeField]
     private int MAX_SHOPS = 2;
     private int shopcounter = 0;
-    [SerializeField]
     private int MAX_COINS = 2;
     private int coincounter = 0;
     private int roomcounter = 0;
@@ -149,7 +144,7 @@ public class MapgenScript : MonoBehaviour
 
         //Primitive case for spawn room not existing when there are no rooms left. Doesn't factor distance from Boss room, this could be a potential issue.
         // Potential fix -> Run generations until spawn room exists randomly or use math to determine when you get last "ideal spawn room chance".
-        if (roomcounter == 25 && spawnroomexists == false)
+        if (roomcounter == MAX_ROOMS-1 && spawnroomexists == false)
         {
             roomcounter++;
             spawnroomexists = true;

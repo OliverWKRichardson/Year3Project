@@ -21,8 +21,7 @@ public class QA : MonoBehaviour
 
     void Start()
     {
-       question = GameObject.Find("QuestionText");
-       question.GetComponent<UnityEngine.UI.Text>().text = "What is the capital of the United States?";
+       question.GetComponent<UnityEngine.UI.Text>().text = "Placeholder question? Placeholder question?";
     }
 
     // Update is called once per frame

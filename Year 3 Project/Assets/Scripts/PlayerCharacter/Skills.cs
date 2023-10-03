@@ -9,15 +9,15 @@ public class Skills : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("PlayerCharacter");
-        skill1Name = "Light";
-        skill2Name = "Heavy";
-        skill3Name = "Heal";
+        skill1Name = "Worm";
+        skill2Name = "Trojan";
+        skill3Name = "Revert";
         skill1cost = 0;
         skill2cost = 20;
         skill3cost = 50;
     }
 
-    public String skill1Name; //Light
+    public String skill1Name; //worm
     public float skill1cost; // 0
     public void skill1(GameObject target)
     {
@@ -28,7 +28,7 @@ public class Skills : MonoBehaviour
         target.GetComponent<Stats>().Damage(amount);
     }
 
-    public String skill2Name; // Heavy
+    public String skill2Name; // trojan
     public float skill2cost; // 20
     public void skill2(GameObject target)
     {
@@ -42,7 +42,7 @@ public class Skills : MonoBehaviour
         player.GetComponent<Stats>().spendMP(20);
     }
 
-    public String skill3Name; // Heal
+    public String skill3Name; // revert
     public float skill3cost; // 50
     public void skill3(GameObject target)
     {
