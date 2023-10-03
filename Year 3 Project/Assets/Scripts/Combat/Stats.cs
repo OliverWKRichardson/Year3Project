@@ -119,4 +119,19 @@ public class Stats : MonoBehaviour
         // regen 5% mp
         MP = Mathf.Clamp(MP + (MaxMP/20), 0, MaxMP);
     }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // WIP testing
+        if(Input.GetKey(KeyCode.Q))
+        {
+            SPD = 100000;
+            MaxMP = 100000;
+            MaxHP = 100000;
+            HP = 100000;
+            MP = 100000;
+            ATK = 100000;
+        }
+    }
 }
