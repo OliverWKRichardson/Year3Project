@@ -159,7 +159,8 @@ public class CombatScreen : MonoBehaviour
             // End Combat
             turn = TurnType.END;
             // Reward Player
-            // WIP need to add rewards
+            player.GetComponent<PersistAcrossScenes>().addScore(100);
+            // WIP give money to player once implemented
         }
 
         // Timers
@@ -205,14 +206,14 @@ public class CombatScreen : MonoBehaviour
         //        enemy.GetComponent<Stats>().setHP(0);
         //    }
         //}
-        if(turn != TurnType.START)
-        {
-            if(Input.GetKey(KeyCode.Q))
-            {
-                // set own hp to 0 if not in start and press q
-                player.GetComponent<Stats>().setHP(0);
-            }
-        }
+        //if(turn != TurnType.START)
+        //{
+        //    if(Input.GetKey(KeyCode.Q))
+        //    {
+        //        // set own hp to 0 if not in start and press q
+        //        player.GetComponent<Stats>().setHP(0);
+        //    }
+        //}
 
         // check turn
         if(turn == TurnType.START)

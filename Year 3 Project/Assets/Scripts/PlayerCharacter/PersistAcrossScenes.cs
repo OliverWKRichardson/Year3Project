@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class PersistAcrossScenes : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class PersistAcrossScenes : MonoBehaviour
     private static float MP;
     private static float MaxMP;
     private static float ATK;
+    private static int score;
 
     public void SavePlayer()
     {
@@ -58,5 +60,15 @@ public class PersistAcrossScenes : MonoBehaviour
     public void removeCamera()
     {
         Destroy(transform.GetChild(1).gameObject);
+    }
+
+    public String getScoreString()
+    {
+        return score.ToString();
+    }
+
+    public void addScore(int amount)
+    {
+        score = score + amount;
     }
 }
