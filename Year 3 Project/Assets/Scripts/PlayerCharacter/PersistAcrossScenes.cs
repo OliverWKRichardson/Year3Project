@@ -54,4 +54,9 @@ public class PersistAcrossScenes : MonoBehaviour
         GetComponent<Stats>().setMaxMP(MaxMP);
         GetComponent<Stats>().setATK(ATK);
     }
+
+    public void removeCamera()
+    {
+        Destroy(transform.GetChild(1).gameObject);
+    }
 }

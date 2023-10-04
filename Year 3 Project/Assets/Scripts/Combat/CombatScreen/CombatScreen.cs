@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class CombatScreen : MonoBehaviour
 {
@@ -149,14 +150,16 @@ public class CombatScreen : MonoBehaviour
         if(player.GetComponent<Stats>().getHP() == 0) // player dies(hp doesn't go below 0 as it is clamped)
         {
             // Game Over Screen
-            // WIP need to make gameover screen
+            SceneManager.LoadScene(0); 
+            player.GetComponent<PersistAcrossScenes>().removeCamera();
+            Destroy(gameObject);
         }
         if(enemy.GetComponent<Stats>().getHP() == 0) // enemy dies(hp doesn't go below 0 as it is clamped)
         {
             // End Combat
             turn = TurnType.END;
             // Reward Player
-            // WIP need to decide rewards
+            // WIP need to add rewards
         }
 
         // Timers
@@ -198,10 +201,18 @@ public class CombatScreen : MonoBehaviour
         //{
         //    if(Input.GetKey(KeyCode.Q))
         //    {
-        //        // end combat if not in start and press q
-        //        turn = TurnType.END;
+        //        // set enemy hp to 0 if not in start and press q
+        //        enemy.GetComponent<Stats>().setHP(0);
         //    }
         //}
+        if(turn != TurnType.START)
+        {
+            if(Input.GetKey(KeyCode.Q))
+            {
+                // set own hp to 0 if not in start and press q
+                player.GetComponent<Stats>().setHP(0);
+            }
+        }
 
         // check turn
         if(turn == TurnType.START)

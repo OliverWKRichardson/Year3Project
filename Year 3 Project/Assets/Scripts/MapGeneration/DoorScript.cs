@@ -16,7 +16,7 @@ public class DoorScript : MonoBehaviour
             GameObject player = GameObject.Find("PlayerCharacter");
             player.GetComponent<PersistAcrossScenes>().SavePlayer();
             // load new scene
-            SceneManager.LoadScene (sceneIndex); 
+            SceneManager.LoadScene(sceneIndex); 
         }
     }
 }
