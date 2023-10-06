@@ -15,6 +15,8 @@ public class CombatScreen : MonoBehaviour
 
     public GameObject enemyHPBar;
     public GameObject playerHPBar;
+    public GameObject enemyMPBar;
+    public GameObject playerMPBar;
 
     public GameObject button1;
     public GameObject button2;
@@ -65,11 +67,17 @@ public class CombatScreen : MonoBehaviour
         Instantiate(player.GetComponent<CombatSprite>().getCombatSprite(), PlayerSpriteSpawn.transform);
         Instantiate(enemy.GetComponent<CombatSprite>().getCombatSprite(), EnemySpriteSpawn.transform);
         // set up hp bars
-        enemyHPBar.GetComponent<HealthBar>().SetMaxHealth((int) enemy.GetComponent<Stats>().getHP());
-        playerHPBar.GetComponent<HealthBar>().SetMaxHealth((int) player.GetComponent<Stats>().getHP());
-        enemyHPBar.GetComponent<HealthBar>().SetHealth((int) enemy.GetComponent<Stats>().getHP());
-        playerHPBar.GetComponent<HealthBar>().SetHealth((int) player.GetComponent<Stats>().getHP());
+        enemyHPBar.GetComponent<ResourceBar>().SetMax((int) enemy.GetComponent<Stats>().getHP());
+        playerHPBar.GetComponent<ResourceBar>().SetMax((int) player.GetComponent<Stats>().getHP());
+        enemyHPBar.GetComponent<ResourceBar>().Set((int) enemy.GetComponent<Stats>().getHP());
+        playerHPBar.GetComponent<ResourceBar>().Set((int) player.GetComponent<Stats>().getHP());
         
+        // set up mp bars
+        enemyMPBar.GetComponent<ResourceBar>().SetMax((int) enemy.GetComponent<Stats>().getMP());
+        playerMPBar.GetComponent<ResourceBar>().SetMax((int) player.GetComponent<Stats>().getMP());
+        enemyMPBar.GetComponent<ResourceBar>().Set((int) enemy.GetComponent<Stats>().getMP());
+        playerMPBar.GetComponent<ResourceBar>().Set((int) player.GetComponent<Stats>().getMP());
+
         // create menu
         skill1 = player.GetComponent<Skills>().skill1;
         skill2 = player.GetComponent<Skills>().skill2;
@@ -159,8 +167,11 @@ public class CombatScreen : MonoBehaviour
     void Update()
     {
         //Update HP Bars
-        enemyHPBar.GetComponent<HealthBar>().SetHealth((int) enemy.GetComponent<Stats>().getHP());
-        playerHPBar.GetComponent<HealthBar>().SetHealth((int) player.GetComponent<Stats>().getHP());
+        enemyHPBar.GetComponent<ResourceBar>().Set((int) enemy.GetComponent<Stats>().getHP());
+        playerHPBar.GetComponent<ResourceBar>().Set((int) player.GetComponent<Stats>().getHP());
+        // Update MP Bars
+        enemyMPBar.GetComponent<ResourceBar>().Set((int) enemy.GetComponent<Stats>().getMP());
+        playerMPBar.GetComponent<ResourceBar>().Set((int) player.GetComponent<Stats>().getMP());
 
         // Determine If Combat is Over
         if(player.GetComponent<Stats>().getHP() == 0) // player dies(hp doesn't go below 0 as it is clamped)
