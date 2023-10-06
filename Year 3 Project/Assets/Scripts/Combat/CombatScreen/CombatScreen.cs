@@ -58,6 +58,9 @@ public class CombatScreen : MonoBehaviour
         // get enemy and player
         enemy = setEnemy;
         player = GameObject.Find("PlayerCharacter");
+        // create sprites of characters
+        Instantiate(player.GetComponent<CombatSprite>().getCombatSprite(), PlayerSpriteSpawn.transform);
+        Instantiate(enemy.GetComponent<CombatSprite>().getCombatSprite(), EnemySpriteSpawn.transform);
         // create menu
         skill1 = player.GetComponent<Skills>().skill1;
         skill2 = player.GetComponent<Skills>().skill2;
