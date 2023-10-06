@@ -13,6 +13,9 @@ public class CombatScreen : MonoBehaviour
     public GameObject enemy;
     public GameObject player;
 
+    public GameObject enemyHPBar;
+    public GameObject playerHPBar;
+
     public GameObject button1;
     public GameObject button2;
     public GameObject button3;
@@ -61,6 +64,12 @@ public class CombatScreen : MonoBehaviour
         // create sprites of characters
         Instantiate(player.GetComponent<CombatSprite>().getCombatSprite(), PlayerSpriteSpawn.transform);
         Instantiate(enemy.GetComponent<CombatSprite>().getCombatSprite(), EnemySpriteSpawn.transform);
+        // set up hp bars
+        enemyHPBar.GetComponent<HealthBar>().SetMaxHealth((int) enemy.GetComponent<Stats>().getHP());
+        playerHPBar.GetComponent<HealthBar>().SetMaxHealth((int) player.GetComponent<Stats>().getHP());
+        enemyHPBar.GetComponent<HealthBar>().SetHealth((int) enemy.GetComponent<Stats>().getHP());
+        playerHPBar.GetComponent<HealthBar>().SetHealth((int) player.GetComponent<Stats>().getHP());
+        
         // create menu
         skill1 = player.GetComponent<Skills>().skill1;
         skill2 = player.GetComponent<Skills>().skill2;
@@ -149,6 +158,10 @@ public class CombatScreen : MonoBehaviour
     // Change turn indicator when turn changes
     void Update()
     {
+        //Update HP Bars
+        enemyHPBar.GetComponent<HealthBar>().SetHealth((int) enemy.GetComponent<Stats>().getHP());
+        playerHPBar.GetComponent<HealthBar>().SetHealth((int) player.GetComponent<Stats>().getHP());
+
         // Determine If Combat is Over
         if(player.GetComponent<Stats>().getHP() == 0) // player dies(hp doesn't go below 0 as it is clamped)
         {
