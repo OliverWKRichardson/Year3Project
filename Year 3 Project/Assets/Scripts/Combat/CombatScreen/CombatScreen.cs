@@ -177,7 +177,7 @@ public class CombatScreen : MonoBehaviour
         if(player.GetComponent<Stats>().getHP() == 0) // player dies(hp doesn't go below 0 as it is clamped)
         {
             // Game Over Screen
-            SceneManager.LoadScene(0); 
+            SceneManager.LoadScene(1); 
             player.GetComponent<PersistAcrossScenes>().removeCamera();
             Destroy(gameObject);
         }
