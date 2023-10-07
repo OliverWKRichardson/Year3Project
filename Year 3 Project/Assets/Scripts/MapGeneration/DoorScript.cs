@@ -19,4 +19,9 @@ public class DoorScript : MonoBehaviour
             SceneManager.LoadScene(sceneIndex); 
         }
     }
+
+    public void setSceneIndex(int index)
+    {
+        sceneIndex = index;
+    }
 }
