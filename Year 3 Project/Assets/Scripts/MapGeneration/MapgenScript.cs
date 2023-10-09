@@ -22,9 +22,9 @@ public class MapgenScript : MonoBehaviour
 
 
     }
-    private int MAX_ROOMS = 26;
-    private int minMap = 5;
-    private int maxMap = 11;
+    private int MAX_ROOMS = 20;
+    private int minMap = 4;
+    private int maxMap = 5;
 
     private int mapX;
     private int mapY;
@@ -173,13 +173,13 @@ public class MapgenScript : MonoBehaviour
 
 
         int rng = Random.Range(0, 20);
-           if ((rng > 17) && (shopcounter < MAX_SHOPS) && (bossDistance(x, y) >= 2))
+           if ((rng > 12) && (shopcounter < MAX_SHOPS) && (bossDistance(x, y) >= 2))
         {
             roomcounter++;
             shopcounter++;
             return new Room(3, null, null, null, null);
         }
-        if (rng < 16 && rng > 13 && (coincounter < MAX_COINS))
+        if (rng < 16 && rng > 13 && (coincounter < MAX_COINS) && bossDistance(x,y) >= 2)
         {
             roomcounter++;
             coincounter++;
