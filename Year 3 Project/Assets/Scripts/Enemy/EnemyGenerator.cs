@@ -33,6 +33,7 @@ public class EnemyGenerator : MonoBehaviour
                 hostile.GetComponent<Stats>().setMaxMP(Random.Range(100, 150));
                 hostile.GetComponent<Stats>().setMP(hostile.GetComponent<Stats>().getMaxMP());
                 hostile.GetComponent<Stats>().setATK(Random.Range(50, 100));
+                hostile.GetComponent<EnemySkills>().SetSkills(LightAttack, LightAttack, LightAttack);
                 break;
             case enemyType.heavy:
                 hostile.GetComponent<Stats>().setType(enemyType.heavy);
@@ -42,9 +43,22 @@ public class EnemyGenerator : MonoBehaviour
                 hostile.GetComponent<Stats>().setMaxMP(Random.Range(100, 150));
                 hostile.GetComponent<Stats>().setMP(hostile.GetComponent<Stats>().getMaxMP());
                 hostile.GetComponent<Stats>().setATK(Random.Range(80, 180));
+                hostile.GetComponent<EnemySkills>().SetSkills(HeavyAttack, HeavyAttack, HeavyAttack);
                 break;
         }
 
+    }
+
+
+    // Template Skills
+    public void LightAttack(GameObject target)
+    {
+        Debug.Log("Enemy Used Light Attack On "+ target.name);
+    }
+
+    public void HeavyAttack(GameObject target)
+    {
+        Debug.Log("Enemy Used Heavy Attack On "+ target.name);
     }
 }
 

@@ -257,8 +257,21 @@ public class CombatScreen : MonoBehaviour
             Debug.Log("Enemy Turn");
             // Enemy moves
             Debug.Log("Enemy Move");
-            // WIP put enemy move here
-            
+            // decide move to use
+            int move = enemy.GetComponent<EnemySkills>().DecideMove();
+            // use picked move
+            switch(move)
+            {
+                case 1:
+                    enemy.GetComponent<EnemySkills>().UseSkill1(player);
+                break;
+                case 2:
+                    enemy.GetComponent<EnemySkills>().UseSkill2(player);
+                break;
+                case 3:
+                    enemy.GetComponent<EnemySkills>().UseSkill3(player);
+                break;
+            }
             // Wait for 3 seconds
             Debug.Log("Waiting for 3 seconds");
             enemyTurnTimer = 3;
