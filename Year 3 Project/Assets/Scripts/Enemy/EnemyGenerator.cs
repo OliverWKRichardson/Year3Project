@@ -5,10 +5,13 @@ using UnityEngine;
 public class EnemyGenerator : MonoBehaviour
 {
     // Enemy Type
-    public enum enemyType{light, heavy}
+    public enum enemyType{none, light, heavy}
 
     // Enemy class
     public GameObject enemy;
+
+    // force type of enemy spawned
+    public enemyType forcetype;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +24,11 @@ public class EnemyGenerator : MonoBehaviour
         Transform pos = gameObject.transform;
         GameObject hostile = Instantiate(enemy, pos); // Add Vector2(x, y) for the position of the newly generated enemy
 
-        enemyType enemyType = (enemyType)Random.Range(0, 2);
+        enemyType enemyType = (enemyType)Random.Range(1, 3);
+        if(forcetype != enemyType.none)
+        {
+            enemyType = forcetype;
+        }
 
         switch(enemyType)
         {
