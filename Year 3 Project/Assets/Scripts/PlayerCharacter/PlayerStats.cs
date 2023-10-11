@@ -10,9 +10,13 @@ public class PlayerStats : MonoBehaviour
     // Speed of enemy
     public float SPD;
     // Health of enemy
-    public float HP;
+    public float C;
+    public float I;
+    public float A;
     // Max Health of enemy
-    public float MaxHP;
+    public float MaxC;
+    public float MaxI;
+    public float MaxA;
     // Mana of enemy
     public float MP;
     // Max Mana of enemy
@@ -21,14 +25,34 @@ public class PlayerStats : MonoBehaviour
     public float ATK;
 
     // Sets MaxHP of enemy
-    public void setMaxHP(float setMaxHP)
+    public void setMaxC(float setMaxC)
     {
-        MaxHP = setMaxHP;
+        MaxC = setMaxC;
     }
     // Gets MaxHP of enemy
-    public float getMaxHP()
+    public float getMaxC()
     {
-        return MaxHP;
+        return MaxC;
+    }
+    // Sets MaxHP of enemy
+    public void setMaxI(float setMaxI)
+    {
+        MaxI = setMaxI;
+    }
+    // Gets MaxHP of enemy
+    public float getMaxI()
+    {
+        return MaxI;
+    }
+    // Sets MaxHP of enemy
+    public void setMaxA(float setMaxA)
+    {
+        MaxA = setMaxA;
+    }
+    // Gets MaxHP of enemy
+    public float getMaxA()
+    {
+        return MaxA;
     }
     // Sets MaxMP of enemy
     public void setMaxMP(float setMaxMP)
@@ -61,12 +85,22 @@ public class PlayerStats : MonoBehaviour
         return SPD;
     }
     // Sets health of enemy
-    public void setHP(float health)
+    public void setC(float health)
     {
-        HP = Mathf.Clamp(health, 0, MaxHP);
+        C = Mathf.Clamp(health, 0, MaxC);
+    }
+    // Sets health of enemy
+    public void setI(float health)
+    {
+        I = Mathf.Clamp(health, 0, MaxI);
+    }
+    // Sets health of enemy
+    public void setA(float health)
+    {
+        A = Mathf.Clamp(health, 0, MaxA);
     }
     // deal damage to self
-    public void Damage(float amount)
+    public void DamageC(float amount)
     {
         // no negative damage
         if(amount < 0)
@@ -74,21 +108,65 @@ public class PlayerStats : MonoBehaviour
             return;
         }
         // reduce hp by amount 
-        HP = Mathf.Clamp(HP - amount, 0, MaxHP);
+        C = Mathf.Clamp(C - amount, 0, MaxC);
     }
+    public void DamageI(float amount)
+    {
+        // no negative damage
+        if(amount < 0)
+        {
+            return;
+        }
+        // reduce hp by amount 
+        I = Mathf.Clamp(I - amount, 0, MaxI);
+    }
+    public void DamageA(float amount)
+    {
+        // no negative damage
+        if(amount < 0)
+        {
+            return;
+        }
+        // reduce hp by amount 
+        A = Mathf.Clamp(A - amount, 0, MaxA);
+    }   
     // heal self
-    public void Heal(float amount)
+    public void HealC(float amount)
     {
         if(amount < 0)
         {
             return;
         }
-        HP = Mathf.Clamp(HP + amount, 0, MaxHP);
+        C = Mathf.Clamp(C + amount, 0, MaxC);
+    }
+    public void HealI(float amount)
+    {
+        if(amount < 0)
+        {
+            return;
+        }
+        I = Mathf.Clamp(I + amount, 0, MaxI);
+    }
+    public void HealA(float amount)
+    {
+        if(amount < 0)
+        {
+            return;
+        }
+        A = Mathf.Clamp(A + amount, 0, MaxA);
     }
     // Gets health of enemy
-    public float getHP()
+    public float getC()
     {
-        return HP;
+        return C;
+    }
+    public float getI()
+    {
+        return I;
+    }
+    public float getA()
+    {
+        return A;
     }
     // Sets mana of enemy
     public void setMP(float mana)
@@ -118,20 +196,5 @@ public class PlayerStats : MonoBehaviour
     {
         // regen 5% mp
         MP = Mathf.Clamp(MP + (MaxMP/20), 0, MaxMP);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // WIP testing
-        if(Input.GetKey(KeyCode.Q))
-        {
-            SPD = 100000;
-            MaxMP = 100000;
-            MaxHP = 100000;
-            HP = 100000;
-            MP = 100000;
-            ATK = 100000;
-        }
     }
 }

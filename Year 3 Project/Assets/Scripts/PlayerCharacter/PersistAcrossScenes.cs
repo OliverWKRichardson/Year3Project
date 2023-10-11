@@ -30,8 +30,12 @@ public class PersistAcrossScenes : MonoBehaviour
     }
 
     private static float SPD;
-    private static float HP;
-    private static float MaxHP;
+    private static float C;
+    private static float MaxC;
+    private static float I;
+    private static float MaxI;
+    private static float A;
+    private static float MaxA;
     private static float MP;
     private static float MaxMP;
     private static float ATK;
@@ -40,8 +44,12 @@ public class PersistAcrossScenes : MonoBehaviour
     public void SavePlayer()
     {
         SPD = GetComponent<PlayerStats>().getSPD();
-        HP = GetComponent<PlayerStats>().getHP();
-        MaxHP = GetComponent<PlayerStats>().getMaxHP();
+        C = GetComponent<PlayerStats>().getC();
+        MaxC = GetComponent<PlayerStats>().getMaxC();
+        I = GetComponent<PlayerStats>().getI();
+        MaxI = GetComponent<PlayerStats>().getMaxI();
+        A = GetComponent<PlayerStats>().getA();
+        MaxA = GetComponent<PlayerStats>().getMaxA();
         MP = GetComponent<PlayerStats>().getMP();
         MaxMP = GetComponent<PlayerStats>().getMaxMP();
         ATK = GetComponent<PlayerStats>().getATK();
@@ -50,8 +58,12 @@ public class PersistAcrossScenes : MonoBehaviour
     public void LoadPlayer()
     {
         GetComponent<PlayerStats>().setSPD(SPD);
-        GetComponent<PlayerStats>().setHP(HP);
-        GetComponent<PlayerStats>().setMaxHP(MaxHP);
+        GetComponent<PlayerStats>().setC(C);
+        GetComponent<PlayerStats>().setMaxC(MaxC);
+        GetComponent<PlayerStats>().setI(I);
+        GetComponent<PlayerStats>().setMaxI(MaxI);
+        GetComponent<PlayerStats>().setA(A);
+        GetComponent<PlayerStats>().setMaxA(MaxA);
         GetComponent<PlayerStats>().setMP(MP);
         GetComponent<PlayerStats>().setMaxMP(MaxMP);
         GetComponent<PlayerStats>().setATK(ATK);

@@ -25,8 +25,12 @@ public class PlayerCharacterMovement : MonoBehaviour
         // set initial stats for player
         PlayerStats playerStats = GetComponent<PlayerStats>();
         playerStats.setSPD(7);
-        playerStats.setMaxHP(400);
-        playerStats.setHP(400);
+        playerStats.setMaxC(400);
+        playerStats.setC(400);
+        playerStats.setMaxI(400);
+        playerStats.setI(400);
+        playerStats.setMaxA(400);
+        playerStats.setA(400);
         playerStats.setMaxMP(200);
         playerStats.setMP(200);
         playerStats.setATK(200);

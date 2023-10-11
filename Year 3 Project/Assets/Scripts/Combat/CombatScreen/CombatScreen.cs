@@ -14,7 +14,9 @@ public class CombatScreen : MonoBehaviour
     public GameObject player;
 
     public GameObject enemyHPBar;
-    public GameObject playerHPBar;
+    public GameObject playerHPBarC;
+    public GameObject playerHPBarI;
+    public GameObject playerHPBarA;
     public GameObject enemyMPBar;
     public GameObject playerMPBar;
 
@@ -67,10 +69,14 @@ public class CombatScreen : MonoBehaviour
         Instantiate(player.GetComponent<CombatSprite>().getCombatSprite(), PlayerSpriteSpawn.transform);
         Instantiate(enemy.GetComponent<CombatSprite>().getCombatSprite(), EnemySpriteSpawn.transform);
         // set up hp bars
-        enemyHPBar.GetComponent<ResourceBar>().SetMax((int) enemy.GetComponent<EnemyStats>().getHP());
-        playerHPBar.GetComponent<ResourceBar>().SetMax((int) player.GetComponent<PlayerStats>().getHP());
+        enemyHPBar.GetComponent<ResourceBar>().SetMax((int) enemy.GetComponent<EnemyStats>().getMaxHP());
+        playerHPBarC.GetComponent<ResourceBar>().SetMax((int) player.GetComponent<PlayerStats>().getMaxC());
+        playerHPBarI.GetComponent<ResourceBar>().SetMax((int) player.GetComponent<PlayerStats>().getMaxI());
+        playerHPBarA.GetComponent<ResourceBar>().SetMax((int) player.GetComponent<PlayerStats>().getMaxA());
         enemyHPBar.GetComponent<ResourceBar>().Set((int) enemy.GetComponent<EnemyStats>().getHP());
-        playerHPBar.GetComponent<ResourceBar>().Set((int) player.GetComponent<PlayerStats>().getHP());
+        playerHPBarC.GetComponent<ResourceBar>().Set((int) player.GetComponent<PlayerStats>().getC());
+        playerHPBarI.GetComponent<ResourceBar>().Set((int) player.GetComponent<PlayerStats>().getI());
+        playerHPBarA.GetComponent<ResourceBar>().Set((int) player.GetComponent<PlayerStats>().getA());
         
         // set up mp bars
         enemyMPBar.GetComponent<ResourceBar>().SetMax((int) enemy.GetComponent<EnemyStats>().getMP());
@@ -168,13 +174,15 @@ public class CombatScreen : MonoBehaviour
     {
         //Update HP Bars
         enemyHPBar.GetComponent<ResourceBar>().Set((int) enemy.GetComponent<EnemyStats>().getHP());
-        playerHPBar.GetComponent<ResourceBar>().Set((int) player.GetComponent<PlayerStats>().getHP());
+        playerHPBarC.GetComponent<ResourceBar>().Set((int) player.GetComponent<PlayerStats>().getC());
+        playerHPBarI.GetComponent<ResourceBar>().Set((int) player.GetComponent<PlayerStats>().getI());
+        playerHPBarA.GetComponent<ResourceBar>().Set((int) player.GetComponent<PlayerStats>().getA());
         // Update MP Bars
         enemyMPBar.GetComponent<ResourceBar>().Set((int) enemy.GetComponent<EnemyStats>().getMP());
         playerMPBar.GetComponent<ResourceBar>().Set((int) player.GetComponent<PlayerStats>().getMP());
 
         // Determine If Combat is Over
-        if(player.GetComponent<PlayerStats>().getHP() == 0) // player dies(hp doesn't go below 0 as it is clamped)
+        if((player.GetComponent<PlayerStats>().getC() == 0)||(player.GetComponent<PlayerStats>().getI() == 0)||(player.GetComponent<PlayerStats>().getA() == 0)) // player dies(hp doesn't go below 0 as it is clamped)
         {
             // Game Over Screen
             SceneManager.LoadScene(1); 

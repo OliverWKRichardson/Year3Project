@@ -51,7 +51,9 @@ public class Skills : MonoBehaviour
         float amount = player.GetComponent<PlayerStats>().getATK();
         float MULT = 4;
         // heal player
-        player.GetComponent<PlayerStats>().Heal(amount*MULT);
+        player.GetComponent<PlayerStats>().HealC(amount*MULT);
+        player.GetComponent<PlayerStats>().HealI(amount*MULT);
+        player.GetComponent<PlayerStats>().HealA(amount*MULT);
         // reduce player MP
         player.GetComponent<PlayerStats>().spendMP(50);
     }
