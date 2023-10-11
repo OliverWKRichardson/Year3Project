@@ -23,7 +23,7 @@ public class PlayerCharacterMovement : MonoBehaviour
         // Hide Mouse
         Cursor.visible = false;
         // set initial stats for player
-        Stats playerStats = GetComponent<Stats>();
+        PlayerStats playerStats = GetComponent<PlayerStats>();
         playerStats.setSPD(7);
         playerStats.setMaxHP(400);
         playerStats.setHP(400);

@@ -67,16 +67,16 @@ public class CombatScreen : MonoBehaviour
         Instantiate(player.GetComponent<CombatSprite>().getCombatSprite(), PlayerSpriteSpawn.transform);
         Instantiate(enemy.GetComponent<CombatSprite>().getCombatSprite(), EnemySpriteSpawn.transform);
         // set up hp bars
-        enemyHPBar.GetComponent<ResourceBar>().SetMax((int) enemy.GetComponent<Stats>().getHP());
-        playerHPBar.GetComponent<ResourceBar>().SetMax((int) player.GetComponent<Stats>().getHP());
-        enemyHPBar.GetComponent<ResourceBar>().Set((int) enemy.GetComponent<Stats>().getHP());
-        playerHPBar.GetComponent<ResourceBar>().Set((int) player.GetComponent<Stats>().getHP());
+        enemyHPBar.GetComponent<ResourceBar>().SetMax((int) enemy.GetComponent<EnemyStats>().getHP());
+        playerHPBar.GetComponent<ResourceBar>().SetMax((int) player.GetComponent<PlayerStats>().getHP());
+        enemyHPBar.GetComponent<ResourceBar>().Set((int) enemy.GetComponent<EnemyStats>().getHP());
+        playerHPBar.GetComponent<ResourceBar>().Set((int) player.GetComponent<PlayerStats>().getHP());
         
         // set up mp bars
-        enemyMPBar.GetComponent<ResourceBar>().SetMax((int) enemy.GetComponent<Stats>().getMP());
-        playerMPBar.GetComponent<ResourceBar>().SetMax((int) player.GetComponent<Stats>().getMP());
-        enemyMPBar.GetComponent<ResourceBar>().Set((int) enemy.GetComponent<Stats>().getMP());
-        playerMPBar.GetComponent<ResourceBar>().Set((int) player.GetComponent<Stats>().getMP());
+        enemyMPBar.GetComponent<ResourceBar>().SetMax((int) enemy.GetComponent<EnemyStats>().getMP());
+        playerMPBar.GetComponent<ResourceBar>().SetMax((int) player.GetComponent<PlayerStats>().getMP());
+        enemyMPBar.GetComponent<ResourceBar>().Set((int) enemy.GetComponent<EnemyStats>().getMP());
+        playerMPBar.GetComponent<ResourceBar>().Set((int) player.GetComponent<PlayerStats>().getMP());
 
         // create menu
         skill1 = player.GetComponent<Skills>().skill1;
@@ -85,7 +85,7 @@ public class CombatScreen : MonoBehaviour
         // set starting turn
         if(turn == TurnType.START)
         {
-            if(player.GetComponent<Stats>().getSPD() >= enemy.GetComponent<Stats>().getSPD())
+            if(player.GetComponent<PlayerStats>().getSPD() >= enemy.GetComponent<EnemyStats>().getSPD())
             {
                 turn = TurnType.playerTurn;
             }
@@ -103,7 +103,7 @@ public class CombatScreen : MonoBehaviour
         {
             return;
         }
-        if(player.GetComponent<Skills>().skill1cost > player.GetComponent<Stats>().getMP())
+        if(player.GetComponent<Skills>().skill1cost > player.GetComponent<PlayerStats>().getMP())
         {
             Debug.Log("Not Enough MP");
             return;
@@ -124,7 +124,7 @@ public class CombatScreen : MonoBehaviour
         {
             return;
         }
-        if(player.GetComponent<Skills>().skill2cost > player.GetComponent<Stats>().getMP())
+        if(player.GetComponent<Skills>().skill2cost > player.GetComponent<PlayerStats>().getMP())
         {
             Debug.Log("Not Enough MP");
             return;
@@ -145,7 +145,7 @@ public class CombatScreen : MonoBehaviour
         {
             return;
         }
-        if(player.GetComponent<Skills>().skill3cost > player.GetComponent<Stats>().getMP())
+        if(player.GetComponent<Skills>().skill3cost > player.GetComponent<PlayerStats>().getMP())
         {
             Debug.Log("Not Enough MP");
             return;
@@ -167,21 +167,21 @@ public class CombatScreen : MonoBehaviour
     void Update()
     {
         //Update HP Bars
-        enemyHPBar.GetComponent<ResourceBar>().Set((int) enemy.GetComponent<Stats>().getHP());
-        playerHPBar.GetComponent<ResourceBar>().Set((int) player.GetComponent<Stats>().getHP());
+        enemyHPBar.GetComponent<ResourceBar>().Set((int) enemy.GetComponent<EnemyStats>().getHP());
+        playerHPBar.GetComponent<ResourceBar>().Set((int) player.GetComponent<PlayerStats>().getHP());
         // Update MP Bars
-        enemyMPBar.GetComponent<ResourceBar>().Set((int) enemy.GetComponent<Stats>().getMP());
-        playerMPBar.GetComponent<ResourceBar>().Set((int) player.GetComponent<Stats>().getMP());
+        enemyMPBar.GetComponent<ResourceBar>().Set((int) enemy.GetComponent<EnemyStats>().getMP());
+        playerMPBar.GetComponent<ResourceBar>().Set((int) player.GetComponent<PlayerStats>().getMP());
 
         // Determine If Combat is Over
-        if(player.GetComponent<Stats>().getHP() == 0) // player dies(hp doesn't go below 0 as it is clamped)
+        if(player.GetComponent<PlayerStats>().getHP() == 0) // player dies(hp doesn't go below 0 as it is clamped)
         {
             // Game Over Screen
             SceneManager.LoadScene(1); 
             player.GetComponent<PersistAcrossScenes>().removeCamera();
             Destroy(gameObject);
         }
-        if(enemy.GetComponent<Stats>().getHP() == 0) // enemy dies(hp doesn't go below 0 as it is clamped)
+        if(enemy.GetComponent<EnemyStats>().getHP() == 0) // enemy dies(hp doesn't go below 0 as it is clamped)
         {
             // End Combat
             turn = TurnType.END;
@@ -215,7 +215,7 @@ public class CombatScreen : MonoBehaviour
             // -- Continued from enemy turn --
             // regen player mana
             Debug.Log("Player Mana Regens");
-            player.GetComponent<Stats>().regenMP();
+            player.GetComponent<PlayerStats>().regenMP();
             // Becomes Players turn again
             Debug.Log("Player Turn");
             turn = TurnType.playerTurn;

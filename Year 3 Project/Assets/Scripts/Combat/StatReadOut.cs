@@ -17,10 +17,10 @@ public class StatReadOut : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("PlayerCharacter");
-        playerATK.text = "Attack: " + player.GetComponent<Stats>().getATK();
-        playerSPD.text = "Speed: " + player.GetComponent<Stats>().getSPD();
+        playerATK.text = "Attack: " + player.GetComponent<PlayerStats>().getATK();
+        playerSPD.text = "Speed: " + player.GetComponent<PlayerStats>().getSPD();
         enemy = combatScreen.GetComponent<CombatScreen>().enemy;
-        enemyATK.text = "Attack: " + enemy.GetComponent<Stats>().getATK();
-        enemySPD.text = "Speed: " + enemy.GetComponent<Stats>().getSPD();
+        enemyATK.text = "Attack: " + enemy.GetComponent<EnemyStats>().getATK();
+        enemySPD.text = "Speed: " + enemy.GetComponent<EnemyStats>().getSPD();
     }
 }

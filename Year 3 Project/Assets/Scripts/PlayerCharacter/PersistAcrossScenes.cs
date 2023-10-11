@@ -39,22 +39,22 @@ public class PersistAcrossScenes : MonoBehaviour
 
     public void SavePlayer()
     {
-        SPD = GetComponent<Stats>().getSPD();
-        HP = GetComponent<Stats>().getHP();
-        MaxHP = GetComponent<Stats>().getMaxHP();
-        MP = GetComponent<Stats>().getMP();
-        MaxMP = GetComponent<Stats>().getMaxMP();
-        ATK = GetComponent<Stats>().getATK();
+        SPD = GetComponent<PlayerStats>().getSPD();
+        HP = GetComponent<PlayerStats>().getHP();
+        MaxHP = GetComponent<PlayerStats>().getMaxHP();
+        MP = GetComponent<PlayerStats>().getMP();
+        MaxMP = GetComponent<PlayerStats>().getMaxMP();
+        ATK = GetComponent<PlayerStats>().getATK();
     }
 
     public void LoadPlayer()
     {
-        GetComponent<Stats>().setSPD(SPD);
-        GetComponent<Stats>().setHP(HP);
-        GetComponent<Stats>().setMaxHP(MaxHP);
-        GetComponent<Stats>().setMP(MP);
-        GetComponent<Stats>().setMaxMP(MaxMP);
-        GetComponent<Stats>().setATK(ATK);
+        GetComponent<PlayerStats>().setSPD(SPD);
+        GetComponent<PlayerStats>().setHP(HP);
+        GetComponent<PlayerStats>().setMaxHP(MaxHP);
+        GetComponent<PlayerStats>().setMP(MP);
+        GetComponent<PlayerStats>().setMaxMP(MaxMP);
+        GetComponent<PlayerStats>().setATK(ATK);
     }
 
     public void removeCamera()

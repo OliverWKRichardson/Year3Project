@@ -33,23 +33,23 @@ public class EnemyGenerator : MonoBehaviour
         switch(enemyType)
         {
             case enemyType.light:
-                hostile.GetComponent<Stats>().setType(enemyType.light);
-                hostile.GetComponent<Stats>().setSPD(Random.Range(5, 11));
-                hostile.GetComponent<Stats>().setMaxHP(Random.Range(400, 600));
-                hostile.GetComponent<Stats>().setHP(hostile.GetComponent<Stats>().getMaxHP());
-                hostile.GetComponent<Stats>().setMaxMP(Random.Range(100, 150));
-                hostile.GetComponent<Stats>().setMP(hostile.GetComponent<Stats>().getMaxMP());
-                hostile.GetComponent<Stats>().setATK(Random.Range(50, 100));
+                hostile.GetComponent<EnemyStats>().setType(enemyType.light);
+                hostile.GetComponent<EnemyStats>().setSPD(Random.Range(5, 11));
+                hostile.GetComponent<EnemyStats>().setMaxHP(Random.Range(400, 600));
+                hostile.GetComponent<EnemyStats>().setHP(hostile.GetComponent<EnemyStats>().getMaxHP());
+                hostile.GetComponent<EnemyStats>().setMaxMP(Random.Range(100, 150));
+                hostile.GetComponent<EnemyStats>().setMP(hostile.GetComponent<EnemyStats>().getMaxMP());
+                hostile.GetComponent<EnemyStats>().setATK(Random.Range(50, 100));
                 hostile.GetComponent<EnemySkills>().SetSkills(LightAttack, LightAttack, LightAttack);
                 break;
             case enemyType.heavy:
-                hostile.GetComponent<Stats>().setType(enemyType.heavy);
-                hostile.GetComponent<Stats>().setSPD(Random.Range(1, 5));
-                hostile.GetComponent<Stats>().setMaxHP(Random.Range(750, 1000));
-                hostile.GetComponent<Stats>().setHP(hostile.GetComponent<Stats>().getMaxHP());
-                hostile.GetComponent<Stats>().setMaxMP(Random.Range(100, 150));
-                hostile.GetComponent<Stats>().setMP(hostile.GetComponent<Stats>().getMaxMP());
-                hostile.GetComponent<Stats>().setATK(Random.Range(80, 180));
+                hostile.GetComponent<EnemyStats>().setType(enemyType.heavy);
+                hostile.GetComponent<EnemyStats>().setSPD(Random.Range(1, 5));
+                hostile.GetComponent<EnemyStats>().setMaxHP(Random.Range(750, 1000));
+                hostile.GetComponent<EnemyStats>().setHP(hostile.GetComponent<EnemyStats>().getMaxHP());
+                hostile.GetComponent<EnemyStats>().setMaxMP(Random.Range(100, 150));
+                hostile.GetComponent<EnemyStats>().setMP(hostile.GetComponent<EnemyStats>().getMaxMP());
+                hostile.GetComponent<EnemyStats>().setATK(Random.Range(80, 180));
                 hostile.GetComponent<EnemySkills>().SetSkills(HeavyAttack, HeavyAttack, HeavyAttack);
                 break;
         }

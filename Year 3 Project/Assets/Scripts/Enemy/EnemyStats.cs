@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static EnemyGenerator.enemyType;
 
-public class Stats : MonoBehaviour
+public class EnemyStats : MonoBehaviour
 {
     // Type of enemy
     public EnemyGenerator.enemyType type;
