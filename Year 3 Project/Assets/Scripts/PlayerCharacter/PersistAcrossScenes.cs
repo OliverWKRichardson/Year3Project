@@ -30,8 +30,12 @@ public class PersistAcrossScenes : MonoBehaviour
     }
 
     private static float SPD;
-    private static float HP;
-    private static float MaxHP;
+    private static float C;
+    private static float MaxC;
+    private static float I;
+    private static float MaxI;
+    private static float A;
+    private static float MaxA;
     private static float MP;
     private static float MaxMP;
     private static float ATK;
@@ -39,22 +43,30 @@ public class PersistAcrossScenes : MonoBehaviour
 
     public void SavePlayer()
     {
-        SPD = GetComponent<Stats>().getSPD();
-        HP = GetComponent<Stats>().getHP();
-        MaxHP = GetComponent<Stats>().getMaxHP();
-        MP = GetComponent<Stats>().getMP();
-        MaxMP = GetComponent<Stats>().getMaxMP();
-        ATK = GetComponent<Stats>().getATK();
+        SPD = GetComponent<PlayerStats>().getSPD();
+        C = GetComponent<PlayerStats>().getC();
+        MaxC = GetComponent<PlayerStats>().getMaxC();
+        I = GetComponent<PlayerStats>().getI();
+        MaxI = GetComponent<PlayerStats>().getMaxI();
+        A = GetComponent<PlayerStats>().getA();
+        MaxA = GetComponent<PlayerStats>().getMaxA();
+        MP = GetComponent<PlayerStats>().getMP();
+        MaxMP = GetComponent<PlayerStats>().getMaxMP();
+        ATK = GetComponent<PlayerStats>().getATK();
     }
 
     public void LoadPlayer()
     {
-        GetComponent<Stats>().setSPD(SPD);
-        GetComponent<Stats>().setHP(HP);
-        GetComponent<Stats>().setMaxHP(MaxHP);
-        GetComponent<Stats>().setMP(MP);
-        GetComponent<Stats>().setMaxMP(MaxMP);
-        GetComponent<Stats>().setATK(ATK);
+        GetComponent<PlayerStats>().setSPD(SPD);
+        GetComponent<PlayerStats>().setC(C);
+        GetComponent<PlayerStats>().setMaxC(MaxC);
+        GetComponent<PlayerStats>().setI(I);
+        GetComponent<PlayerStats>().setMaxI(MaxI);
+        GetComponent<PlayerStats>().setA(A);
+        GetComponent<PlayerStats>().setMaxA(MaxA);
+        GetComponent<PlayerStats>().setMP(MP);
+        GetComponent<PlayerStats>().setMaxMP(MaxMP);
+        GetComponent<PlayerStats>().setATK(ATK);
     }
 
     public void removeCamera()

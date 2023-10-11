@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class MapCreate : MonoBehaviour
@@ -39,6 +42,7 @@ public class MapCreate : MonoBehaviour
 
 
             {
+                //spawnRoom(i, j,map); ;
                 Instantiate(room, new Vector2(40f * j, 24f * i ), Quaternion.identity);
                 
             }
@@ -46,6 +50,39 @@ public class MapCreate : MonoBehaviour
         }    
 
     }
+    // Up Down Left Right
+    // 1  2    3    4
+    // Spawn the correct room & adjust transformation based on the concatenation / room code
+    
+    /**
+    public void spawnRoom(int i, int j, Room[,] map)
+    {
+        string roomcode =  checkNeighbours(i, j,map);
 
+        
+    }
+    **/
+    /**public string checkNeighbours(int i, int j, Room[,] map)
+    {
+        string roomcode = "";
+        if (i > 0)
+        {
+            Room currentroom = map[i - 1, j];
+
+            if (currentroom != null)
+            {
+                try
+                {
+                    int type = currentroom.getType();
+                    roomcode = roomcode + type;
+
+                }
+                catch (Exception e) { Debug.Log("Null room type"); }
+            }
+            
+
+        }
+    }
+    **/
     
 }

@@ -23,9 +23,9 @@ public class Skills : MonoBehaviour
     {
         Debug.Log(skill1Name+" Used By Player");
         // get player attack value
-        float amount = player.GetComponent<Stats>().getATK();
+        float amount = player.GetComponent<PlayerStats>().getATK();
         // damage enemy
-        target.GetComponent<Stats>().Damage(amount);
+        target.GetComponent<EnemyStats>().Damage(amount);
     }
 
     public String skill2Name; // trojan
@@ -34,12 +34,12 @@ public class Skills : MonoBehaviour
     {
         Debug.Log(skill2Name+" Used By Player");
         // get player attack value
-        float amount = player.GetComponent<Stats>().getATK();
+        float amount = player.GetComponent<PlayerStats>().getATK();
         float MULT = 2;
         // damage enemy
-        target.GetComponent<Stats>().Damage(amount*MULT);
+        target.GetComponent<EnemyStats>().Damage(amount*MULT);
         // reduce player MP
-        player.GetComponent<Stats>().spendMP(20);
+        player.GetComponent<PlayerStats>().spendMP(20);
     }
 
     public String skill3Name; // revert
@@ -48,11 +48,13 @@ public class Skills : MonoBehaviour
     {
         Debug.Log(skill3Name+" Used By Player");
         // get player attack value
-        float amount = player.GetComponent<Stats>().getATK();
+        float amount = player.GetComponent<PlayerStats>().getATK();
         float MULT = 4;
         // heal player
-        player.GetComponent<Stats>().Heal(amount*MULT);
+        player.GetComponent<PlayerStats>().HealC(amount*MULT);
+        player.GetComponent<PlayerStats>().HealI(amount*MULT);
+        player.GetComponent<PlayerStats>().HealA(amount*MULT);
         // reduce player MP
-        player.GetComponent<Stats>().spendMP(50);
+        player.GetComponent<PlayerStats>().spendMP(50);
     }
 }
