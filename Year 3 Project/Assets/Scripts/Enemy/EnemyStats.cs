@@ -134,4 +134,10 @@ public class EnemyStats : MonoBehaviour
             ATK = 100000;
         }
     }
+
+    public List<Condition> conditions;
+    public void Start()
+    {
+        conditions = new List<Condition>();
+    }
 }
