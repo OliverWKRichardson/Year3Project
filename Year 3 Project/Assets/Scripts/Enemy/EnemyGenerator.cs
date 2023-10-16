@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static CombatScreen.TurnType;
 
 public class EnemyGenerator : MonoBehaviour
 {
@@ -40,7 +41,7 @@ public class EnemyGenerator : MonoBehaviour
                 hostile.GetComponent<EnemyStats>().setMaxMP(Random.Range(100, 150));
                 hostile.GetComponent<EnemyStats>().setMP(hostile.GetComponent<EnemyStats>().getMaxMP());
                 hostile.GetComponent<EnemyStats>().setATK(Random.Range(50, 100));
-                hostile.GetComponent<EnemySkills>().SetSkills(LightAttack, LightAttack, LightAttack);
+                hostile.GetComponent<EnemySkills>().SetSkills(DDoSAttack, DDoSAttack, DDoSAttack);
                 break;
             case enemyType.heavy:
                 hostile.GetComponent<EnemyStats>().setType(enemyType.heavy);
@@ -58,9 +59,11 @@ public class EnemyGenerator : MonoBehaviour
 
 
     // Template Skills
-    public void LightAttack(GameObject target)
+    public void DDoSAttack(GameObject target)
     {
-        Debug.Log("Enemy Used Light Attack On "+ target.name);
+        Debug.Log("Enemy Used DDoS Attack On "+ target.name);
+        Condition DDoS = new Condition("DDoS", 5, CombatScreen.TurnType.playerTurn, 10.0f);
+        target.GetComponent<PlayerStats>().AddCondition(DDoS);
     }
 
     public void HeavyAttack(GameObject target)

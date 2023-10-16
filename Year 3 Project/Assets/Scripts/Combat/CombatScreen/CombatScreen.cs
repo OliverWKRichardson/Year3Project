@@ -207,6 +207,16 @@ public class CombatScreen : MonoBehaviour
         if (!playerTurnTimerDone && playerTurnTimer < 0)
         {
             // -- Continued from player action --
+            // Apply Condition On turn Affects
+            if(player.GetComponent<PlayerStats>().HasCondition("DDoS"))
+            {
+                float dmg = player.GetComponent<PlayerStats>().GetAmountTotal("DDoS");
+                player.GetComponent<PlayerStats>().DamageA(dmg);
+            }
+            // Reduce conditions
+            player.GetComponent<PlayerStats>().ReduceConditions(TurnType.playerTurn);
+            enemy.GetComponent<EnemyStats>().ReduceConditions(TurnType.playerTurn);
+
             turn = TurnType.enemyTurn;
 
             //Set to false so that We don't run this again
@@ -221,6 +231,11 @@ public class CombatScreen : MonoBehaviour
         if (!enemyTurnTimerDone && enemyTurnTimer < 0)
         {
             // -- Continued from enemy turn --
+            // Apply Condition On turn Affects
+            
+            // Reduce conditions
+            player.GetComponent<PlayerStats>().ReduceConditions(TurnType.enemyTurn);
+            enemy.GetComponent<EnemyStats>().ReduceConditions(TurnType.enemyTurn);
             // regen player mana
             Debug.Log("Player Mana Regens");
             player.GetComponent<PlayerStats>().regenMP();
@@ -257,6 +272,8 @@ public class CombatScreen : MonoBehaviour
         }
         else if(turn == TurnType.END)
         {
+            player.GetComponent<PlayerStats>().WipeConditions();
+            enemy.GetComponent<EnemyStats>().WipeConditions();
             Cursor.visible = false;
             enemy.transform.GetChild(0).GetComponent<CombatStarter>().endCombat();
         }

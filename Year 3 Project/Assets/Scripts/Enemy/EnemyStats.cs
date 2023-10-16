@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static EnemyGenerator.enemyType;
+using static CombatScreen.TurnType;
+using System;
 
 public class EnemyStats : MonoBehaviour
 {
@@ -139,5 +141,55 @@ public class EnemyStats : MonoBehaviour
     public void Start()
     {
         conditions = new List<Condition>();
+    }
+
+    public void AddCondition(Condition add)
+    {
+        conditions.Add(add);
+    }
+
+    public void WipeConditions()
+    {
+        conditions.Clear();
+    }
+
+    public void ReduceConditions(CombatScreen.TurnType toReduceOn)
+    {
+        foreach(Condition condi in conditions)
+        {
+            if(condi.GetTurnTypeToReduceOn() == toReduceOn)
+            {
+                condi.ReduceTurnsLeft();
+            }
+            if(condi.GetTurnsLeft() == 0)
+            {
+                conditions.Remove(condi);
+            }
+        }
+    }
+
+    public bool HasCondition(String condiName)
+    {
+        foreach(Condition condi in conditions)
+        {
+            if(condi.GetName() == condiName)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public float GetAmountTotal(String condiName)
+    {
+        float total = 0;
+        foreach(Condition condi in conditions)
+        {
+            if(condi.GetName() == condiName)
+            {
+                total += condi.GetAmount();
+            }
+        }
+        return total;
     }
 }
