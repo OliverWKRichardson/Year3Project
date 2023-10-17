@@ -41,7 +41,7 @@ public class EnemyGenerator : MonoBehaviour
                 hostile.GetComponent<EnemyStats>().setMaxMP(Random.Range(100, 150));
                 hostile.GetComponent<EnemyStats>().setMP(hostile.GetComponent<EnemyStats>().getMaxMP());
                 hostile.GetComponent<EnemyStats>().setATK(Random.Range(50, 100));
-                hostile.GetComponent<EnemySkills>().SetSkills(DDoSAttack, DDoSAttack, DDoSAttack);
+                hostile.GetComponent<EnemySkills>().SetSkills(DoTA, DoTA, DoTA);
                 break;
             case enemyType.heavy:
                 hostile.GetComponent<EnemyStats>().setType(enemyType.heavy);
@@ -59,11 +59,23 @@ public class EnemyGenerator : MonoBehaviour
 
 
     // Template Skills
-    public void DDoSAttack(GameObject target)
+    public void DoTA(GameObject target)
     {
-        Debug.Log("Enemy Used DDoS Attack On "+ target.name);
-        Condition DDoS = new Condition("DDoS", 5, CombatScreen.TurnType.playerTurn, 10.0f);
+        Debug.Log("Enemy Used DoTA Attack On "+ target.name);
+        Condition DDoS = new Condition("DoTA", 5, CombatScreen.TurnType.playerTurn, 10.0f);
         target.GetComponent<PlayerStats>().AddCondition(DDoS);
+    }
+    public void DoTI(GameObject target)
+    {
+        Debug.Log("Enemy Used DoTI Attack On "+ target.name);
+        Condition FileDeletionWorm = new Condition("DoTI", 5, CombatScreen.TurnType.playerTurn, 10.0f);
+        target.GetComponent<PlayerStats>().AddCondition(FileDeletionWorm);
+    }
+    public void DoTC(GameObject target)
+    {
+        Debug.Log("Enemy Used DoTA Attack On "+ target.name);
+        Condition DownloadingPersonalData = new Condition("DoTC", 5, CombatScreen.TurnType.playerTurn, 10.0f);
+        target.GetComponent<PlayerStats>().AddCondition(DownloadingPersonalData);
     }
 
     public void HeavyAttack(GameObject target)

@@ -84,7 +84,7 @@ public class CombatScreen : MonoBehaviour
         enemyMPBar.GetComponent<ResourceBar>().Set((int) enemy.GetComponent<EnemyStats>().getMP());
         playerMPBar.GetComponent<ResourceBar>().Set((int) player.GetComponent<PlayerStats>().getMP());
 
-        // create menu
+        // set up player skills
         skill1 = player.GetComponent<Skills>().skill1;
         skill2 = player.GetComponent<Skills>().skill2;
         skill3 = player.GetComponent<Skills>().skill3;
@@ -208,10 +208,20 @@ public class CombatScreen : MonoBehaviour
         {
             // -- Continued from player action --
             // Apply Condition On turn Affects
-            if(player.GetComponent<PlayerStats>().HasCondition("DDoS"))
+            if(player.GetComponent<PlayerStats>().HasCondition("DoTA"))
             {
-                float dmg = player.GetComponent<PlayerStats>().GetAmountTotal("DDoS");
+                float dmg = player.GetComponent<PlayerStats>().GetAmountTotal("DoTA");
                 player.GetComponent<PlayerStats>().DamageA(dmg);
+            }
+            if(player.GetComponent<PlayerStats>().HasCondition("DoTI"))
+            {
+                float dmg = player.GetComponent<PlayerStats>().GetAmountTotal("DoTI");
+                player.GetComponent<PlayerStats>().DamageI(dmg);
+            }
+            if(player.GetComponent<PlayerStats>().HasCondition("DoTC"))
+            {
+                float dmg = player.GetComponent<PlayerStats>().GetAmountTotal("DoTC");
+                player.GetComponent<PlayerStats>().DamageC(dmg);
             }
             // Reduce conditions
             player.GetComponent<PlayerStats>().ReduceConditions(TurnType.playerTurn);
@@ -232,7 +242,11 @@ public class CombatScreen : MonoBehaviour
         {
             // -- Continued from enemy turn --
             // Apply Condition On turn Affects
-            
+            if(player.GetComponent<PlayerStats>().HasCondition("DoT"))
+            {
+                float dmg = player.GetComponent<PlayerStats>().GetAmountTotal("DoT");
+                enemy.GetComponent<EnemyStats>().Damage(dmg);
+            }
             // Reduce conditions
             player.GetComponent<PlayerStats>().ReduceConditions(TurnType.enemyTurn);
             enemy.GetComponent<EnemyStats>().ReduceConditions(TurnType.enemyTurn);
