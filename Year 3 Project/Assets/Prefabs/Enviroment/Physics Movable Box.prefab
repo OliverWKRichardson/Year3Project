@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7338446971395573056}
   - component: {fileID: 7338446971395573063}
   - component: {fileID: 7338446971395573062}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Physics Movable Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}

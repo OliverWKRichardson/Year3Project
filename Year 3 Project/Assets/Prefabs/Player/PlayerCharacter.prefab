@@ -105,8 +105,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   SPD: 0
-  HP: 0
-  MaxHP: 0
+  C: 0
+  I: 0
+  A: 0
+  MaxC: 0
+  MaxI: 0
+  MaxA: 0
   MP: 0
   MaxMP: 0
   ATK: 0
