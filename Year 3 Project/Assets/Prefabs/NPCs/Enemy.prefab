@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3799399689243861971}
   - component: {fileID: 4761091606907352942}
   - component: {fileID: -7212916893925198505}
+  - component: {fileID: 613077877524421344}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -146,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  drawGizmos: 1
+  drawGizmos: 0
   detailedGizmos: 0
   startEndModifier:
     addPoints: 0
@@ -186,12 +187,12 @@ MonoBehaviour:
   repathRateCompatibility: NaN
   canSearchCompability: 0
   orientation: 1
-  enableRotation: 1
+  enableRotation: 0
   autoRepath:
-    mode: 1
-    interval: 0.5
-    sensitivity: 10
-    maximumInterval: 2
+    mode: 2
+    interval: 1
+    sensitivity: 15
+    maximumInterval: 1
     visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
@@ -200,8 +201,8 @@ MonoBehaviour:
   pickNextWaypointDist: 1.2
   endReachedDistance: 0.2
   alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 1
+  slowWhenNotFacingTarget: 0
+  whenCloseToDestination: 0
   constrainInsideGraph: 0
 --- !u!114 &-7212916893925198505
 MonoBehaviour:
@@ -217,6 +218,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 675210353054303076, guid: d03f6dfd47955ff4f9d06e5f1a83422d, type: 3}
+--- !u!58 &613077877524421344
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619045241466588927}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1001 &8580017402377007783
 PrefabInstance:
   m_ObjectHideFlags: 0
