@@ -525,6 +525,92 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4318250006365024528, guid: affe48067da1c6441b9c94f500c51c89, type: 3}
   m_PrefabInstance: {fileID: 4318250005195904858}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1646594892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1646594894}
+  - component: {fileID: 1646594893}
+  m_Layer: 2
+  m_Name: A*
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1646594893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646594892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78396926cbbfc4ac3b48fc5fc34a87d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  data:
+    dataString: UEsDBBQAAAgIAAAAIey94pQmbwIAACgFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1zmzAQ/SsenesMOGSA3lriOD0k8cTN5MJFhsVoLCRGH7GdjP97VwIMcX2xeLtv9fbtwhdhQrdQGKlWipVPsgTyc0bcmfyYjcFHONKdFBv2CUPOOytN7ZKoz3mlhknEQ0fTsgGjWPFL7LhLDhC0glVSNctyB5nURiNcUa4BQ0oaxxYIfc3IEf/mqaOc8LSI3ekTT2kwO+OxAGFATVKDm7T7RT0l7AnhTZwk4W0ax8t5EHuyFQWnTQul62SsESYDdeHTBPbYZ7hiheSc6V4gMafWG5DRVltsDxNKRrFhr8rl18B2tXHip+SXqtJgejcUPd0zhb51Vclv2ZnZUL3vdH1Qbr2AtNPUFX36Lz4PfbhSsnkc7g0Dd4epWbF/paeCajNxewrffxduxYHyPd1yeK9BPMuVklaUGDTKOqrVsLgfHy+tZTUU+xHvpF6Bth39HoY7jBYne/bNHzPOmq1DbqIO2HDp7fYLAQoH8wf1+nXRfQVEnYg3DX/pbrpXfeCBKW0w1DcpnLqttMqlkqW3zDVjTSaVAA/3mlsQlJvTGsuY6wlexSbXXkUeqHuD+sv72PBiXFE8POYHwVVoLQ+XWelaHp5A1y/WcCZgFO0Cz+hTJoXoFmzqyUDbWFXRYkLbWVZ+3ywSQRxtoyS8K6MkqoJ0XsRpGFd3FU1uwyBMCuJXjwnsk/J1J7S3B6cmxuIC12z4sMxWirZ+2UtFDyv22ciJ5UxUclMoAPHSVbgIB4WX4EtZLkuGBm3AGCb8vMlXTrgs9lDml0K573R5NIrmY5WctOxDGofkJPNfkpw4+LLKawUfDA7u8qHYmZz/AVBLAwQUAAAICAAAACHsHrwI5G0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNdRUEovSizIKAaKGII4pZkpIHa0kkmquUmSiYWhaYqJhUmagaVusrmloXmaaVqihbGhgaFFslIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAACHsveKUJm8CAAAoBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAACHsHrwI5G0AAAB4AAAACQAkAAAAAAAAAAAAAAC8AgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAHQDAAAAAA==
+    upgradeData: 
+    file_cachedStartup: {fileID: 0}
+    data_cachedStartup: 
+    cacheStartup: 0
+  showNavGraphs: 1
+  showUnwalkableNodes: 1
+  debugMode: 0
+  debugFloor: 0
+  debugRoof: 1
+  manualDebugFloorRoof: 0
+  showSearchTree: 0
+  unwalkableNodeDebugSize: 0.3
+  logPathResults: 1
+  maxNearestNodeDistance: 100
+  scanOnStartup: 1
+  fullGetNearestSearch: 0
+  prioritizeGraphs: 0
+  prioritizeGraphsLimit: 1
+  colorSettings:
+    _SolidColor: {r: 0.11764706, g: 0.4, b: 0.7882353, a: 0.9}
+    _UnwalkableNode: {r: 1, g: 0, b: 0, a: 0.5}
+    _BoundsHandles: {r: 0.29, g: 0.454, b: 0.741, a: 0.9}
+    _ConnectionLowLerp: {r: 0, g: 1, b: 0, a: 0.5}
+    _ConnectionHighLerp: {r: 1, g: 0, b: 0, a: 0.5}
+    _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
+    _AreaColors:
+    - {r: 0, g: 0, b: 0, a: 0}
+  tagNames: []
+  heuristic: 2
+  heuristicScale: 1
+  threadCount: 1
+  maxFrameTime: 1
+  batchGraphUpdates: 0
+  graphUpdateBatchingInterval: 0.2
+  euclideanEmbedding:
+    mode: 0
+    seed: 0
+    pivotPointRoot: {fileID: 0}
+    spreadOutCount: 1
+  showGraphs: 1
+--- !u!4 &1646594894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646594892}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1704849705
 PrefabInstance:
   m_ObjectHideFlags: 0

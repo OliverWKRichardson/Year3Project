@@ -18,6 +18,7 @@ public class CombatStarter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        gameObject.transform.position = gameObject.transform.parent.transform.position;
         // If in range to test Line of sight with player then do so
         if(lineOfSightTesting)
         {
