@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 4761091606907352942}
   - component: {fileID: -7212916893925198505}
   - component: {fileID: 613077877524421344}
+  - component: {fileID: 1572079324354249398}
+  - component: {fileID: 2075151427830226914}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -189,7 +191,7 @@ MonoBehaviour:
   orientation: 1
   enableRotation: 0
   autoRepath:
-    mode: 2
+    mode: 1
     interval: 1
     sensitivity: 15
     maximumInterval: 1
@@ -231,9 +233,85 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0086708665, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.49132913
+--- !u!114 &1572079324354249398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619045241466588927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78396926cbbfc4ac3b48fc5fc34a87d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  data:
+    dataString: UEsDBBQAAAgIAAAAIezVs8oSZgIAAB0FAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMty4jAQ/BVK5yVlIA+zt12HkD0kocJu5eKLkMZYhSy59AiQFP++I9nGDjkhuntmekYjfxKhbA3MabM0gj9pDuTniIQz+THqyUc40K1Wa/EBneZNcFcGEY2aV+qERnwSwqyuwBnBfqmtDOIEQa9EoU214FvItHUW4YJKC0gZ7UK0QuhzRA74M56HkCOepnfh9IGneTI64ZGBcmB6aSfsZI3KKyZpVQMPlntx2orTKFLYSssH20xLKWzrg7hjHfvMaG09doECLij2FYsHfQliW7rgcRj8UhQWXGvI0OO9MDieJiv5rZuZVdTuGlfvVPpoYD6LnpqkT9/48STShdHVY1d3koQarhRs90qPjFo3GOoQvv9q3Ks9lTu6kfBWgnrWS6O94kg640OotzC97/+eW8tKYLseb6xegL7+fjXTq1l6PUlvZ7eLcXLX3lNo6BRHccikqDZBf3XdAGup4/DjFoDBa/qD7uOO2DYvosHSPwt/6Xa4TC3xIIx1SLUtq+B1o70JUrKIAwyteZdpoyDCbQc1KCrdcYVp3OV9XnCDshfMAw3Ppi3ect1ruAiJcK9Pkgtqpffnm7Ol3j+BLV+8k0JBbzoQzzinTCvVrNtwJl3Y2puCskHY1gv+dc9IytL0Jik2k+v5dDahyTiB4gZYwTfJXcFnvCBxEYXCPqlcNUbb8eCtqT65wqXrviajpaF1XH1u6H4pPio9GLlQhV4zA6Bemgxn42CwCD5RvuACB7QG54SK900+cyI12wHPz4ny2Oni4AzN+yw5qcW7dgHJSRY/HzkJ8HmxVwbeBexD8S7ZiZz+A1BLAwQUAAAICAAAACHsu2q/SG0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNdRUEovSizIKAaKGII4pZkpIHa0kkWyhYWpQVqSoYmlkbFhooGuQWqaaWpyWkqSgXlainFKmlIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAACHs1bPKEmYCAAAdBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAACHsu2q/SG0AAAB4AAAACQAkAAAAAAAAAAAAAACzAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAGsDAAAAAA==
+    upgradeData: 
+    file_cachedStartup: {fileID: 0}
+    data_cachedStartup: 
+    cacheStartup: 0
+  showNavGraphs: 1
+  showUnwalkableNodes: 1
+  debugMode: 0
+  debugFloor: 0
+  debugRoof: 1
+  manualDebugFloorRoof: 0
+  showSearchTree: 0
+  unwalkableNodeDebugSize: 0.3
+  logPathResults: 1
+  maxNearestNodeDistance: 100
+  scanOnStartup: 1
+  fullGetNearestSearch: 0
+  prioritizeGraphs: 0
+  prioritizeGraphsLimit: 1
+  colorSettings:
+    _SolidColor: {r: 0.11764706, g: 0.4, b: 0.7882353, a: 0.9}
+    _UnwalkableNode: {r: 1, g: 0, b: 0, a: 0.5}
+    _BoundsHandles: {r: 0.29, g: 0.454, b: 0.741, a: 0.9}
+    _ConnectionLowLerp: {r: 0, g: 1, b: 0, a: 0.5}
+    _ConnectionHighLerp: {r: 1, g: 0, b: 0, a: 0.5}
+    _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
+    _AreaColors:
+    - {r: 0, g: 0, b: 0, a: 0}
+  tagNames: []
+  heuristic: 2
+  heuristicScale: 1
+  threadCount: 1
+  maxFrameTime: 10
+  batchGraphUpdates: 0
+  graphUpdateBatchingInterval: 0.2
+  euclideanEmbedding:
+    mode: 0
+    seed: 0
+    pivotPointRoot: {fileID: 0}
+    spreadOutCount: 1
+  showGraphs: 1
+--- !u!50 &2075151427830226914
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619045241466588927}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1001 &8580017402377007783
 PrefabInstance:
   m_ObjectHideFlags: 0
