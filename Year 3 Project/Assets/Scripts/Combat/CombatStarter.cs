@@ -34,6 +34,7 @@ public class CombatStarter : MonoBehaviour
                 {
                     Debug.Log("Entered Combat");
                     inCombat = true;
+                    playerTransform.gameObject.GetComponent<CombatStatus>().inCombat();
                     combatCleanUp = true;
                     // start combat
                     combatScreen = Instantiate(combatScreenPrefab, playerTransform);

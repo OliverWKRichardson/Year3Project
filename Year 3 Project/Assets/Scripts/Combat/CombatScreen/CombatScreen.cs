@@ -288,6 +288,7 @@ public class CombatScreen : MonoBehaviour
         {
             player.GetComponent<PlayerStats>().WipeConditions();
             enemy.GetComponent<EnemyStats>().WipeConditions();
+            player.GetComponent<CombatStatus>().outCombat();
             Cursor.visible = false;
             enemy.transform.GetChild(0).GetComponent<CombatStarter>().endCombat();
         }
