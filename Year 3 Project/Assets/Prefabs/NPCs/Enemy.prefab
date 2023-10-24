@@ -219,6 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 675210353054303076, guid: d03f6dfd47955ff4f9d06e5f1a83422d, type: 3}
+  player: {fileID: 675210353054303079, guid: d03f6dfd47955ff4f9d06e5f1a83422d, type: 3}
 --- !u!58 &613077877524421344
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -232,9 +233,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0086708665, y: 0}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.49132913
+  m_Radius: 0.5
 --- !u!50 &2075151427830226914
 Rigidbody2D:
   serializedVersion: 4
@@ -254,7 +255,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!1001 &8580017402377007783
 PrefabInstance:

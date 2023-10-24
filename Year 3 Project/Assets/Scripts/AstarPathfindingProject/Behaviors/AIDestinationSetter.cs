@@ -18,6 +18,7 @@ namespace Pathfinding {
 		public Transform target;
 		public GameObject player;
 		IAstarAI ai;
+		public static bool inCombat;
 
 		void OnEnable () {
 			ai = GetComponent<IAstarAI>();
@@ -27,6 +28,7 @@ namespace Pathfinding {
 			// scripts as well. So it makes sense that it is up to date every frame.
 			if (ai != null) ai.onSearchPath += Update;
 			target = player.transform;
+			inCombat = false;
 		}
 
 		void OnDisable () {
@@ -35,10 +37,22 @@ namespace Pathfinding {
 
 		/// <summary>Updates the AI's destination every frame</summary>
 		void Update () {
-			if (player.GetComponent<CombatStatus>().getCombat() == true) {return;}
-			if ((target != null && ai != null) && (Vector2.Distance(transform.position, target.position) < 10)){
-				ai.destination = target.position;
+			// if (player.GetComponent<CombatStatus>().getCombat() == true) {return;}
+			if (inCombat == false) {
+				//target = player.transform;
+				if ((target != null && ai != null) && (Vector2.Distance(transform.position, target.position) < 10)){
+					ai.destination = target.position;
+				}
+				if ((target != null && ai != null) && (Vector2.Distance(transform.position, target.position) < 3)){
+					inCombat = true;
+				}
 			}
+		}
+
+		public void leaveCombat() {
+			inCombat = false;
+			if (target = null) {target = player.transform;}
+			// if (ai = null) {ai = GetComponent<IAstarAI>();}
 		}
 	}
 }

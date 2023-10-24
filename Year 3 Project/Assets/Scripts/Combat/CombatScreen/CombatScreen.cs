@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using Pathfinding;
 
 public class CombatScreen : MonoBehaviour
 {
@@ -290,6 +291,8 @@ public class CombatScreen : MonoBehaviour
             enemy.GetComponent<EnemyStats>().WipeConditions();
             player.GetComponent<CombatStatus>().outCombat();
             Cursor.visible = false;
+            // Re-Enable Enemy chasing Player
+            enemy.GetComponent<AIDestinationSetter>().leaveCombat();
             enemy.transform.GetChild(0).GetComponent<CombatStarter>().endCombat();
         }
         else if((turn == TurnType.enemyTurn)&&(enemyTurnTimerDone == true))
