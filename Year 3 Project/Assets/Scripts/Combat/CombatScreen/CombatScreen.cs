@@ -228,6 +228,11 @@ public class CombatScreen : MonoBehaviour
             player.GetComponent<PlayerStats>().ReduceConditions(TurnType.playerTurn);
             enemy.GetComponent<EnemyStats>().ReduceConditions(TurnType.playerTurn);
 
+            // regen enemy mana
+            Debug.Log("Enemy Mana Regens");
+            enemy.GetComponent<EnemyStats>().regenMP();
+
+            // enemy turn
             turn = TurnType.enemyTurn;
 
             //Set to false so that We don't run this again
