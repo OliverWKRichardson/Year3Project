@@ -45,17 +45,17 @@ public class EnemySkills : MonoBehaviour
         while(accept == false)
         {
             // if only 1 possible skill to use
-            if(transform.parent.GetComponent<EnemyStats>().getMP() < Skill2Cost && transform.parent.GetComponent<EnemyStats>().getMP() < Skill3Cost)
+            if(GetComponent<EnemyStats>().getMP() < Skill2Cost && GetComponent<EnemyStats>().getMP() < Skill3Cost)
             {
                 picked = 1;
                 accept = true;
             }
-            else if(transform.parent.GetComponent<EnemyStats>().getMP() < Skill1Cost && transform.parent.GetComponent<EnemyStats>().getMP() < Skill3Cost)
+            else if(GetComponent<EnemyStats>().getMP() < Skill1Cost && GetComponent<EnemyStats>().getMP() < Skill3Cost)
             {
                 picked = 2;
                 accept = true;
             }
-            else if(transform.parent.GetComponent<EnemyStats>().getMP() < Skill1Cost && transform.parent.GetComponent<EnemyStats>().getMP() < Skill2Cost)
+            else if(GetComponent<EnemyStats>().getMP() < Skill1Cost && GetComponent<EnemyStats>().getMP() < Skill2Cost)
             {
                 picked = 3;
                 accept = true;
@@ -67,19 +67,19 @@ public class EnemySkills : MonoBehaviour
                 switch (picked)
                 {
                     case 1:
-                        if(Skill1Cost <= transform.parent.GetComponent<EnemyStats>().getMP())
+                        if(Skill1Cost <= GetComponent<EnemyStats>().getMP())
                         {
                             accept = true;
                         }
                         break;
                     case 2:
-                        if(Skill2Cost <= transform.parent.GetComponent<EnemyStats>().getMP())
+                        if(Skill2Cost <= GetComponent<EnemyStats>().getMP())
                         {
                             accept = true;
                         }
                         break;
                     case 3:
-                        if(Skill3Cost <= transform.parent.GetComponent<EnemyStats>().getMP())
+                        if(Skill3Cost <= GetComponent<EnemyStats>().getMP())
                         {
                             accept = true;
                         }

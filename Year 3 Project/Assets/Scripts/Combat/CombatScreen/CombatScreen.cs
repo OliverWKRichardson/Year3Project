@@ -80,8 +80,8 @@ public class CombatScreen : MonoBehaviour
         playerHPBarA.GetComponent<ResourceBar>().Set((int) player.GetComponent<PlayerStats>().getA());
         
         // set up mp bars
-        enemyMPBar.GetComponent<ResourceBar>().SetMax((int) enemy.GetComponent<EnemyStats>().getMP());
-        playerMPBar.GetComponent<ResourceBar>().SetMax((int) player.GetComponent<PlayerStats>().getMP());
+        enemyMPBar.GetComponent<ResourceBar>().SetMax((int) enemy.GetComponent<EnemyStats>().getMaxMP());
+        playerMPBar.GetComponent<ResourceBar>().SetMax((int) player.GetComponent<PlayerStats>().getMaxMP());
         enemyMPBar.GetComponent<ResourceBar>().Set((int) enemy.GetComponent<EnemyStats>().getMP());
         playerMPBar.GetComponent<ResourceBar>().Set((int) player.GetComponent<PlayerStats>().getMP());
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CombatScreen.TurnType;
 using System;
+using UnityEditor.UI;
 
 public class EnemyGenerator : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class EnemyGenerator : MonoBehaviour
     private int enemyTypeCount = Enum.GetNames(typeof(enemyType)).Length;
     // Enemy class
     public GameObject enemy;
+
+    //enemy
+    GameObject hostile;
 
     // force type of enemy spawned
     public enemyType forcetype;
@@ -24,7 +28,7 @@ public class EnemyGenerator : MonoBehaviour
     void createEnemy()
     {
         Transform pos = gameObject.transform;
-        GameObject hostile = Instantiate(enemy, pos); // Add Vector2(x, y) for the position of the newly generated enemy
+        hostile = Instantiate(enemy, pos); // Add Vector2(x, y) for the position of the newly generated enemy
 
         enemyType enemyType = (enemyType)UnityEngine.Random.Range(1, enemyTypeCount); // no need to subtract 1 from upper bound as the none type does this for us
         if(forcetype != enemyType.none)
@@ -65,6 +69,7 @@ public class EnemyGenerator : MonoBehaviour
         Debug.Log("Enemy Used DoTA Attack On "+ target.name);
         Condition DDoS = new Condition("DoTA", 5, CombatScreen.TurnType.playerTurn, 10.0f);
         target.GetComponent<PlayerStats>().AddCondition(DDoS);
+        hostile.GetComponent<EnemyStats>().spendMP(50);
     }
     private int DoTACost = 50;
     public void DoTI(GameObject target)
@@ -72,6 +77,7 @@ public class EnemyGenerator : MonoBehaviour
         Debug.Log("Enemy Used DoTI Attack On "+ target.name);
         Condition FileDeletionWorm = new Condition("DoTI", 5, CombatScreen.TurnType.playerTurn, 10.0f);
         target.GetComponent<PlayerStats>().AddCondition(FileDeletionWorm);
+        hostile.GetComponent<EnemyStats>().spendMP(50);
     }
     private int DoTICost = 50;
     public void DoTC(GameObject target)
@@ -79,19 +85,28 @@ public class EnemyGenerator : MonoBehaviour
         Debug.Log("Enemy Used DoTA Attack On "+ target.name);
         Condition DownloadingPersonalData = new Condition("DoTC", 5, CombatScreen.TurnType.playerTurn, 10.0f);
         target.GetComponent<PlayerStats>().AddCondition(DownloadingPersonalData);
+        hostile.GetComponent<EnemyStats>().spendMP(50);
     }
     private int DoTCCost = 50;
 
     public void HeavyAttack(GameObject target)
     {
         Debug.Log("Enemy Used Heavy Attack On "+ target.name);
-        //wip add functionality
+        hostile.GetComponent<EnemyStats>().spendMP(100);
+        float amount = hostile.GetComponent<EnemyStats>().getATK();
+        float MULT = 2;
+        target.GetComponent<PlayerStats>().DamageC(amount*MULT);
+        target.GetComponent<PlayerStats>().DamageI(amount*MULT);
+        target.GetComponent<PlayerStats>().DamageA(amount*MULT);
     }
     private int HeavyAttackCost = 100;
     public void LightAttack(GameObject target)
     {
         Debug.Log("Enemy Used Light Attack On "+ target.name);
-        //wip add functionality
+        float amount = hostile.GetComponent<EnemyStats>().getATK();
+        target.GetComponent<PlayerStats>().DamageC(amount);
+        target.GetComponent<PlayerStats>().DamageI(amount);
+        target.GetComponent<PlayerStats>().DamageA(amount);
     }
     private int LightAttackCost = 0;
 }
