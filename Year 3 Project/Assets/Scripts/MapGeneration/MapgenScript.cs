@@ -22,15 +22,15 @@ public class MapgenScript : MonoBehaviour
 
 
     }
-    private int MAX_ROOMS = 20;
-    private int minMap = 4;
+    private int MAX_ROOMS = 12;
+    private int minMap = 5;
     private int maxMap = 5;
 
     private int mapX;
     private int mapY;
 
     private Stack<coordinates> coordstack = new Stack<coordinates>();
-    private Room[,] roomgen;
+    private Room[,] roomarray;
     private coordinates bosscoords;
     private int MAX_SHOPS = 2;
     private int shopcounter = 0;
@@ -151,12 +151,12 @@ public class MapgenScript : MonoBehaviour
             return new Room(5, null, null, null, null);
 
         }
-        //Formula for spawning start Room is  if rng <= (1.2 * Distance) 
+        //Formula for spawning start Room is  if rng <= (n * EuclideanDistance) 
         //Start Room spawning
 
         int sprng = Random.Range(3, 15);
        
-        if (sprng < 1.3 * bossDistance(x, y) && spawnroomexists == false)
+        if (sprng < 4 * bossDistance(x, y) && spawnroomexists == false)
         {
 
             roomcounter++;
@@ -196,14 +196,11 @@ public class MapgenScript : MonoBehaviour
 
     public void fillMap(int x, int y)
     {
+        if ((roomarray[x, y] == null) && (roomcounter < MAX_ROOMS))
 
-        //Debug.Log("Int x:" + x + " Int y: " + y);
-        if (roomgen[x, y] == null)
+        {     
 
-        {
-            //Debug.Log("Coords : " + x + " "+ y);
-           // Debug.Log("Maxes : " + mapX + " " + mapY);
-            roomgen[x, y] = generateRoom(x,y);
+            roomarray[x, y] = generateRoom(x,y);
             List<coordinates> coordlist = new List<coordinates>(4);
 
 
@@ -242,11 +239,11 @@ public class MapgenScript : MonoBehaviour
 
             coordinates next = coordstack.Pop();
             fillMap(next.getx(), next.gety());
-
+            
 
             
         }
-        else if (coordstack.Count > 0)
+        else if ((coordstack.Count > 0) && (roomcounter <MAX_ROOMS))
         {
             coordinates next = coordstack.Pop();
             fillMap(next.getx(), next.gety());
@@ -268,7 +265,7 @@ public class MapgenScript : MonoBehaviour
         //Randomly Define Map X & Y Size
         mapX = Random.Range(minMap, maxMap);
         mapY = Random.Range(minMap, maxMap);
-        roomgen = new Room[mapX, mapY];
+        roomarray = new Room[mapX, mapY];
 
         bosscoords = new coordinates(Random.Range(0,mapX), Random.Range(0,mapY));
 
@@ -285,7 +282,7 @@ public class MapgenScript : MonoBehaviour
 
     public Room[,] getMap()
     {
-        return roomgen;
+        return roomarray;
     }
 
     [ContextMenu ("test print random map")]
@@ -299,7 +296,12 @@ public class MapgenScript : MonoBehaviour
             Debug.Log("-------");
             for (int j =0; j<mapY; j++)
             {
-                Debug.Log(roomgen[i, j].getType());
+                if (roomarray[i,j] == null)
+                {
+                    Debug.Log("E");
+                    continue;
+                }   
+                Debug.Log(roomarray[i, j].getType());
             }
         }
 
