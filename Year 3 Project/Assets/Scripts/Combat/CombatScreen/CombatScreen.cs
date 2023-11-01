@@ -297,7 +297,7 @@ public class CombatScreen : MonoBehaviour
             player.GetComponent<CombatStatus>().outCombat();
             Cursor.visible = false;
             // Re-Enable Enemy chasing Player
-            enemy.GetComponent<AIDestinationSetter>().leaveCombat();
+            if (enemy.GetComponent<AIDestinationSetter>() != null) { enemy.GetComponent<AIDestinationSetter>().leaveCombat();}
             enemy.transform.GetChild(0).GetComponent<CombatStarter>().endCombat();
         }
         else if((turn == TurnType.enemyTurn)&&(enemyTurnTimerDone == true))
