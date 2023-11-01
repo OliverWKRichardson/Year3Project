@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class CombatStarter : MonoBehaviour
 {
@@ -30,10 +31,11 @@ public class CombatStarter : MonoBehaviour
             if(hit.collider != null)
             {
                 // if is the player
-                if(hit.collider.gameObject == GameObject.Find("PlayerCharacter"))
+                if(hit.collider.gameObject == GameObject.Find("PlayerCharacter") && (AIDestinationSetter.inCombat == false))
                 {
                     Debug.Log("Entered Combat");
                     inCombat = true;
+                    AIDestinationSetter.inCombat = true;
                     playerTransform.gameObject.GetComponent<CombatStatus>().inCombat();
                     combatCleanUp = true;
                     // start combat
@@ -53,6 +55,7 @@ public class CombatStarter : MonoBehaviour
             Debug.Log("Left Combat");
             Destroy(combatScreen);
             GameObject.Find("PlayerCharacter").GetComponent<PlayerCharacterMovement>().EnablePlayerMovement();
+            AIDestinationSetter.inCombat = false;
             combatCleanUp = false;
             // delete enemy
             Destroy(gameObject.transform.parent.gameObject);

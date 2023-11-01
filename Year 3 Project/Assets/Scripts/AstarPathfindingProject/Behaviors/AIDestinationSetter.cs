@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Pathfinding {
 	/// <summary>
@@ -16,7 +17,7 @@ namespace Pathfinding {
 	public class AIDestinationSetter : VersionedMonoBehaviour {
 		/// <summary>The object that the AI should move to</summary>
 		public Transform target;
-		public GameObject player;
+		//private GameObject player;
 		IAstarAI ai;
 		public static bool inCombat;
 
@@ -27,7 +28,8 @@ namespace Pathfinding {
 			// frame as the destination is used for debugging and may be used for other things by other
 			// scripts as well. So it makes sense that it is up to date every frame.
 			if (ai != null) ai.onSearchPath += Update;
-			target = player.transform;
+			target = GameObject.Find("PlayerCharacter").transform;
+			//target = player.transform;
 			inCombat = false;
 		}
 
@@ -37,22 +39,25 @@ namespace Pathfinding {
 
 		/// <summary>Updates the AI's destination every frame</summary>
 		void Update () {
-			// if (player.GetComponent<CombatStatus>().getCombat() == true) {return;}
+			//if (GameObject.Find("PlayerCharacter").GetComponent<CombatStatus>().getCombat() == true) {return;}
 			if (inCombat == false) {
 				//target = player.transform;
-				if ((target != null && ai != null) && (Vector2.Distance(transform.position, target.position) < 10)){
+				if ((target != null && ai != null) && (Vector2.Distance(transform.position, target.position) < 10) && (Vector2.Distance(transform.position, target.position) > 4)){
 					ai.destination = target.position;
 				}
-				if ((target != null && ai != null) && (Vector2.Distance(transform.position, target.position) < 3)){
-					inCombat = true;
-				}
 			}
+			else if (inCombat == true) { }
 		}
 
 		public void leaveCombat() {
 			inCombat = false;
-			if (target = null) {target = player.transform;}
+			//if (target = null) {target = GameObject.Find("PlayerCharacter").transform;}
 			// if (ai = null) {ai = GetComponent<IAstarAI>();}
+		}
+
+		public void enterCombat() {
+			inCombat = true;
+			//target = null;
 		}
 	}
 }
