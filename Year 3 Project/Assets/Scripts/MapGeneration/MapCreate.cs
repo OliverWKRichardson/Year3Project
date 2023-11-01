@@ -21,7 +21,7 @@ public class MapCreate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        createMap();
 
     }
 
@@ -93,7 +93,7 @@ public class MapCreate : MonoBehaviour
 
 
     GameObject floor = Instantiate(rooms[0], new Vector2(40f * j, 24f * i), Quaternion.identity);
-        
+       floor.transform.position = new Vector3(floor.transform.position.x, floor.transform.position.y, 1f);
         if (roomcode.Contains("U"))
          {
             instantiateRoom(2, floor, 0.274f, 0.5f, 0f);
@@ -204,12 +204,16 @@ public class MapCreate : MonoBehaviour
         }
 
         //
-        if (givenroom.getType() == 4)
+        if (givenroom.getType() == 1)
         {
-
+            instantiateRoom(10, floor, 0, 0, 0);
         }
         
-
+        if (givenroom.getType() == 5)
+        {
+           GameObject spawner = instantiateRoom(5, floor, 0, 0, 0);
+            spawner.name = "StartPoint";
+        }
         //
         
     }

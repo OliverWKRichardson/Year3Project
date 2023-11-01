@@ -133,6 +133,7 @@ public class MapgenScript : MonoBehaviour
     //2 == Attack Room
     //3 == Shop Room
     //4 == Coin Room
+    //5 == Spawn Room
     {
 
         //Could clean up code here and remove some of the room counters place it after the first conditional.
