@@ -16,6 +16,8 @@ public class QuizSpawner : MonoBehaviour
 
     private PlayerCharacterMovement playerMovement;
 
+    private GameObject generatedQuiz;
+
 
     void Update()
     {
@@ -34,13 +36,17 @@ public class QuizSpawner : MonoBehaviour
                 playerMovement = other.GetComponent<PlayerCharacterMovement>();
                 playerMovement.DisablePlayerMovement();
                // Instantiate(quizScreenPrefab, quizScreenPosition, Quaternion.identity);
-                Instantiate(quizScreen, quizScreenPosition, Quaternion.identity);
+                generatedQuiz = Instantiate(quizScreen, quizScreenPosition, Quaternion.identity);
                 quizTriggered = true;
                 GetComponent<Collider2D>().enabled = false;
             }
         }
     }
 
-
+    void QuizCleared()
+    {
+        Destroy(generatedQuiz);
+        Destroy(transform.parent.gameObject);
+    }
 
 }
