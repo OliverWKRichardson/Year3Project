@@ -122,3 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cee89a1793cb4842865f0388b208a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneIndex: 0
+  quizScreenPrefab: {fileID: 867143569586200930, guid: 5b4cb2495a367ff40805c46fa3ebbcce, type: 3}
+  quizTriggered: 0
