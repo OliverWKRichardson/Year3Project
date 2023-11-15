@@ -21,7 +21,7 @@ public class QA : MonoBehaviour
 
     void Start()
     {
-       question.GetComponent<UnityEngine.UI.Text>().text = "Placeholder question? Placeholder question?";
+       question.GetComponent<UnityEngine.UI.Text>().text = "Placeholder question?";
     }
 
     // Update is called once per frame
