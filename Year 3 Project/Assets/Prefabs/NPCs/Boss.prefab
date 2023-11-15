@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6003770021443605333}
   - component: {fileID: 4297140957413527832}
   - component: {fileID: -4246261311307720685}
+  - component: {fileID: -3420651441334413870}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -169,6 +170,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 1414132897642352267, guid: a349968e55361b14093b3760ea36fd6f, type: 3}
+--- !u!114 &-3420651441334413870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7907200026468194941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bac2ad5d5057934ab35e5878bf0fb30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpriteOptions:
+  - {fileID: 21300000, guid: 4f7bf51cc8077ed499611b3bbc31e6d5, type: 3}
+  - {fileID: 21300000, guid: 652ef476e4a99224d9fcadf8618513f6, type: 3}
+  GOSpriteOptions:
+  - {fileID: 1414132897642352267, guid: a349968e55361b14093b3760ea36fd6f, type: 3}
+  - {fileID: 9068127296970151581, guid: c4d891d20c44f9b429f621e6741ade03, type: 3}
 --- !u!1001 &2753069910706043752
 PrefabInstance:
   m_ObjectHideFlags: 0
