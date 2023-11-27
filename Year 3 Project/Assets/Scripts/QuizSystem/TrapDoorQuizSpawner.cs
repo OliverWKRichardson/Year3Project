@@ -25,7 +25,7 @@ public class TrapDoorQuizSpawner : MonoBehaviour
     {
         if(quizCleared)
         {
-            EndQuiz();
+            QuizCleared();
         }
     }
 
@@ -57,7 +57,7 @@ public class TrapDoorQuizSpawner : MonoBehaviour
             }
     }
 
-    public void EndQuiz()
+    public void QuizCleared()
     {
         playerMovement.EnablePlayerMovement();
         Debug.Log("Door entered, changing map.");

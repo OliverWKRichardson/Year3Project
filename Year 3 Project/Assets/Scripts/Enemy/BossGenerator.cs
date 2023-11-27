@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CombatScreen.TurnType;
 using System;
-using UnityEditor.UI;
 
 public class BossGenerator : MonoBehaviour
 {
