@@ -26,7 +26,10 @@ public class PersistAcrossScenes : MonoBehaviour
         // load player state
         LoadPlayer();
         // set to start
-        transform.position = GameObject.Find("StartPoint").transform.position;
+        if (GameObject.Find("StartPoint")) {
+            transform.position = GameObject.Find("StartPoint").transform.position;
+        }
+        
     }
 
     private static float SPD;

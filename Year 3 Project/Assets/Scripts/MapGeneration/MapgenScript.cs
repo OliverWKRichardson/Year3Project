@@ -32,6 +32,7 @@ public class MapgenScript : MonoBehaviour
     private Stack<coordinates> coordstack = new Stack<coordinates>();
     private Room[,] roomarray;
     private coordinates bosscoords;
+    private coordinates startcoords;
     private int MAX_SHOPS = 2;
     private int shopcounter = 0;
     private int MAX_COINS = 2;
@@ -46,6 +47,16 @@ public class MapgenScript : MonoBehaviour
     void Start()
     {
         generateMap();
+        Debug.Log(bossDistance(startcoords.getx(),startcoords.gety()));
+        if (bossDistance(startcoords.getx(), startcoords.gety()) < 3) {
+            shopcounter = 0;
+            coincounter = 0;
+            roomcounter = 0;
+            spawnroomexists = false;
+            coordstack = new Stack<coordinates>();
+            Debug.Log("generatin map");
+            Start(); }
+        
     }
 
     // Update is called once per frame
@@ -136,7 +147,7 @@ public class MapgenScript : MonoBehaviour
     //5 == Spawn Room
     {
 
-        //Could clean up code here and remove some of the room counters place it after the first conditional.
+        //Could clean up code here and remove some of the room counters place it after the firszt conditional.
         
         if (roomcounter == 0) {
             roomcounter++;
@@ -149,6 +160,8 @@ public class MapgenScript : MonoBehaviour
         {
             roomcounter++;
             spawnroomexists = true;
+            startcoords = new coordinates(x, y);
+
             return new Room(5, null, null, null, null);
 
         }
@@ -162,6 +175,7 @@ public class MapgenScript : MonoBehaviour
 
             roomcounter++;
             spawnroomexists = true;
+            startcoords = new coordinates(x, y);
             return new Room(5, null, null, null, null);
         }
 
@@ -169,6 +183,7 @@ public class MapgenScript : MonoBehaviour
         {
             roomcounter++;
             spawnroomexists = true;
+            startcoords = new coordinates(x, y);
             return new Room(5, null, null, null, null);
         }
 

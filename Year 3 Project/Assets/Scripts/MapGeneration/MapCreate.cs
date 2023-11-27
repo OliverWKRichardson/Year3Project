@@ -11,8 +11,8 @@ public class MapCreate : MonoBehaviour
 {
 
     public List<GameObject> rooms;
-   
-    
+
+
 
     public MapgenScript mapscript;
 
@@ -20,6 +20,7 @@ public class MapCreate : MonoBehaviour
     public int length = 24;
     // Start is called before the first frame update
     void Start()
+
     {
         createMap();
 
@@ -34,11 +35,11 @@ public class MapCreate : MonoBehaviour
     [ContextMenu("TestCreate")]
     public void createMap()
     {
-        
+
 
         Room[,] map = mapscript.getMap();
-        
-        for (int i= 0; i < map.GetLength(0); i++)
+
+        for (int i = 0; i < map.GetLength(0); i++)
         {
             for (int j = 0; j < map.GetLength(1); j++)
             {
@@ -53,7 +54,7 @@ public class MapCreate : MonoBehaviour
                 }
             }
         }
-        
+
         int rows = map.GetLength(0);
         int cols = map.GetLength(1);
 
@@ -69,7 +70,7 @@ public class MapCreate : MonoBehaviour
                 {
                     continue;
                 }
-                spawnRoom(i, j,map); ;
+                spawnRoom(i, j, map); ;
 
             }
             //
@@ -77,7 +78,8 @@ public class MapCreate : MonoBehaviour
 
     }
 
-    public void spawnRoom(int i, int j, Room[,] map) {
+    public void spawnRoom(int i, int j, Room[,] map)
+    {
 
         string roomcode = checkNeighbours(i, j, map);
 
@@ -85,19 +87,19 @@ public class MapCreate : MonoBehaviour
         //string stringcode = "";
         //for (int x = 0; x < roomcode.Count; x++)
         //{
-           // stringcode = stringcode + roomcode[x];
-            
-       // }
+        // stringcode = stringcode + roomcode[x];
+
+        // }
 
         //Debug.Log(stringcode);
 
 
-    GameObject floor = Instantiate(rooms[0], new Vector2(40f * j, 24f * i), Quaternion.identity);
-       floor.transform.position = new Vector3(floor.transform.position.x, floor.transform.position.y, 1f);
+        GameObject floor = Instantiate(rooms[0], new Vector2(40f * j, 24f * i), Quaternion.identity);
+        floor.transform.position = new Vector3(floor.transform.position.x, floor.transform.position.y, 1f);
         if (roomcode.Contains("U"))
-         {
-            instantiateRoom(2, floor, 0.274f, 0.5f, 0f);
-            instantiateRoom(6, floor, 0f, 0.5f, 0);
+        {
+            //instantiateRoom(2, floor, 0.274f, 0.5f, 90f);
+            //instantiateRoom(6, floor, 7.5e-05f, 0.495f, 90);
 
 
 
@@ -110,16 +112,17 @@ public class MapCreate : MonoBehaviour
         }
         else
         {
-            instantiateRoom(1, floor, 0, 0.49f, 90);
+            instantiateRoom(1, floor, 0, 0.495f, 90);
 
 
         }
 
         if (roomcode.Contains("D"))
         {
-            instantiateRoom(2, floor, 0.274f, -0.5f, 0);
-            instantiateRoom(6, floor, 0f, -0.5f, 0f);
-            
+            instantiateRoom(2, floor, -0.265f, -0.495f, 90);
+            instantiateRoom(2, floor, 0.265f, -0.495f, 90);
+            instantiateRoom(6, floor, -7.5e-05f, 0.495f, 90);
+
 
 
             //GameObject wall = Instantiate(rooms[2], new Vector2(floor.transform.position.x, floor.transform.position.y), Quaternion.Euler(0f, 0f, 90f), floor.transform);
@@ -129,41 +132,43 @@ public class MapCreate : MonoBehaviour
         }
         else
         {
-            instantiateRoom(1, floor, 0f, -0.49f, 90);
+            instantiateRoom(1, floor, 0f, -0.495f, 90);
 
 
-                 
+
         }
 
         if (roomcode.Contains("L"))
         {
-            instantiateRoom(4, floor, -0.983f, 0f, 0f);
-            instantiateRoom(6, floor, -0.4915f, 0.005f, 90);
+            instantiateRoom(4, floor, -0.49695f, 0.27625f, 0f);
+            instantiateRoom(4, floor, -0.49695f, -0.27625f, 0f);
+
+            instantiateRoom(6, floor, -0.497f, -0.0004166667f, 0);
         }
 
         else
         {
-            instantiateRoom(3, floor, -0.492f, 0f, 90f);
-            }
+            instantiateRoom(3, floor, -0.49725f, 0f, 0f);
+        }
 
         if (roomcode.Contains("R"))
         {
-            //instantiateRoom(4, floor, 0f, 0f, 0f);
-            //instantiateRoom(6  , floor, 0.4915f, 0.005f, 90);
+            //instantiateRoom(4, floor, 0.49695f, 0.27625f, 0f);
+            //instantiateRoom(4, floor, 0.49695f, -0.27625f, 0f);
 
         }
         else
         {
-            instantiateRoom(3, floor, 0.49f, 0f, 90f);
+            instantiateRoom(3, floor, 0.49725f, 0f, 0f);
         }
 
-        roomFill(roomcode, floor, map[i,j]);
+        roomFill(roomcode, floor, map[i, j]);
 
 
 
     }
 
-    public void roomFill(string roomcode,GameObject floor, Room givenroom)
+    public void roomFill(string roomcode, GameObject floor, Room givenroom)
     {
         float roomlayout = Random.Range(0, 2);
 
@@ -175,7 +180,8 @@ public class MapCreate : MonoBehaviour
                 {
                     if (roomlayout == 0f)
                     {
-                        instantiateRoom(8, floor, 0, 0, 0);
+                        GameObject formation =instantiateRoom(8, floor, 0, 0, 0);
+                        formation.transform.localScale = new Vector3(1f, 1f, 1f);
                     }
                     if (roomlayout == 1f)
                     {
@@ -195,7 +201,8 @@ public class MapCreate : MonoBehaviour
 
                 if (roomlayout == 1f)
                 {
-                    instantiateRoom(9, floor, 0, 0, 0);
+                    GameObject formation = instantiateRoom(9, floor, 0, 0, 0);
+                    formation.transform.localScale = new Vector3(0.9f, 0.9f, 1f);
                 }
                 return;
             }
@@ -208,18 +215,29 @@ public class MapCreate : MonoBehaviour
         {
             instantiateRoom(10, floor, 0, 0, 0);
         }
-        
+
         if (givenroom.getType() == 5)
         {
-           GameObject spawner = instantiateRoom(5, floor, 0, 0, 0);
+            GameObject spawner = instantiateRoom(5, floor, 0, 0, 0);
+            GameObject respawnpad = instantiateRoom(11, floor, 0, 0, 0);
             spawner.name = "StartPoint";
         }
         //
-        
+
+        if (givenroom.getType() == 4)
+        {
+            instantiateRoom(12, floor, -0.26699999f, 0f, 0f);
+        }
+
+        if (givenroom.getType() == 3)
+        {
+            instantiateRoom(13, floor, 0.07f, 0f, 0f);
+        }
     }
     public GameObject instantiateRoom(int roomid, GameObject floor, float xoffset, float yoffset, float zrotation)
     {
-        GameObject wall = Instantiate(rooms[roomid], new Vector2(floor.transform.position.x, floor.transform.position.y), Quaternion.Euler(0f, 0f, zrotation), floor.transform);
+        GameObject wall = Instantiate(rooms[roomid], new Vector2(floor.transform.position.x, floor.transform.position.y), Quaternion.Euler(0f, 0f, zrotation));
+        wall.transform.parent = floor.transform;
         wall.transform.localPosition = new Vector3(xoffset, yoffset, 0f);
         return wall;
 
@@ -229,11 +247,11 @@ public class MapCreate : MonoBehaviour
     {
         string parts = "";
 
-        if (i < map.GetLength(0)-1)
+        if (i < map.GetLength(0) - 1)
         {
-            if (map[i+1, j] != null)
+            if (map[i + 1, j] != null)
             {
-                parts=parts+("U");
+                parts = parts + ("U");
             }
         }
 
@@ -241,22 +259,22 @@ public class MapCreate : MonoBehaviour
         {
             if (map[i - 1, j] != null)
             {
-                parts = parts+("D");
+                parts = parts + ("D");
             }
         }
 
-        if (j > 0) 
+        if (j > 0)
         {
-            if (map[i, j-1] != null)
+            if (map[i, j - 1] != null)
             {
-                parts = parts+("L");
+                parts = parts + ("L");
             }
         }
-        if (j< map.GetLength(1) - 1)
+        if (j < map.GetLength(1) - 1)
         {
-            if (map[i,j+1] != null)
+            if (map[i, j + 1] != null)
             {
-                parts = parts+("R");
+                parts = parts + ("R");
             }
         }
 
