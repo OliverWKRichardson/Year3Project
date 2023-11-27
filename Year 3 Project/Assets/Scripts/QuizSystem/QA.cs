@@ -6,6 +6,8 @@ public class QA : MonoBehaviour
 {
     public GameObject MenuCenter;
 
+    public QuizManager quizManager;
+
     public GameObject question;
 
     // change to arrays
@@ -19,9 +21,12 @@ public class QA : MonoBehaviour
 
 
 
-    void Start()
+    public void Start()
     {
-       question.GetComponent<UnityEngine.UI.Text>().text = "Placeholder question?";
+       
+        
+        
+       
     }
 
     // Update is called once per frame
