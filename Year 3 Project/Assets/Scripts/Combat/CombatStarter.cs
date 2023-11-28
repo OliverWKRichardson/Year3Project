@@ -27,6 +27,7 @@ public class CombatStarter : MonoBehaviour
             Transform playerTransform = GameObject.Find("PlayerCharacter").transform;
             // raycast at player
             RaycastHit2D hit = Physics2D.Linecast(transform.position, playerTransform.position);
+
             // if hit something
             if(hit.collider != null)
             {
