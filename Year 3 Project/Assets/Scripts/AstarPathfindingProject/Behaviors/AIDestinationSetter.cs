@@ -44,9 +44,12 @@ namespace Pathfinding {
 				//target = player.transform;
 				if ((target != null && ai != null) && (Vector2.Distance(transform.position, target.position) < 10) && (Vector2.Distance(transform.position, target.position) > 4)){
 					ai.destination = target.position;
+					ai.canMove = true;
 				}
 			}
-			else if (inCombat == true) { }
+			else if (inCombat == true) { 
+				ai.canMove = false;
+			}
 		}
 
 		public void leaveCombat() {
