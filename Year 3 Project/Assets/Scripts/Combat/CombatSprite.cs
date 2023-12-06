@@ -11,3 +11,4 @@ public class CombatSprite : MonoBehaviour
         return sprite;
     }
 }
+
