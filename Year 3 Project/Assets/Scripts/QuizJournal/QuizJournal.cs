@@ -22,7 +22,7 @@ public class QuizJournal : MonoBehaviour
         int textIndex = 0;
         foreach(QuestionData question in questionsInJSON.questions)
         {
-            questions.transform.GetChild(textIndex).gameObject.GetComponent<Text>().text = question.question;
+            questions.transform.GetChild(textIndex).gameObject.GetComponent<Text>().text = question.question + " Answer: " + question.correctAnswer;
             questions.transform.GetChild(textIndex).gameObject.SetActive(true); // WIP temp shows all loaded questions in journal remove when testing done
             textIndex++;
         }
