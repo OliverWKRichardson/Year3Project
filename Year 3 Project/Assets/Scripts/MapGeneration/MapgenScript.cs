@@ -187,21 +187,25 @@ public class MapgenScript : MonoBehaviour
             return new Room(5, null, null, null, null);
         }
 
-
+        Debug.Log("hello");
         int rng = Random.Range(0, 20);
-           if ((rng > 12) && (shopcounter < MAX_SHOPS) && (bossDistance(x, y) >= 2))
+        Debug.Log("rng is : " + rng);
+        Debug.Log("max shops: "+MAX_SHOPS);
+        Debug.Log("shop counter:" + shopcounter);
+        Debug.Log("boss distance: " + bossDistance(x, y));
+           if ((shopcounter < MAX_SHOPS) && roomcounter >= 4 && (rng>=10 && rng <=15 ))
         {
             roomcounter++;
             shopcounter++;
             return new Room(3, null, null, null, null);
         }
-        if (rng < 16 && rng > 13 && (coincounter < MAX_COINS) && bossDistance(x,y) >= 2)
-        {
-            roomcounter++;
-            coincounter++;
-            return new Room(4, null, null, null, null);
+        //if (rng > 13 && (coincounter < MAX_COINS) && bossDistance(x,y) >= 2)
+        //{
+          //  roomcounter++;
+           // coincounter++;
+            //return new Room(4, null, null, null, null);
 
-        }
+        //}
 
 
         roomcounter++;
