@@ -9,7 +9,7 @@ public class enemyRNG : MonoBehaviour
     {
         float chance = Random.Range(0, 3);
 
-        if (chance == 0)
+        if (chance <= 1)
         {
             this.gameObject.SetActive(true);
         }
