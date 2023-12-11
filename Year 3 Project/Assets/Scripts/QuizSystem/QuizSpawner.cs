@@ -47,8 +47,6 @@ public class QuizSpawner : MonoBehaviour
 
     public void setQuestions()
     {   
-        // readQuestionsFromJSON();
-        hardcodeQuestions();
         Transform menuCenter = generatedQuiz.transform.Find("QA/Menu Center");
         Transform question = menuCenter.transform.Find("Canvas/QuestionText");
 
