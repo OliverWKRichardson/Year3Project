@@ -60,18 +60,13 @@ public class QuizSpawner : MonoBehaviour
         Transform answerText3 = button3.transform.Find("AnswerText3");
 
 
-        string q = questions[rand.Next(questions.Length)];
-        question.GetComponent<Text>().text = q.ToString();
+        QuestionData questionData = quizManager.GetRandomQuestion();
+        question.gameObject.GetComponent<Text>().text = questionData.question;
 
-        // get corresponding answers
-        int index = System.Array.IndexOf(questions, q);
-        string[] answers = answersList[index];
-        answerText1.GetComponent<Text>().text = answers[0];
-        answerText2.GetComponent<Text>().text = answers[1];
-        answerText3.GetComponent<Text>().text = answers[2];
-
-        
-
+        answerText1.gameObject.GetComponent<Text>().text = questionData.correctAnswer;
+        answerText2.gameObject.GetComponent<Text>().text = questionData.incorrectAnswer1;
+        answerText3.gameObject.GetComponent<Text>().text = questionData.incorrectAnswer2;
+    
        
       
     }
@@ -84,45 +79,5 @@ public class QuizSpawner : MonoBehaviour
         Destroy(transform.parent.gameObject);
     }
 
-
-    // TODO: refactor this out of QuizSpawner
-    // TODO: do i need all of newtonsoft?
-    void readQuestionsFromJSON()
-    {
-        // json reader
-        string filename = "Questions.json";
-        string path = Path.Combine(Application.dataPath, "Scripts", "QuizSystem", filename);
-
-
-        if (File.Exists(path))
-        {
-            string json = File.ReadAllText(path);
-            // TODO: change to seperate class for data
-          //  var questionsData = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(json);
-        }
-        else
-        {
-            Debug.Log("File not found" + path);
-        }
-
-    }
-    
-     // TODO: delete this for JSON instead
-    void hardcodeQuestions()
-    {
-        questions = new string[] {
-        "What does 'non-repudiation' mean, in the context of information security?",
-        "What does CIA stand for?",
-        "What is the best password?",
-        "A tech company is trying to secure its sensitive data from unauthorized data. What is an essential measure it should consider to protect its IP?" };
-
-        answersList = new List<string[]>();
-        answersList.Add(new string[] { "The ability to prove that a user performed an action", "It refers to the process of concealing the identity of both the sender / recipient of a message", "It means allowing parties to deny sending / receiving a message without consequence" });
-        answersList.Add(new string[] { "Confidentiality, Integrity and Availability", "Covert Information Access", "Cybersecurity Infiltration Analysis" });
-        answersList.Add(new string[] { "kent.SU2018", "$starwars", "Frank2000", "bij$223jOIUnKhe", "p4$$w0rd"});
-        answersList.Add(new string[] { "Encryption", "Copyright", "Open Access", "Passwords"});
-
-    
-    }
 
 }
