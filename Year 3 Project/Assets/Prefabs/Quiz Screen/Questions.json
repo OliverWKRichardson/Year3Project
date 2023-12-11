@@ -47,7 +47,8 @@
             "question": "What is the best definition of a vulnerability?",
             "correctAnswer": "A weakness or flaw in a system, application, or network that can be exploited by malicious actors to compromise the confidentiality, integrity, or availability of data or systems.",
             "incorrectAnswer1": "Refers to the physical damage caused by external factors",
-            "incorrectAnswer2": "Any software that enhances the performance of a system or application"
+            "incorrectAnswer2": "Any software that enhances the performance of a system or application",
+            "incorrectAnswer3": "?"
         },
         {
 
