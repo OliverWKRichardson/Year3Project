@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 619045241466588927, guid: 5d00a8da03315934680962040fb0ba2a, type: 3}
+  forcetype: 0
