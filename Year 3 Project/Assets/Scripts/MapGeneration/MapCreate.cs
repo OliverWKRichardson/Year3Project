@@ -121,7 +121,7 @@ public class MapCreate : MonoBehaviour
         {
             instantiateRoom(2, floor, -0.265f, -0.495f, 90);
             instantiateRoom(2, floor, 0.265f, -0.495f, 90);
-            instantiateRoom(6, floor, -7.5e-05f, 0.495f, 90);
+            instantiateRoom(6, floor, -7.5e-05f, -0.495f, 90);
 
 
 
@@ -226,7 +226,7 @@ public class MapCreate : MonoBehaviour
 
         if (givenroom.getType() == 4)
         {
-            instantiateRoom(12, floor, -0.26699999f, 0f, 0f);
+            instantiateRoom(13, floor, 0f, 0f, 0f);
         }
 
         if (givenroom.getType() == 3)
