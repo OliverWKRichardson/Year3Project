@@ -121,6 +121,18 @@ public class QuizSpawner : MonoBehaviour
             buttonText = answer3Button.GetComponentInChildren<Text>();
             buttonText.color = Color.red;
         }
+        else
+        {   
+            // TODO: remove redundancy
+            Text buttonText = answer1Button.GetComponentInChildren<Text>();
+            buttonText.color = Color.green;
+            
+            buttonText = answer2Button.GetComponentInChildren<Text>();
+            buttonText.color = Color.red;
+
+            buttonText = answer3Button.GetComponentInChildren<Text>();
+            buttonText.color = Color.red;
+        }
 
         StartCoroutine(QuizClearedAfterDelay());
     }
