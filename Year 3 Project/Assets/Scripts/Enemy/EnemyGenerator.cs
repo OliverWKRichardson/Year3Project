@@ -44,7 +44,7 @@ public class EnemyGenerator : MonoBehaviour
                 hostile.GetComponent<EnemyStats>().setHP(hostile.GetComponent<EnemyStats>().getMaxHP());
                 hostile.GetComponent<EnemyStats>().setMaxMP(UnityEngine.Random.Range(100, 150));
                 hostile.GetComponent<EnemyStats>().setMP(hostile.GetComponent<EnemyStats>().getMaxMP());
-                hostile.GetComponent<EnemyStats>().setATK(UnityEngine.Random.Range(40, 80));
+                hostile.GetComponent<EnemyStats>().setATK(UnityEngine.Random.Range(50, 100));
                 hostile.GetComponent<EnemySkills>().SetSkills(LightAttack, LightAttackCost, DoTA, DoTACost, DoTA, DoTACost);
                 break;
             case enemyType.heavy:
@@ -54,7 +54,7 @@ public class EnemyGenerator : MonoBehaviour
                 hostile.GetComponent<EnemyStats>().setHP(hostile.GetComponent<EnemyStats>().getMaxHP());
                 hostile.GetComponent<EnemyStats>().setMaxMP(UnityEngine.Random.Range(100, 150));
                 hostile.GetComponent<EnemyStats>().setMP(hostile.GetComponent<EnemyStats>().getMaxMP());
-                hostile.GetComponent<EnemyStats>().setATK(UnityEngine.Random.Range(60, 120));
+                hostile.GetComponent<EnemyStats>().setATK(UnityEngine.Random.Range(80, 180));
                 hostile.GetComponent<EnemySkills>().SetSkills(LightAttack, LightAttackCost, HeavyAttack, HeavyAttackCost, HeavyAttack, HeavyAttackCost);
                 break;
         }

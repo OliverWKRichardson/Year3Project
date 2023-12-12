@@ -3322,10 +3322,6 @@ PrefabInstance:
       value: EnemyGenerator
       objectReference: {fileID: 0}
     - target: {fileID: 1020600322566426243, guid: 51149906674db58498e9330491324700, type: 3}
-      propertyPath: enemy
-      value: 
-      objectReference: {fileID: 325057740196528244, guid: 72a8b4f6e72df1a4fb97f02c94bd6621, type: 3}
-    - target: {fileID: 1020600322566426243, guid: 51149906674db58498e9330491324700, type: 3}
       propertyPath: forcetype
       value: 1
       objectReference: {fileID: 0}
@@ -5340,86 +5336,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3725697767213990040, guid: 65ad7bab792b22e44b39a2b20fdb9a8e, type: 3}
   m_PrefabInstance: {fileID: 1430665298}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1438720784
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1438720786}
-  - component: {fileID: 1438720785}
-  m_Layer: 0
-  m_Name: TutorialUI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1438720785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1438720784}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47aa17ee45d0f114f9b8cf73c4dfa7f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: pool
-  poolObjectList:
-  - id: cia pop up
-    prefab: {fileID: 1815021144859612, guid: d3abcaee7affeae40aa23763a42c92b7, type: 3}
-    bufferCount: 1
-    maxCount: 1
-    defaultParent: {fileID: 0}
-  - id: energy pop up
-    prefab: {fileID: 1815021144859612, guid: f9a8a35d1c0687a4c8d15fdd347208d3, type: 3}
-    bufferCount: 1
-    maxCount: 1
-    defaultParent: {fileID: 0}
-  - id: attack pop up
-    prefab: {fileID: 1815021144859612, guid: 642c577bb0554fe4dbe01a62a30c59e7, type: 3}
-    bufferCount: 1
-    maxCount: 1
-    defaultParent: {fileID: 0}
-  - id: speed pop up
-    prefab: {fileID: 1815021144859612, guid: bf60f5c7f80575445b41754642bbe912, type: 3}
-    bufferCount: 1
-    maxCount: 1
-    defaultParent: {fileID: 0}
-  - id: primary pop up
-    prefab: {fileID: 1815021144859612, guid: c04403ca9f32f9546b247b9ba9cf1324, type: 3}
-    bufferCount: 1
-    maxCount: 1
-    defaultParent: {fileID: 0}
-  - id: support pop up
-    prefab: {fileID: 1815021144859612, guid: 12f039efc8780334291ac0923ac011bf, type: 3}
-    bufferCount: 1
-    maxCount: 1
-    defaultParent: {fileID: 0}
-  - id: ability pop up
-    prefab: {fileID: 1815021144859612, guid: 76ea4fee9da59664a8f77e7f57316313, type: 3}
-    bufferCount: 1
-    maxCount: 1
-    defaultParent: {fileID: 0}
---- !u!4 &1438720786
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1438720784}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -44.81, y: 24.35, z: -1657.9218}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1446010127
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6955,10 +6871,6 @@ PrefabInstance:
     - target: {fileID: 4641109387795891171, guid: 457dc93474c8499459b7852259d4d72e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4656368495720329794, guid: 457dc93474c8499459b7852259d4d72e, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -5.5772705
       objectReference: {fileID: 0}
     - target: {fileID: 4769299171583369811, guid: 457dc93474c8499459b7852259d4d72e, type: 3}
       propertyPath: m_AnchorMax.y
