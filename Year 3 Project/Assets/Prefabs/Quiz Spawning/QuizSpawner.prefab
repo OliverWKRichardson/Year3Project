@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9100486860309537842}
   - component: {fileID: 126880630647617715}
+  - component: {fileID: 341495645651012967}
   m_Layer: 0
   m_Name: QuizSpawner
   m_TagString: Untagged
@@ -43,5 +44,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b23420beb43db9498b9780495ba18be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quizTriggered: 0
   quizScreenPrefab: {fileID: 867143569586200930, guid: 5b4cb2495a367ff40805c46fa3ebbcce, type: 3}
+  questions: []
+  quizManager: {fileID: 0}
+--- !u!114 &341495645651012967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099637101565938720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feb5b871d43a65b4398599a600d64cb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jsonFile: {fileID: 4900000, guid: ce3140d3233763d4c8e64530444e58fe, type: 3}
+  questionsInJSON:
+    questions: []

@@ -36,19 +36,20 @@ public class QuizSpawner : MonoBehaviour
                 playerMovement.DisablePlayerMovement();
 
                 generatedQuiz = Instantiate(quizScreenPrefab, other.transform.position, Quaternion.identity);
-                Debug.Log(!generatedQuiz);
+                //   Debug.Log(!generatedQuiz);
                 quizTriggered = true;
                 GetComponent<Collider2D>().enabled = false;
-              //  setQuizTexts();
-              setQuestions();
+
+                quizManager = QuizManager.Instance;
+                Debug.Log(quizManager);
+                setQuestions();
+
             }
         }
     }
 
     public void setQuestions()
-    {   
-        // readQuestionsFromJSON();
-        hardcodeQuestions();
+    {
         Transform menuCenter = generatedQuiz.transform.Find("QA/Menu Center");
         Transform question = menuCenter.transform.Find("Canvas/QuestionText");
 
@@ -59,70 +60,87 @@ public class QuizSpawner : MonoBehaviour
         Transform answerText2 = button2.transform.Find("AnswerText2");
         Transform answerText3 = button3.transform.Find("AnswerText3");
 
+        QuestionData questionData = quizManager.GetRandomQuestion();
+        Debug.Log(questionData.question);
+        question.gameObject.GetComponent<Text>().text = questionData.question;
 
-        string q = questions[rand.Next(questions.Length)];
-        question.GetComponent<Text>().text = q.ToString();
+        answerText1.gameObject.GetComponent<Text>().text = questionData.correctAnswer;
+        answerText2.gameObject.GetComponent<Text>().text = questionData.incorrectAnswer1;
+        answerText3.gameObject.GetComponent<Text>().text = questionData.incorrectAnswer2;
 
-        // get corresponding answers
-        int index = System.Array.IndexOf(questions, q);
-        string[] answers = answersList[index];
-        answerText1.GetComponent<Text>().text = answers[0];
-        answerText2.GetComponent<Text>().text = answers[1];
-        answerText3.GetComponent<Text>().text = answers[2];
+        RegisterButtonClicks();
 
-        
-
-       
-      
     }
 
 
-    void QuizCleared()
+    public void QuizCleared()
     {
+        // yield return new WaitForSeconds(2f); // five seconds
         playerMovement.EnablePlayerMovement();
         Destroy(generatedQuiz);
         Destroy(transform.parent.gameObject);
     }
 
 
-    // TODO: refactor this out of QuizSpawner
-    // TODO: do i need all of newtonsoft?
-    void readQuestionsFromJSON()
+    public void RegisterButtonClicks()
     {
-        // json reader
-        string filename = "Questions.json";
-        string path = Path.Combine(Application.dataPath, "Scripts", "QuizSystem", filename);
+        Debug.Log("Buttons listening");
+        Transform menuCenter = generatedQuiz.transform.Find("QA/Menu Center");
+        Transform button1 = menuCenter.transform.Find("Canvas/Answer 1 Button");
+        Transform button2 = menuCenter.transform.Find("Canvas/Answer 2 Button");
+        Transform button3 = menuCenter.transform.Find("Canvas/Answer 3 Button");
 
+        Button btn1 = button1.gameObject.GetComponent<Button>();
+        Button btn2 = button2.gameObject.GetComponent<Button>();
+        Button btn3 = button3.gameObject.GetComponent<Button>();
 
-        if (File.Exists(path))
+        btn1.onClick.AddListener(() => ButtonClick(btn1));
+        btn2.onClick.AddListener(() => ButtonClick(btn2));
+        btn3.onClick.AddListener(() => ButtonClick(btn3));
+    }
+
+    public void ButtonClick(Button clickedButton)
+    {
+        Transform menuCenter = generatedQuiz.transform.Find("QA/Menu Center");
+        Transform answer1Button = menuCenter.transform.Find("Canvas/Answer 1 Button");
+        Transform answer2Button = menuCenter.transform.Find("Canvas/Answer 2 Button");
+        Transform answer3Button = menuCenter.transform.Find("Canvas/Answer 3 Button");
+
+        // TODO: change buttons to random, so 1st != correct
+        if (clickedButton == answer1Button.GetComponent<Button>())
         {
-            string json = File.ReadAllText(path);
-            // TODO: change to seperate class for data
-          //  var questionsData = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(json);
+            Text buttonText = answer1Button.GetComponentInChildren<Text>();
+            if (buttonText != null)
+            {
+                buttonText.color = Color.green; // green prob
+            }
+
+            buttonText = answer2Button.GetComponentInChildren<Text>();
+            buttonText.color = Color.red;
+
+            buttonText = answer3Button.GetComponentInChildren<Text>();
+            buttonText.color = Color.red;
         }
         else
-        {
-            Debug.Log("File not found" + path);
+        {   
+            // TODO: remove redundancy
+            Text buttonText = answer1Button.GetComponentInChildren<Text>();
+            buttonText.color = Color.green;
+            
+            buttonText = answer2Button.GetComponentInChildren<Text>();
+            buttonText.color = Color.red;
+
+            buttonText = answer3Button.GetComponentInChildren<Text>();
+            buttonText.color = Color.red;
         }
 
+        StartCoroutine(QuizClearedAfterDelay());
     }
-    
-     // TODO: delete this for JSON instead
-    void hardcodeQuestions()
+
+    IEnumerator QuizClearedAfterDelay()
     {
-        questions = new string[] {
-        "What does 'non-repudiation' mean, in the context of information security?",
-        "What does CIA stand for?",
-        "What is the best password?",
-        "A tech company is trying to secure its sensitive data from unauthorized data. What is an essential measure it should consider to protect its IP?" };
-
-        answersList = new List<string[]>();
-        answersList.Add(new string[] { "The ability to prove that a user performed an action", "It refers to the process of concealing the identity of both the sender / recipient of a message", "It means allowing parties to deny sending / receiving a message without consequence" });
-        answersList.Add(new string[] { "Confidentiality, Integrity and Availability", "Covert Information Access", "Cybersecurity Infiltration Analysis" });
-        answersList.Add(new string[] { "kent.SU2018", "$starwars", "Frank2000", "bij$223jOIUnKhe", "p4$$w0rd"});
-        answersList.Add(new string[] { "Encryption", "Copyright", "Open Access", "Passwords"});
-
-    
+        yield return new WaitForSeconds(2f); // Two seconds 
+        QuizCleared();
     }
 
 }
