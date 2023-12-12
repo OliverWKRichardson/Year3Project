@@ -118,9 +118,9 @@ public class CombatScreen : MonoBehaviour
         if(turn == TurnType.playerTurn)
         {
             skill1(enemy);
-            // Wait for 3 seconds
-            Debug.Log("Waiting for 3 seconds");
-            playerTurnTimer = 3;
+            // Wait for 1 seconds
+            Debug.Log("Waiting for 1 second");
+            playerTurnTimer = 1;
             playerTurnTimerDone = false;
             // -- Continued in player timer --
         }
@@ -139,9 +139,9 @@ public class CombatScreen : MonoBehaviour
         if(turn == TurnType.playerTurn)
         {
             skill2(enemy);
-            // Wait for 3 seconds
-            Debug.Log("Waiting for 3 seconds");
-            playerTurnTimer = 3;
+            // Wait for 1 second
+            Debug.Log("Waiting for 1 second");
+            playerTurnTimer = 1;
             playerTurnTimerDone = false;
             // -- Continued in player timer --
         }
@@ -160,9 +160,9 @@ public class CombatScreen : MonoBehaviour
         if(turn == TurnType.playerTurn)
         {
             skill3(enemy);
-            // Wait for 3 seconds
-            Debug.Log("Waiting for 3 seconds");
-            playerTurnTimer = 3;
+            // Wait for 1 second
+            Debug.Log("Waiting for 1 second");
+            playerTurnTimer = 1;
             playerTurnTimerDone = false;
             // -- Continued in player timer --
         }
@@ -320,9 +320,9 @@ public class CombatScreen : MonoBehaviour
                     enemy.GetComponent<EnemySkills>().UseSkill3(player);
                 break;
             }
-            // Wait for 3 seconds
-            Debug.Log("Waiting for 3 seconds");
-            enemyTurnTimer = 3;
+            // Wait for 1 second
+            Debug.Log("Waiting for 1 second");
+            enemyTurnTimer = 1;
             enemyTurnTimerDone = false;
             // -- Continued in enemy timer --
         }
