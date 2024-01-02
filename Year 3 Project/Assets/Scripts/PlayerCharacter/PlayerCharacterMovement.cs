@@ -20,8 +20,6 @@ public class PlayerCharacterMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Hide Mouse
-        Cursor.visible = false;
         // set initial stats for player
         PlayerStats playerStats = GetComponent<PlayerStats>();
         playerStats.setSPD(7);
