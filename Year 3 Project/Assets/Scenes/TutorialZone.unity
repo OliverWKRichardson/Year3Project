@@ -5724,7 +5724,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "CyberScrubberAI Online Activating Controls... \n(Try Moving With WASD)"
+  m_Text: "CyberScrubberAI Online Activating Controls... \n(Try Moving With WASD
+    or Arrow Keys)"
 --- !u!222 &1577271334
 CanvasRenderer:
   m_ObjectHideFlags: 0
