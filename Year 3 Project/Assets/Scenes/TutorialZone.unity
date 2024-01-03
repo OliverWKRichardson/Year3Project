@@ -3322,6 +3322,10 @@ PrefabInstance:
       value: EnemyGenerator
       objectReference: {fileID: 0}
     - target: {fileID: 1020600322566426243, guid: 51149906674db58498e9330491324700, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 8111547376780809492, guid: 0f27d43d819ffe34f92bdfe91c5875c5, type: 3}
+    - target: {fileID: 1020600322566426243, guid: 51149906674db58498e9330491324700, type: 3}
       propertyPath: forcetype
       value: 1
       objectReference: {fileID: 0}
