@@ -29,6 +29,8 @@ public class CombatScreen : MonoBehaviour
     private System.Action<GameObject> skill2;
     private System.Action<GameObject> skill3;
 
+    private Transform hudTransform;
+
     public enum TurnType{playerTurn, enemyTurn, END, START};
     public TurnType turn = TurnType.START;
 
@@ -59,6 +61,9 @@ public class CombatScreen : MonoBehaviour
         enemyTurnTimer = 0;
         playerTurnTimerDone = true;
         playerTurnTimer = 0;
+
+        hudTransform = player.transform.Find("HUD");
+        hudTransform.gameObject.SetActive(false);
     }
 
     public void setEnemy(GameObject setEnemy)
@@ -194,6 +199,8 @@ public class CombatScreen : MonoBehaviour
         {
             // End Combat
             turn = TurnType.END;
+            // Re-enable minimap
+            hudTransform.gameObject.SetActive(true);
             // Reward Player
             player.GetComponent<PersistAcrossScenes>().addScore(100);
             // WIP give money to player once implemented
