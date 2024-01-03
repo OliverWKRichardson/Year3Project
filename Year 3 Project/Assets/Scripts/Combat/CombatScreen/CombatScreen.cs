@@ -25,6 +25,8 @@ public class CombatScreen : MonoBehaviour
     public GameObject button1;
     public GameObject button2;
     public GameObject button3;
+    public GameObject winText;
+    public GameObject loseText;
 
     private System.Action<GameObject> skill1;
     private System.Action<GameObject> skill2;
@@ -188,7 +190,7 @@ public class CombatScreen : MonoBehaviour
         if ((player.GetComponent<PlayerStats>().getC() == 0) || (player.GetComponent<PlayerStats>().getI() == 0) || (player.GetComponent<PlayerStats>().getA() == 0)) // player dies(hp doesn't go below 0 as it is clamped)
         {
             turn = TurnType.combatover;
-            // WIP display lose text
+            loseText.SetActive(true);
             if (Input.GetMouseButtonDown(0))
             {
                 playergameover = true;
@@ -198,9 +200,9 @@ public class CombatScreen : MonoBehaviour
         if (enemy.GetComponent<EnemyStats>().getHP() == 0) // enemy dies(hp doesn't go below 0 as it is clamped)
         {
             turn = TurnType.combatover;
+            winText.SetActive(true);
             if (Input.GetMouseButtonDown(0))
             {
-                // WIP display win text
                 // End Combat
                 turn = TurnType.END;
                 // Reward Player
