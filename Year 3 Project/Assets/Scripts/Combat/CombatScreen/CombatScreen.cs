@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using Pathfinding;
+using UnityEngine.UIElements;
 
 public class CombatScreen : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class CombatScreen : MonoBehaviour
     public GameObject button1;
     public GameObject button2;
     public GameObject button3;
+    public GameObject winText;
+    public GameObject loseText;
 
     private System.Action<GameObject> skill1;
     private System.Action<GameObject> skill2;
@@ -31,7 +34,8 @@ public class CombatScreen : MonoBehaviour
 
     private Transform hudTransform;
 
-    public enum TurnType{playerTurn, enemyTurn, END, START};
+    public enum TurnType { playerTurn, enemyTurn, END, START, combatover };
+    
     public TurnType turn = TurnType.START;
 
     public TurnType getTurn()
@@ -44,6 +48,7 @@ public class CombatScreen : MonoBehaviour
 
     float playerTurnTimer;
     bool playerTurnTimerDone;
+    bool playergameover;
 
     // Start is called before the first frame update
     // Initiate Combat Here
@@ -52,7 +57,6 @@ public class CombatScreen : MonoBehaviour
     // Decide starting turn
     void Start()
     {
-        Cursor.visible = true;
         MenuCenter.transform.GetChild(0).GetComponent<Canvas>().worldCamera = Camera.main;
         button1.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(useSkill1);
         button2.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(useSkill2);
@@ -61,6 +65,8 @@ public class CombatScreen : MonoBehaviour
         enemyTurnTimer = 0;
         playerTurnTimerDone = true;
         playerTurnTimer = 0;
+        
+        playergameover = false;
 
         hudTransform = player.transform.Find("HUD");
         hudTransform.gameObject.SetActive(false);
@@ -75,29 +81,29 @@ public class CombatScreen : MonoBehaviour
         Instantiate(player.GetComponent<CombatSprite>().getCombatSprite(), PlayerSpriteSpawn.transform);
         Instantiate(enemy.GetComponent<CombatSprite>().getCombatSprite(), EnemySpriteSpawn.transform);
         // set up hp bars
-        enemyHPBar.GetComponent<ResourceBar>().SetMax((int) enemy.GetComponent<EnemyStats>().getMaxHP());
-        playerHPBarC.GetComponent<ResourceBar>().SetMax((int) player.GetComponent<PlayerStats>().getMaxC());
-        playerHPBarI.GetComponent<ResourceBar>().SetMax((int) player.GetComponent<PlayerStats>().getMaxI());
-        playerHPBarA.GetComponent<ResourceBar>().SetMax((int) player.GetComponent<PlayerStats>().getMaxA());
-        enemyHPBar.GetComponent<ResourceBar>().Set((int) enemy.GetComponent<EnemyStats>().getHP());
-        playerHPBarC.GetComponent<ResourceBar>().Set((int) player.GetComponent<PlayerStats>().getC());
-        playerHPBarI.GetComponent<ResourceBar>().Set((int) player.GetComponent<PlayerStats>().getI());
-        playerHPBarA.GetComponent<ResourceBar>().Set((int) player.GetComponent<PlayerStats>().getA());
-        
+        enemyHPBar.GetComponent<ResourceBar>().SetMax((int)enemy.GetComponent<EnemyStats>().getMaxHP());
+        playerHPBarC.GetComponent<ResourceBar>().SetMax((int)player.GetComponent<PlayerStats>().getMaxC());
+        playerHPBarI.GetComponent<ResourceBar>().SetMax((int)player.GetComponent<PlayerStats>().getMaxI());
+        playerHPBarA.GetComponent<ResourceBar>().SetMax((int)player.GetComponent<PlayerStats>().getMaxA());
+        enemyHPBar.GetComponent<ResourceBar>().Set((int)enemy.GetComponent<EnemyStats>().getHP());
+        playerHPBarC.GetComponent<ResourceBar>().Set((int)player.GetComponent<PlayerStats>().getC());
+        playerHPBarI.GetComponent<ResourceBar>().Set((int)player.GetComponent<PlayerStats>().getI());
+        playerHPBarA.GetComponent<ResourceBar>().Set((int)player.GetComponent<PlayerStats>().getA());
+
         // set up mp bars
-        enemyMPBar.GetComponent<ResourceBar>().SetMax((int) enemy.GetComponent<EnemyStats>().getMaxMP());
-        playerMPBar.GetComponent<ResourceBar>().SetMax((int) player.GetComponent<PlayerStats>().getMaxMP());
-        enemyMPBar.GetComponent<ResourceBar>().Set((int) enemy.GetComponent<EnemyStats>().getMP());
-        playerMPBar.GetComponent<ResourceBar>().Set((int) player.GetComponent<PlayerStats>().getMP());
+        enemyMPBar.GetComponent<ResourceBar>().SetMax((int)enemy.GetComponent<EnemyStats>().getMaxMP());
+        playerMPBar.GetComponent<ResourceBar>().SetMax((int)player.GetComponent<PlayerStats>().getMaxMP());
+        enemyMPBar.GetComponent<ResourceBar>().Set((int)enemy.GetComponent<EnemyStats>().getMP());
+        playerMPBar.GetComponent<ResourceBar>().Set((int)player.GetComponent<PlayerStats>().getMP());
 
         // set up player skills
         skill1 = player.GetComponent<Skills>().skill1;
         skill2 = player.GetComponent<Skills>().skill2;
         skill3 = player.GetComponent<Skills>().skill3;
         // set starting turn
-        if(turn == TurnType.START)
+        if (turn == TurnType.START)
         {
-            if(player.GetComponent<PlayerStats>().getSPD() >= enemy.GetComponent<EnemyStats>().getSPD())
+            if (player.GetComponent<PlayerStats>().getSPD() >= enemy.GetComponent<EnemyStats>().getSPD())
             {
                 turn = TurnType.playerTurn;
             }
@@ -111,16 +117,16 @@ public class CombatScreen : MonoBehaviour
     // Player Turns
     public void useSkill1()
     {
-        if(playerTurnTimerDone != true)
+        if (playerTurnTimerDone != true)
         {
             return;
         }
-        if(player.GetComponent<Skills>().skill1cost > player.GetComponent<PlayerStats>().getMP())
+        if (player.GetComponent<Skills>().skill1cost > player.GetComponent<PlayerStats>().getMP())
         {
             Debug.Log("Not Enough MP");
             return;
         }
-        if(turn == TurnType.playerTurn)
+        if (turn == TurnType.playerTurn)
         {
             skill1(enemy);
             // Wait for 1 second
@@ -132,16 +138,16 @@ public class CombatScreen : MonoBehaviour
     }
     public void useSkill2()
     {
-        if(playerTurnTimerDone != true)
+        if (playerTurnTimerDone != true)
         {
             return;
         }
-        if(player.GetComponent<Skills>().skill2cost > player.GetComponent<PlayerStats>().getMP())
+        if (player.GetComponent<Skills>().skill2cost > player.GetComponent<PlayerStats>().getMP())
         {
             Debug.Log("Not Enough MP");
             return;
         }
-        if(turn == TurnType.playerTurn)
+        if (turn == TurnType.playerTurn)
         {
             skill2(enemy);
             // Wait for 1 second
@@ -153,16 +159,16 @@ public class CombatScreen : MonoBehaviour
     }
     public void useSkill3()
     {
-        if(playerTurnTimerDone != true)
+        if (playerTurnTimerDone != true)
         {
             return;
         }
-        if(player.GetComponent<Skills>().skill3cost > player.GetComponent<PlayerStats>().getMP())
+        if (player.GetComponent<Skills>().skill3cost > player.GetComponent<PlayerStats>().getMP())
         {
             Debug.Log("Not Enough MP");
             return;
         }
-        if(turn == TurnType.playerTurn)
+        if (turn == TurnType.playerTurn)
         {
             skill3(enemy);
             // Wait for 1 second
@@ -179,31 +185,38 @@ public class CombatScreen : MonoBehaviour
     void Update()
     {
         //Update HP Bars
-        enemyHPBar.GetComponent<ResourceBar>().Set((int) enemy.GetComponent<EnemyStats>().getHP());
-        playerHPBarC.GetComponent<ResourceBar>().Set((int) player.GetComponent<PlayerStats>().getC());
-        playerHPBarI.GetComponent<ResourceBar>().Set((int) player.GetComponent<PlayerStats>().getI());
-        playerHPBarA.GetComponent<ResourceBar>().Set((int) player.GetComponent<PlayerStats>().getA());
+        enemyHPBar.GetComponent<ResourceBar>().Set((int)enemy.GetComponent<EnemyStats>().getHP());
+        playerHPBarC.GetComponent<ResourceBar>().Set((int)player.GetComponent<PlayerStats>().getC());
+        playerHPBarI.GetComponent<ResourceBar>().Set((int)player.GetComponent<PlayerStats>().getI());
+        playerHPBarA.GetComponent<ResourceBar>().Set((int)player.GetComponent<PlayerStats>().getA());
         // Update MP Bars
-        enemyMPBar.GetComponent<ResourceBar>().Set((int) enemy.GetComponent<EnemyStats>().getMP());
-        playerMPBar.GetComponent<ResourceBar>().Set((int) player.GetComponent<PlayerStats>().getMP());
+        enemyMPBar.GetComponent<ResourceBar>().Set((int)enemy.GetComponent<EnemyStats>().getMP());
+        playerMPBar.GetComponent<ResourceBar>().Set((int)player.GetComponent<PlayerStats>().getMP());
 
         // Determine If Combat is Over
-        if((player.GetComponent<PlayerStats>().getC() == 0)||(player.GetComponent<PlayerStats>().getI() == 0)||(player.GetComponent<PlayerStats>().getA() == 0)) // player dies(hp doesn't go below 0 as it is clamped)
+        if ((player.GetComponent<PlayerStats>().getC() == 0) || (player.GetComponent<PlayerStats>().getI() == 0) || (player.GetComponent<PlayerStats>().getA() == 0)) // player dies(hp doesn't go below 0 as it is clamped)
         {
-            // Game Over Screen
-            SceneManager.LoadScene(1); 
-            player.GetComponent<PersistAcrossScenes>().removeCamera();
-            Destroy(gameObject);
+            turn = TurnType.combatover;
+            loseText.SetActive(true);
+            if (Input.GetMouseButtonDown(0))
+            {
+                playergameover = true;
+                turn = TurnType.END;
+            }
         }
-        if(enemy.GetComponent<EnemyStats>().getHP() == 0) // enemy dies(hp doesn't go below 0 as it is clamped)
+        if (enemy.GetComponent<EnemyStats>().getHP() == 0) // enemy dies(hp doesn't go below 0 as it is clamped)
         {
-            // End Combat
-            turn = TurnType.END;
-            // Re-enable minimap
-            hudTransform.gameObject.SetActive(true);
-            // Reward Player
-            player.GetComponent<PersistAcrossScenes>().addScore(100);
-            // WIP give money to player once implemented
+            turn = TurnType.combatover;
+            winText.SetActive(true);
+            if (Input.GetMouseButtonDown(0))
+            {
+                // End Combat
+                turn = TurnType.END;
+                // Reward Player
+                player.GetComponent<PersistAcrossScenes>().addScore(100);
+                // Re-enable minimap
+                hudTransform.gameObject.SetActive(true);
+            }
         }
 
         // Timers
@@ -216,17 +229,17 @@ public class CombatScreen : MonoBehaviour
         {
             // -- Continued from player action --
             // Apply Condition On turn Affects
-            if(player.GetComponent<PlayerStats>().HasCondition("DoTA"))
+            if (player.GetComponent<PlayerStats>().HasCondition("DoTA"))
             {
                 float dmg = player.GetComponent<PlayerStats>().GetAmountTotal("DoTA");
                 player.GetComponent<PlayerStats>().DamageA(dmg);
             }
-            if(player.GetComponent<PlayerStats>().HasCondition("DoTI"))
+            if (player.GetComponent<PlayerStats>().HasCondition("DoTI"))
             {
                 float dmg = player.GetComponent<PlayerStats>().GetAmountTotal("DoTI");
                 player.GetComponent<PlayerStats>().DamageI(dmg);
             }
-            if(player.GetComponent<PlayerStats>().HasCondition("DoTC"))
+            if (player.GetComponent<PlayerStats>().HasCondition("DoTC"))
             {
                 float dmg = player.GetComponent<PlayerStats>().GetAmountTotal("DoTC");
                 player.GetComponent<PlayerStats>().DamageC(dmg);
@@ -240,7 +253,10 @@ public class CombatScreen : MonoBehaviour
             enemy.GetComponent<EnemyStats>().regenMP();
 
             // enemy turn
-            turn = TurnType.enemyTurn;
+            if (turn != TurnType.combatover)
+            {
+                turn = TurnType.enemyTurn;
+            }
 
             //Set to false so that We don't run this again
             playerTurnTimerDone = true;
@@ -255,7 +271,7 @@ public class CombatScreen : MonoBehaviour
         {
             // -- Continued from enemy turn --
             // Apply Condition On turn Affects
-            if(player.GetComponent<PlayerStats>().HasCondition("DoT"))
+            if (player.GetComponent<PlayerStats>().HasCondition("DoT"))
             {
                 float dmg = player.GetComponent<PlayerStats>().GetAmountTotal("DoT");
                 enemy.GetComponent<EnemyStats>().Damage(dmg);
@@ -267,47 +283,42 @@ public class CombatScreen : MonoBehaviour
             Debug.Log("Player Mana Regens");
             player.GetComponent<PlayerStats>().regenMP();
             // Becomes Players turn again
-            Debug.Log("Player Turn");
-            turn = TurnType.playerTurn;
+            if (turn != TurnType.combatover)
+            {
+                Debug.Log("Player Turn");
+                turn = TurnType.playerTurn;
+            }
 
             //Set to false so that We don't run this again
             enemyTurnTimerDone = true;
         }
 
-        // WIP testing stuff
-        //if(turn != TurnType.START)
-        //{
-        //    if(Input.GetKey(KeyCode.Q))
-        //    {
-        //        // set enemy hp to 0 if not in start and press q
-        //        enemy.GetComponent<Stats>().setHP(0);
-        //    }
-        //}
-        //if(turn != TurnType.START)
-        //{
-        //    if(Input.GetKey(KeyCode.Q))
-        //    {
-        //        // set own hp to 0 if not in start and press q
-        //        player.GetComponent<Stats>().setHP(0);
-        //    }
-        //}
-
         // check turn
-        if(turn == TurnType.START)
+        if (turn == TurnType.START)
         {
             return;
         }
-        else if(turn == TurnType.END)
+        else if (turn == TurnType.END)
         {
-            player.GetComponent<PlayerStats>().WipeConditions();
-            enemy.GetComponent<EnemyStats>().WipeConditions();
-            player.GetComponent<CombatStatus>().outCombat();
-            Cursor.visible = false;
-            // Re-Enable Enemy chasing Player
-            if (enemy.GetComponent<AIDestinationSetter>() != null) { enemy.GetComponent<AIDestinationSetter>().leaveCombat();}
-            enemy.transform.GetChild(0).GetComponent<CombatStarter>().endCombat();
+            if (playergameover)
+            {
+                // Game Over Screen
+                SceneManager.LoadScene(1);
+                player.GetComponent<PersistAcrossScenes>().removeCamera();
+                Destroy(gameObject);
+            }
+            else
+            {
+                player.GetComponent<PlayerStats>().WipeConditions();
+                enemy.GetComponent<EnemyStats>().WipeConditions();
+                player.GetComponent<CombatStatus>().outCombat();
+                // Re-Enable Enemy chasing Player
+                if (enemy.GetComponent<AIDestinationSetter>() != null) { enemy.GetComponent<AIDestinationSetter>().leaveCombat(); }
+                enemy.transform.GetChild(0).GetComponent<CombatStarter>().endCombat();
+            }
+
         }
-        else if((turn == TurnType.enemyTurn)&&(enemyTurnTimerDone == true))
+        else if ((turn == TurnType.enemyTurn) && (enemyTurnTimerDone == true))
         {
             Debug.Log("Enemy Turn");
             // Enemy moves
@@ -315,17 +326,17 @@ public class CombatScreen : MonoBehaviour
             // decide move to use
             int move = enemy.GetComponent<EnemySkills>().DecideMove();
             // use picked move
-            switch(move)
+            switch (move)
             {
                 case 1:
                     enemy.GetComponent<EnemySkills>().UseSkill1(player);
-                break;
+                    break;
                 case 2:
                     enemy.GetComponent<EnemySkills>().UseSkill2(player);
-                break;
+                    break;
                 case 3:
                     enemy.GetComponent<EnemySkills>().UseSkill3(player);
-                break;
+                    break;
             }
             // Wait for 1 second
             Debug.Log("Waiting for 1 second");

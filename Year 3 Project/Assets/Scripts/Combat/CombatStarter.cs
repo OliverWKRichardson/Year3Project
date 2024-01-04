@@ -31,9 +31,12 @@ public class CombatStarter : MonoBehaviour
             // if hit something
             if(hit.collider != null)
             {
+
+                
                 // if is the player
                 if(hit.collider.gameObject == GameObject.Find("PlayerCharacter") && (AIDestinationSetter.inCombat == false))
                 {
+
                     Debug.Log("Entered Combat");
                     inCombat = true;
                     AIDestinationSetter.inCombat = true;
@@ -72,6 +75,15 @@ public class CombatStarter : MonoBehaviour
         {
             Debug.Log("Near Enemy");
             lineOfSightTesting = true;
+        }
+
+        // if player has a FireWall barrier active
+        if(other.gameObject.tag == "Barrier")
+        {
+            Debug.Log("FireWalled");
+            GameObject enemy = gameObject.transform.parent.gameObject;
+            StunBehavior enemyscript = enemy.GetComponent<StunBehavior>();
+            enemyscript.StartCoroutine(enemyscript.Stun());
         }
     }
 

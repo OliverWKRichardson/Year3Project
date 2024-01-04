@@ -8,7 +8,7 @@ public class JSONReader : MonoBehaviour
     public Questions questionsInJSON;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         questionsInJSON = JsonUtility.FromJson<Questions>(jsonFile.text);
     }

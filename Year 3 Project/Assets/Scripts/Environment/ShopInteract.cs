@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 
@@ -123,6 +124,11 @@ public class ShopInteract : MonoBehaviour
         stats.setA(stats.getMaxA());
     }
    
+    public void buyFW()
+    {
+        gameObject.transform.Find("Firewall").gameObject.SetActive(true);
 
+        
+    }
 
 }
