@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using Pathfinding;
 // using Newtonsoft.Json;
 
 
@@ -16,7 +17,7 @@ public class QuizSpawner : MonoBehaviour
 
     public List<string[]> answersList;
 
-    public QuizManager quizManager;
+    private QuizManager quizManager;
 
     private PlayerCharacterMovement playerMovement;
 
@@ -24,6 +25,10 @@ public class QuizSpawner : MonoBehaviour
 
     private System.Random rand = new System.Random();
 
+    private void Start()
+    {
+        quizManager = this.GetComponent<QuizManager>();
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -32,6 +37,9 @@ public class QuizSpawner : MonoBehaviour
 
             if (!quizTriggered)
             {
+                //Disable enemy AI
+                AIDestinationSetter.inCombat = true;
+
                 playerMovement = other.GetComponent<PlayerCharacterMovement>();
                 playerMovement.DisablePlayerMovement();
 
@@ -75,7 +83,11 @@ public class QuizSpawner : MonoBehaviour
 
     public void QuizCleared()
     {
+
         // yield return new WaitForSeconds(2f); // five seconds
+
+        //Enable enemy AI
+        AIDestinationSetter.inCombat = false;
         playerMovement.EnablePlayerMovement();
         Destroy(generatedQuiz);
         Destroy(transform.parent.gameObject);

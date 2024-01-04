@@ -3,7 +3,9 @@ guid: 3b23420beb43db9498b9780495ba18be
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - quizScreenPrefab: {instanceID: 0}
+  - quizManager: {fileID: 5904660399294959440, guid: fb92c274ff711e54a806d261a300099f, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

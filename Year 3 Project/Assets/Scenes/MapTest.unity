@@ -463,6 +463,8 @@ MonoBehaviour:
   - {fileID: 581394291653364797, guid: a3023274ee7f6e44690b86ee83fbc69a, type: 3}
   - {fileID: 860693063097776399, guid: 562b33fa4877ee345a57f77bcfbcf7ca, type: 3}
   - {fileID: 4919906905180224783, guid: fbf41d4fa9cbf6744a9b39fa5c2a1d9b, type: 3}
+  roomx: 20
+  roomy: 12
   mapscript: {fileID: 1955054922}
   width: 40
   length: 24
