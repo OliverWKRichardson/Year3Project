@@ -32,7 +32,10 @@ public class CombatScreen : MonoBehaviour
     private System.Action<GameObject> skill2;
     private System.Action<GameObject> skill3;
 
+    private Transform hudTransform;
+
     public enum TurnType { playerTurn, enemyTurn, END, START, combatover };
+    
     public TurnType turn = TurnType.START;
 
     public TurnType getTurn()
@@ -62,7 +65,11 @@ public class CombatScreen : MonoBehaviour
         enemyTurnTimer = 0;
         playerTurnTimerDone = true;
         playerTurnTimer = 0;
+        
         playergameover = false;
+
+        hudTransform = player.transform.Find("HUD");
+        hudTransform.gameObject.SetActive(false);
     }
 
     public void setEnemy(GameObject setEnemy)
@@ -122,9 +129,9 @@ public class CombatScreen : MonoBehaviour
         if (turn == TurnType.playerTurn)
         {
             skill1(enemy);
-            // Wait for 3 seconds
-            Debug.Log("Waiting for 3 seconds");
-            playerTurnTimer = 3;
+            // Wait for 1 second
+            Debug.Log("Waiting for 1 second");
+            playerTurnTimer = 1;
             playerTurnTimerDone = false;
             // -- Continued in player timer --
         }
@@ -143,9 +150,9 @@ public class CombatScreen : MonoBehaviour
         if (turn == TurnType.playerTurn)
         {
             skill2(enemy);
-            // Wait for 3 seconds
-            Debug.Log("Waiting for 3 seconds");
-            playerTurnTimer = 3;
+            // Wait for 1 second
+            Debug.Log("Waiting for 1 second");
+            playerTurnTimer = 1;
             playerTurnTimerDone = false;
             // -- Continued in player timer --
         }
@@ -164,9 +171,9 @@ public class CombatScreen : MonoBehaviour
         if (turn == TurnType.playerTurn)
         {
             skill3(enemy);
-            // Wait for 3 seconds
-            Debug.Log("Waiting for 3 seconds");
-            playerTurnTimer = 3;
+            // Wait for 1 second
+            Debug.Log("Waiting for 1 second");
+            playerTurnTimer = 1;
             playerTurnTimerDone = false;
             // -- Continued in player timer --
         }
@@ -207,7 +214,8 @@ public class CombatScreen : MonoBehaviour
                 turn = TurnType.END;
                 // Reward Player
                 player.GetComponent<PersistAcrossScenes>().addScore(100);
-                // WIP give money to player once implemented
+                // Re-enable minimap
+                hudTransform.gameObject.SetActive(true);
             }
         }
 
@@ -330,9 +338,9 @@ public class CombatScreen : MonoBehaviour
                     enemy.GetComponent<EnemySkills>().UseSkill3(player);
                     break;
             }
-            // Wait for 3 seconds
-            Debug.Log("Waiting for 3 seconds");
-            enemyTurnTimer = 3;
+            // Wait for 1 second
+            Debug.Log("Waiting for 1 second");
+            enemyTurnTimer = 1;
             enemyTurnTimerDone = false;
             // -- Continued in enemy timer --
         }
