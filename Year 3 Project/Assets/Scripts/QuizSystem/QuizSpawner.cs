@@ -72,9 +72,21 @@ public class QuizSpawner : MonoBehaviour
         Debug.Log(questionData.question);
         question.gameObject.GetComponent<Text>().text = questionData.question;
 
-        answerText1.gameObject.GetComponent<Text>().text = questionData.correctAnswer;
-        answerText2.gameObject.GetComponent<Text>().text = questionData.incorrectAnswer1;
-        answerText3.gameObject.GetComponent<Text>().text = questionData.incorrectAnswer2;
+        List<Transform> answerButtons = new List<Transform> { button1, button2, button3 };
+
+        List<string> answers = new List<string> {
+            questionData.correctAnswer,
+            questionData.incorrectAnswer1,
+            questionData.incorrectAnswer2
+        };
+
+        Shuffle(answerButtons);
+        Shuffle(answers);
+
+        for (int i = 0; i < answerButtons.Count; i++)
+        {
+            answerButtons[i].gameObject.GetComponentInChildren<Text>().text = answers[i];
+        }
 
         RegisterButtonClicks();
 
@@ -83,12 +95,10 @@ public class QuizSpawner : MonoBehaviour
 
     public void QuizCleared()
     {
-
-        // yield return new WaitForSeconds(2f); // five seconds
-
-        //Enable enemy AI
+        // Enable enemy AI
         AIDestinationSetter.inCombat = false;
         playerMovement.EnablePlayerMovement();
+
         Destroy(generatedQuiz);
         Destroy(transform.parent.gameObject);
     }
@@ -153,6 +163,19 @@ public class QuizSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(2f); // Two seconds 
         QuizCleared();
+    }
+
+    private void Shuffle<T>(List<T> list)
+    {
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rand.Next(n + 1);
+            T value = list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
     }
 
 }
