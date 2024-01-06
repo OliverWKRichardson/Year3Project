@@ -10,6 +10,9 @@ using Pathfinding;
 
 public class QuizSpawner : MonoBehaviour
 {
+
+    private bool answerSelected = false;
+
     private bool quizTriggered = false;
     public GameObject quizScreenPrefab;
 
@@ -24,6 +27,8 @@ public class QuizSpawner : MonoBehaviour
     private GameObject generatedQuiz;
 
     private System.Random rand = new System.Random();
+
+    private QuestionData questionData;
 
     private void Start()
     {
@@ -56,6 +61,14 @@ public class QuizSpawner : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (quizTriggered && answerSelected && Input.GetMouseButtonDown(0)) // Check if answer is selected and the mouse is clicked
+        {
+           QuizCleared();
+        }
+    }
+
     public void setQuestions()
     {
         Transform menuCenter = generatedQuiz.transform.Find("QA/Menu Center");
@@ -68,7 +81,7 @@ public class QuizSpawner : MonoBehaviour
         Transform answerText2 = button2.transform.Find("AnswerText2");
         Transform answerText3 = button3.transform.Find("AnswerText3");
 
-        QuestionData questionData = quizManager.GetRandomQuestion();
+        questionData = quizManager.GetRandomQuestion();
         Debug.Log(questionData.question);
         question.gameObject.GetComponent<Text>().text = questionData.question;
 
@@ -121,43 +134,58 @@ public class QuizSpawner : MonoBehaviour
         btn3.onClick.AddListener(() => ButtonClick(btn3));
     }
 
+
+
     public void ButtonClick(Button clickedButton)
     {
-        Transform menuCenter = generatedQuiz.transform.Find("QA/Menu Center");
-        Transform answer1Button = menuCenter.transform.Find("Canvas/Answer 1 Button");
-        Transform answer2Button = menuCenter.transform.Find("Canvas/Answer 2 Button");
-        Transform answer3Button = menuCenter.transform.Find("Canvas/Answer 3 Button");
-
-        // TODO: change buttons to random, so 1st != correct
-        if (clickedButton == answer1Button.GetComponent<Button>())
+        if (quizTriggered && !answerSelected)
         {
-            Text buttonText = answer1Button.GetComponentInChildren<Text>();
-            if (buttonText != null)
+            Transform menuCenter = generatedQuiz.transform.Find("QA/Menu Center");
+            Transform[] answerButtons = new Transform[3];
+
+            for (int i = 0; i < 3; i++)
             {
-                buttonText.color = Color.green; // green prob
+                answerButtons[i] = menuCenter.transform.Find($"Canvas/Answer {i + 1} Button");
             }
 
-            buttonText = answer2Button.GetComponentInChildren<Text>();
-            buttonText.color = Color.red;
+            string correctAnswer = questionData.correctAnswer;
+          //  Debug.Log(correctAnswer);
 
-            buttonText = answer3Button.GetComponentInChildren<Text>();
-            buttonText.color = Color.red;
+            foreach (Transform button in answerButtons)
+            {
+                Text buttonText = button.GetComponentInChildren<Text>();
+
+                if (button.GetComponent<Button>() == clickedButton)
+                {
+                  //  Debug.Log($"Clicked Button Text: {buttonText.text} | Correct Answer: {correctAnswer}");
+
+                    if (buttonText.text == correctAnswer)
+                    {
+                        buttonText.color = Color.green; // Correct answer picked
+                    }
+                    else
+                    {
+                        buttonText.color = Color.red; // Incorrect answer picked
+                        foreach (Transform answerButton in answerButtons)
+                        {
+                            if (answerButton.GetComponentInChildren<Text>().text == correctAnswer)
+                            {
+                                answerButton.GetComponentInChildren<Text>().color = Color.green; // Highlight correct answer in green
+                               // break;
+                            }
+                            else { answerButton.GetComponentInChildren<Text>().color = Color.red; }
+                        }
+                    }
+                }
+            }
         }
-        else
-        {   
-            // TODO: remove redundancy
-            Text buttonText = answer1Button.GetComponentInChildren<Text>();
-            buttonText.color = Color.green;
-            
-            buttonText = answer2Button.GetComponentInChildren<Text>();
-            buttonText.color = Color.red;
-
-            buttonText = answer3Button.GetComponentInChildren<Text>();
-            buttonText.color = Color.red;
-        }
-
-        StartCoroutine(QuizClearedAfterDelay());
+        answerSelected = true;
+        // StartCoroutine(QuizClearedAfterDelay());
     }
+
+
+
+
 
     IEnumerator QuizClearedAfterDelay()
     {
