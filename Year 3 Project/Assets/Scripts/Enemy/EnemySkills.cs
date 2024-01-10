@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security;
 using UnityEngine;
+using System;
 
 public class EnemySkills : MonoBehaviour
 {
@@ -11,9 +12,18 @@ public class EnemySkills : MonoBehaviour
     private int Skill1Cost;
     private int Skill2Cost;
     private int Skill3Cost;
+    
+    public String skill1Name;
+    
+    public String skill2Name;
+    
+    public String skill3Name;
    
-    public void SetSkills(System.Action<GameObject> one, int oneCost, System.Action<GameObject> two, int twoCost, System.Action<GameObject> three, int threeCost)
+    public void SetSkills(String name1, System.Action<GameObject> one, int oneCost, String name2, System.Action<GameObject> two, int twoCost, String name3, System.Action<GameObject> three, int threeCost)
     {
+        skill1Name = name1;
+        skill2Name = name2;
+        skill3Name = name3;
         skill1 = one;
         skill2 = two;
         skill3 = three;
@@ -63,7 +73,7 @@ public class EnemySkills : MonoBehaviour
             else
             {
                 // if multiple possible skills to use
-                picked = Random.Range(1,4);
+                picked = UnityEngine.Random.Range(1,4);
                 switch (picked)
                 {
                     case 1:

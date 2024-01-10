@@ -28,7 +28,7 @@ public class BossGenerator : MonoBehaviour
         hostile.GetComponent<EnemyStats>().setMaxMP(UnityEngine.Random.Range(200, 250));
         hostile.GetComponent<EnemyStats>().setMP(hostile.GetComponent<EnemyStats>().getMaxMP());
         hostile.GetComponent<EnemyStats>().setATK(UnityEngine.Random.Range(120, 150));
-        hostile.GetComponent<EnemySkills>().SetSkills(DoTC, DoTCCost, DoTA, DoTACost, DoTI, DoTICost);
+        hostile.GetComponent<EnemySkills>().SetSkills("Steal Data", DoTC, DoTCCost,"DDoS" , DoTA, DoTACost,"Corrupt Files", DoTI, DoTICost);
     }
 
 

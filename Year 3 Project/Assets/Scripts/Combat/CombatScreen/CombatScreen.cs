@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using Pathfinding;
 using UnityEngine.UIElements;
+using System;
+using UnityEngine.UI;
 
 public class CombatScreen : MonoBehaviour
 {
@@ -27,6 +29,9 @@ public class CombatScreen : MonoBehaviour
     public GameObject button3;
     public GameObject winText;
     public GameObject loseText;
+
+    public GameObject enemyActionText;
+    public GameObject playerActionText;
 
     private System.Action<GameObject> skill1;
     private System.Action<GameObject> skill2;
@@ -129,6 +134,7 @@ public class CombatScreen : MonoBehaviour
         if (turn == TurnType.playerTurn)
         {
             skill1(enemy);
+            DisplayActionText("Player",player.GetComponent<Skills>().skill1Name);
             // Wait for 1 second
             Debug.Log("Waiting for 1 second");
             playerTurnTimer = 1;
@@ -150,6 +156,7 @@ public class CombatScreen : MonoBehaviour
         if (turn == TurnType.playerTurn)
         {
             skill2(enemy);
+            DisplayActionText("Player",player.GetComponent<Skills>().skill2Name);
             // Wait for 1 second
             Debug.Log("Waiting for 1 second");
             playerTurnTimer = 1;
@@ -171,6 +178,7 @@ public class CombatScreen : MonoBehaviour
         if (turn == TurnType.playerTurn)
         {
             skill3(enemy);
+            DisplayActionText("Player",player.GetComponent<Skills>().skill3Name);
             // Wait for 1 second
             Debug.Log("Waiting for 1 second");
             playerTurnTimer = 1;
@@ -330,12 +338,15 @@ public class CombatScreen : MonoBehaviour
             {
                 case 1:
                     enemy.GetComponent<EnemySkills>().UseSkill1(player);
+                    DisplayActionText("Enemy",enemy.GetComponent<EnemySkills>().skill1Name);
                     break;
                 case 2:
                     enemy.GetComponent<EnemySkills>().UseSkill2(player);
+                    DisplayActionText("Enemy",enemy.GetComponent<EnemySkills>().skill2Name);
                     break;
                 case 3:
                     enemy.GetComponent<EnemySkills>().UseSkill3(player);
+                    DisplayActionText("Enemy",enemy.GetComponent<EnemySkills>().skill3Name);
                     break;
             }
             // Wait for 1 second
@@ -343,6 +354,22 @@ public class CombatScreen : MonoBehaviour
             enemyTurnTimer = 1;
             enemyTurnTimerDone = false;
             // -- Continued in enemy timer --
+        }
+    }
+
+    public void DisplayActionText(String currentTurn, String text)
+    {
+        if(currentTurn == "Enemy")
+        {
+            enemyActionText.SetActive(true);
+            playerActionText.SetActive(false);
+            enemyActionText.GetComponent<Text>().text = text;
+        }
+        else if(currentTurn == "Player")
+        {
+            playerActionText.SetActive(true);
+            enemyActionText.SetActive(false);
+            playerActionText.GetComponent<Text>().text = text;
         }
     }
 }
