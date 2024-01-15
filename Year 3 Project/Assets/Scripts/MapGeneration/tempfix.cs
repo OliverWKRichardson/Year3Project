@@ -25,6 +25,7 @@ public class tempfix : MonoBehaviour
 
             GameObject.Find("PlayerCharacter").transform.position = GameObject.Find("StartPoint").transform.position + new Vector3(0,0,-1);
             poscheck = true;
+            this.enabled = false;
         }
     }
 }
