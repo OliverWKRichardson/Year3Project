@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Shop
   - Barrier
+  - DialogueSystem
   layers:
   - Default
   - TransparentFX

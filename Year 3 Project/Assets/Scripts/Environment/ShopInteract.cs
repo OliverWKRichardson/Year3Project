@@ -47,7 +47,6 @@ public class ShopInteract : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.gameObject.name);
         if (other.gameObject.tag == "Shop")
         {
             entered = true;
