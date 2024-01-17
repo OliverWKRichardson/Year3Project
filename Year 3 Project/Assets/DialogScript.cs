@@ -31,6 +31,9 @@ public class DialogScript : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(messageComplete);
+        Debug.Log(size);
+        Debug.Log(msgIndex);
         Debug.Log(activeDialog);
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -83,36 +86,41 @@ public class DialogScript : MonoBehaviour
         else {
             StartCoroutine(textRoutine(text, index+1));
         }
+
+        
     }
 
     IEnumerator closeDialog()
     {
         yield return new WaitForSeconds(3f);
         messageComplete = true;
+        activeDialog = false;
 
         if (DialogQ.Count > 0)
         {
+            Debug.Log("here too");
             wipeDialog();
         }
-        else
+        if ((DialogQ.Count == 0))
         {
             resetDialog();
             img.SetActive(false);
         }
-        if (msgIndex >= size)
-        {
-            activeDialog = false;
-        }
+        
         
     }
 
     public void SendMessages(string[] messages)
     {
+
         Debug.Log("Sendingg messages!");
         activeDialog = true;
         size = messages.Length;
         msgIndex = 0;
+
+        
         while ((msgIndex < size))
+
         {
             if (messageComplete == true)
             {
@@ -127,6 +135,7 @@ public class DialogScript : MonoBehaviour
 
         }
 
+
         
 
         
@@ -138,6 +147,17 @@ public class DialogScript : MonoBehaviour
 
     public void addDialog(string[] messages)
     {
+        if (messages.Length > 1)
+        {
+            for (int i = 0; i < messages.Length; i++)
+            {
+                string[] temp = new string[1];
+                temp[0] = messages[i];
+                addDialog(temp);
+
+            }
+            return;
+        }
         DialogQ.Enqueue(messages);
     }
     public Boolean GetStatus()
