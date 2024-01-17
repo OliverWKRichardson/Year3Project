@@ -317,6 +317,10 @@ public class CombatScreen : MonoBehaviour
             }
             else
             {
+                //Award Player Money For Win
+                player.GetComponent<PlayerStats>().WinMoney();
+                GameObject.FindWithTag("Money").GetComponent<MoneyManager>().UpdateMoney();
+
                 player.GetComponent<PlayerStats>().WipeConditions();
                 enemy.GetComponent<EnemyStats>().WipeConditions();
                 player.GetComponent<CombatStatus>().outCombat();
@@ -372,4 +376,6 @@ public class CombatScreen : MonoBehaviour
             playerActionText.GetComponent<Text>().text = text;
         }
     }
+
+    
 }
