@@ -27,7 +27,6 @@
             "incorrectAnswer1": "Deleting assets to reduce clutter",
             "incorrectAnswer2": "Randomly altering assets to keep them unpredictable",
             "incorrectAnswer3": "Allow assets to be deleted by anyone without restrictions"
-
         },
         {
             "question": "What does availability, in the context of cybersecurity, mean?",
@@ -51,16 +50,207 @@
             "incorrectAnswer3": "?"
         },
         {
-
-           "question": "A tech company is trying to secure it's sensitive data from unauthorized access. What is the best way to do this?",
-           "correctAnswer": "Encryption",
-           "incorrectAnswer1": "Firewall",
-           "incorrectAnswer2": "Antivirus",
-           "incorrectAnswer3": "Authentication"
+            "question": "A tech company is trying to secure it's sensitive data from unauthorized access. What is the best way to do this?",
+            "correctAnswer": "Encryption",
+            "incorrectAnswer1": "Firewall",
+            "incorrectAnswer2": "Antivirus",
+            "incorrectAnswer3": "Authentication"
+        },
+        {
+            "question": "What is the term used for individuals who enjoy watching and posting provactive messages",
+            "correctAnswer": "Eyeball",
+            "incorrectAnswer1": "Haters",
+            "incorrectAnswer2": "Lolcows",
+            "incorrectAnswer3": "Bzzters"
+        },
+        {
+            "question": "What is the most prevalent form of cyberattack?",
+            "correctAnswer": "Social engineering",
+            "incorrectAnswer1": "DoS",
+            "incorrectAnswer2": "Malware",
+            "incorrectAnswer3": "Phishing"
+        },
+        {
+            "question": "What is password hashing?",
+            "correctAnswer": "Converting a password into a fixed-length strong of characters using a mathemetical algorithm",
+            "incorrectAnswer1": "B",
+            "incorrectAnswer2": "C",
+            "incorrectAnswer3": "D"
+        },
+        {
+            "question": "What is a common issue with biometric authentication systems?",
+            "correctAnswer": "They match markers or key points aganist a saved template, leading to false postivies / false positives",
+            "incorrectAnswer1": "B",
+            "incorrectAnswer2": "C",
+            "incorrectAnswer3": "D"
+        },
+        {
+            "question": "What is a common issue with biometric authentication systems?",
+            "correctAnswer": "They match markers or key points aganist a saved template, leading to false postivies / false positives",
+            "incorrectAnswer1": "B",
+            "incorrectAnswer2": "C",
+            "incorrectAnswer3": "D"
+        },
+        {
+            "question": "What is the most common 'route' to cybercrime?",
+            "correctAnswer": "Online gaming forums",
+            "incorrectAnswer1": "Educational websites",
+            "incorrectAnswer2": "E-commerce websites",
+            "incorrectAnswer3": "Professional networking sites"
+        },
+        {
+            "question": "What is white hat hacking associated with?",
+            "correctAnswer": "Ethical hacking practices to identify and rectify security vulnerabilities",
+            "incorrectAnswer1": "Unauthorized infiltration into systems for personal gain",
+            "incorrectAnswer2": "Conducting cyber attacks to exploit security weaknesses",
+            "incorrectAnswer3": "A"
+        },
+        {
+            "question": "What type of security attack involves an unauthorized party gaining access to an asset without permission?",
+            "correctAnswer": "Interception/Eavesdropping",
+            "incorrectAnswer1": "Modification attack",
+            "incorrectAnswer2": "Fabrication attack",
+            "incorrectAnswer3": "Interruption attack"
+        },
+        {
+            "question": "What security breach occurs when an unauthorized party alters the value in a database or file?",
+            "correctAnswer": "Modification Attack",
+            "incorrectAnswer1": "Interception/Eavesdropping",
+            "incorrectAnswer2": "Interruption",
+            "incorrectAnswer3": "Fabrication attack"
+        },
+        {
+            "question": "In the context of security attacks, what does interception/eavesdropping primarily involve?",
+            "correctAnswer": "Unauthorized access to confidential information",
+            "incorrectAnswer1": "Destroying data files",
+            "incorrectAnswer2": "Modifying software programs",
+            "incorrectAnswer3": "Inserting counterfeit objects into the system"
+        },
+        {
+            "question": "What type of security attack includes the insertion of counterfeit objects into the system, such as fake emails for phishing websites?",
+            "correctAnswer": "Fabrication attack",
+            "incorrectAnswer1": "Modification attack",
+            "incorrectAnswer2": "Interruption attack",
+            "incorrectAnswer3": "Interception/Eavesdropping"
+        },
+        {
+            "question": "When an unauthorized party destroys or makes an asset unavailable, what type of security attack is being executed?",
+            "correctAnswer": "Interruption attack",
+            "incorrectAnswer1": "Fabrication attack",
+            "incorrectAnswer2": "Modification Attack",
+            "incorrectAnswer3": "Interception / Eavesdropping"
+        },
+        {
+            "question": "A company is looking to enhance its security measures by making its system more user-friendly. Which concept best describes this security approach?",
+            "correctAnswer": "Usable Security",
+            "incorrectAnswer1": "Inaccessible Protection",
+            "incorrectAnswer2": "Robust Isolation",
+            "incorrectAnswer3": "Elusive Safeguarding"
+        },
+        {
+            "question": "A study aims to investigate the predictability of user behavior while creating graphical passwords. What method does this align with?",
+            "correctAnswer": "Cognitive Walkthrough",
+            "incorrectAnswer1": "Heuristic Evaluation",
+            "incorrectAnswer2": "User Testing",
+            "incorrectAnswer3": "Expert Inspection"
+        },
+        {
+            "question": "An organization aims to design security systems visible and accessible to users. What guideline does this reflect, in the context of security usability?",
+            "correctAnswer": "Making Security Visible",
+            "incorrectAnswer1": "Concealing Security Measures",
+            "incorrectAnswer2": "Complicating Access",
+            "incorrectAnswer3": "Hiding Security Functions"
+        },
+        {
+            "question": "An attacker gains unauthorized access to a wireless network and eavesdrops on the communication between two devices to obtain sensitive information. What form of cyberattack is this?",
+            "correctAnswer": "Eavesdropping",
+            "incorrectAnswer1": "Denial of Service (DoS)",
+            "incorrectAnswer2": "Phishing",
+            "incorrectAnswer3": "Man-in-the-Middle (MitM)"
+        },
+        {
+            "question": "Which term refers to malware that uses encryption to hold a victim's data at ransom, demanding payment for decryption?",
+            "correctAnswer": "Ransomware",
+            "incorrectAnswer1": "Spyware",
+            "incorrectAnswer2": "Trojan Horse",
+            "incorrectAnswer3": "Worm"
+        },
+        {
+            "question": "What does the term 'social engineering' primarily refer to?",
+            "correctAnswer": "Manipulating individuals to divulge confidential information",
+            "incorrectAnswer1": "Encryption of sensitive data",
+            "incorrectAnswer2": "Exploiting software vulnerabilities",
+            "incorrectAnswer3": "Denying access to unauthorized users"
+        },
+        {
+            "question": "A company seeks to safeguard systems and networks against prevalent cyber attacks. Which framework offers a prioritized set of safeguards for this purpose?",
+            "correctAnswer": "CIS Controls",
+            "incorrectAnswer1": "NIST",
+            "incorrectAnswer2": "ISO",
+            "incorrectAnswer3": "A"
+        },
+        {
+            "question": "A company is planning to secure its systems by controlling access to data and services. Which step from the NCSC 10 Steps to Cyber Security should they prioritize?",
+            "correctAnswer": "Identity and access management",
+            "incorrectAnswer1": "Incident management",
+            "incorrectAnswer2": "Vulnerability management",
+            "incorrectAnswer3": "Architecture and configuration"
+        },
+        {
+            "question": "In a discretionary access control (DAC) policy, access is controlled based on:",
+            "correctAnswer": "The identity of the requestor and access rules.",
+            "incorrectAnswer1": "Access rules determined by a central authority.",
+            "incorrectAnswer2": "A",
+            "incorrectAnswer3": "A"
+        },
+        {
+            "question": "A company's data is accessible to all employees, and each employee has the discretion to grant or deny access to their files. Which access control policy is primarily in use here?",
+            "correctAnswer": "Discretionary access control (DAC)",
+            "incorrectAnswer1": "Role-based access control (RBAC)",
+            "incorrectAnswer2": "Attribute-based access control (ABAC)",
+            "incorrectAnswer3": "Mandatory access control (MAC)"
+        },
+        {
+            "question": "What access control policy is based on the roles that users have within the system?",
+            "correctAnswer": "Role-based access control (RBAC)",
+            "incorrectAnswer1": "Attribute-based access control (ABAC)",
+            "incorrectAnswer2": "A",
+            "incorrectAnswer3": "A"
+        },
+        {
+            "question": "In a highly regulated government agency, access to sensitive data is determined by specific rules established by a central authority. Which access control policy is likely to be enforced here?",
+            "correctAnswer": "Mandatory access control (MAC)",
+            "incorrectAnswer1": "A",
+            "incorrectAnswer2": "A",
+            "incorrectAnswer3": "A"
+        },
+        {
+            "question": "What access control policy takes into account the attributes of entities and the environment relevant to a request?",
+            "correctAnswer": "Attribute-based access control (ABAC)",
+            "incorrectAnswer1": "A",
+            "incorrectAnswer2": "A",
+            "incorrectAnswer3": "A"
+        },
+        {
+            "question": "What does unauthorized access to computer material mean in the Computer Misuse Act (1990)?",
+            "correctAnswer": "Knowingly accessing a computer – or parts of a computer system – that you are not allowed to.",
+            "incorrectAnswer1": "Accessing computer material after accidentally stumbling upon it online",
+            "incorrectAnswer2": "A",
+            "incorrectAnswer3": "A"
+        },
+        {
+            "question": "Why might a disgruntled employee be held liable when intentionally launching a computer virus in the company's network, causing temporary disruption to the email system?",
+            "correctAnswer": "As there was intent to impair the computer's operation.",
+            "incorrectAnswer1": "Because it was an accidental act",
+            "incorrectAnswer2": "Due to unintentional consequences",
+            "incorrectAnswer3": "To facilitate system improvement"
+        },
+        {
+            "question": "What illicit activity is a hacker engaged in when they develop and sell a specialized tool designed to circumvent firewall systems and gain unauthorized access to computer networks?",
+            "correctAnswer": "Unauthorized access facilitation",
+            "incorrectAnswer1": "Cybersecurity awareness training",
+            "incorrectAnswer2": "Ethical Hacking",
+            "incorrectAnswer3": "A"
         }
-       
-
-        
-  
     ]
 }
