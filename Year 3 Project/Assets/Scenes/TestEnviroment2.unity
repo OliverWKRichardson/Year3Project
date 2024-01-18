@@ -123,6 +123,60 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &592754794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 592754796}
+  - component: {fileID: 592754795}
+  m_Layer: 5
+  m_Name: BossBattle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &592754795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592754794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc76e468cf02cd4e8776d8436b3e546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerSpriteSpawn: {fileID: 0}
+  BossSpriteSpawn: {fileID: 0}
+  MenuCenter: {fileID: 0}
+  boss: {fileID: 0}
+  player: {fileID: 0}
+  scenario1: {fileID: 0}
+  scenario2: {fileID: 0}
+  scen1success: {fileID: 0}
+  scen2success: {fileID: 0}
+  scen1fail: {fileID: 0}
+  scen2fail: {fileID: 0}
+--- !u!4 &592754796
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592754794}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &601008853
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,60 +460,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2264473024914337617, guid: fbe9df9ec21d46240888529004ae0e25, type: 3}
   m_PrefabInstance: {fileID: 1434851144}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1587684522
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2559781962560186726, guid: 457dc93474c8499459b7852259d4d72e, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2559781962560186726, guid: 457dc93474c8499459b7852259d4d72e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.746279
-      objectReference: {fileID: 0}
-    - target: {fileID: 2559781962560186726, guid: 457dc93474c8499459b7852259d4d72e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.15342316
-      objectReference: {fileID: 0}
-    - target: {fileID: 2559781962560186726, guid: 457dc93474c8499459b7852259d4d72e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -40.030136
-      objectReference: {fileID: 0}
-    - target: {fileID: 2559781962560186726, guid: 457dc93474c8499459b7852259d4d72e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2559781962560186726, guid: 457dc93474c8499459b7852259d4d72e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2559781962560186726, guid: 457dc93474c8499459b7852259d4d72e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2559781962560186726, guid: 457dc93474c8499459b7852259d4d72e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2559781962560186726, guid: 457dc93474c8499459b7852259d4d72e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2559781962560186726, guid: 457dc93474c8499459b7852259d4d72e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2559781962560186726, guid: 457dc93474c8499459b7852259d4d72e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2559781962560186727, guid: 457dc93474c8499459b7852259d4d72e, type: 3}
-      propertyPath: m_Name
-      value: Quiz Journal
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 457dc93474c8499459b7852259d4d72e, type: 3}

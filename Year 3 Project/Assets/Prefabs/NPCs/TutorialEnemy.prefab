@@ -53,7 +53,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 619045241466588927, guid: 5d00a8da03315934680962040fb0ba2a, type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: TutorialEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 619045243122761624, guid: 5d00a8da03315934680962040fb0ba2a, type: 3}
+      propertyPath: combatScreenPrefab
+      value: 
+      objectReference: {fileID: 7762886162807549213, guid: 9a80c09e9dc389041943081e7a08c426, type: 3}
+    - target: {fileID: 2555543784949744280, guid: 5d00a8da03315934680962040fb0ba2a, type: 3}
+      propertyPath: tutorialEnemy
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d00a8da03315934680962040fb0ba2a, type: 3}
