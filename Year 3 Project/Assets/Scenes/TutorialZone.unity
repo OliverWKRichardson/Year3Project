@@ -9515,6 +9515,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Quiz Door
       objectReference: {fileID: 0}
+    - target: {fileID: 6822916851388016536, guid: af1957a5d031ad144875cee72a4848b4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af1957a5d031ad144875cee72a4848b4, type: 3}
 --- !u!1001 &4011816154576034218

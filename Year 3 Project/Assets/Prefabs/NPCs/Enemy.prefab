@@ -113,6 +113,7 @@ MonoBehaviour:
   MP: 0
   MaxMP: 0
   ATK: 0
+  tutorialEnemy: 0
 --- !u!114 &5572610472550788085
 MonoBehaviour:
   m_ObjectHideFlags: 0
