@@ -4,6 +4,7 @@ using UnityEngine;
 using static EnemyGenerator.enemyType;
 using static CombatScreen.TurnType;
 using System;
+using Random = UnityEngine.Random;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class PlayerStats : MonoBehaviour
     public float MaxMP;
     // Attack of enemy
     public float ATK;
+    public int Money;
 
     // Sets MaxHP of enemy
     public void setMaxC(float setMaxC)
@@ -255,5 +257,16 @@ public class PlayerStats : MonoBehaviour
             }
         }
         return total;
+    }
+
+    public void WinMoney()
+    {
+       int netcoin = Random.Range(0, 2);
+        Money = Money + netcoin;
+    }
+
+    public int GetMoney()
+    {
+        return Money;
     }
 }

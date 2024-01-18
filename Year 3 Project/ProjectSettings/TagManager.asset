@@ -7,6 +7,7 @@ TagManager:
   - Shop
   - Barrier
   - DialogueSystem
+  - Money
   layers:
   - Default
   - TransparentFX

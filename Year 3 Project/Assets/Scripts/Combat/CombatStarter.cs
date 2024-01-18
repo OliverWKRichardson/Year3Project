@@ -62,6 +62,8 @@ public class CombatStarter : MonoBehaviour
             AIDestinationSetter.inCombat = false;
             combatCleanUp = false;
             // delete enemy
+            
+            //Call player function to award money if player is alive
             Destroy(gameObject.transform.parent.gameObject);
         }
     }

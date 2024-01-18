@@ -18,6 +18,7 @@ public class DialogScript : MonoBehaviour
     private int size = 0;
     private Boolean messageComplete = true;
     private Boolean skipDialog = false;
+    private Boolean nextDialog = false;
     private GameObject img;
     public float textspeed;
     GameObject textcomp;
@@ -37,7 +38,14 @@ public class DialogScript : MonoBehaviour
         Debug.Log(activeDialog);
         if (Input.GetKeyDown(KeyCode.E))
         {
-            skipDialog = true;
+            if ((skipDialog == true))
+            {
+                nextDialog = true;
+            }
+            else
+            {
+                skipDialog = true;
+            }
         }
        
         if (DialogQ.Count > 0)
@@ -48,6 +56,13 @@ public class DialogScript : MonoBehaviour
                 SendMessages(DialogQ.Dequeue());
 
             }
+        }
+
+        if (nextDialog == true)
+        {
+            StartCoroutine(closeDialog());
+            skipDialog = false;
+            nextDialog = false;
         }
     }
     public void SetText(string text)
@@ -73,17 +88,20 @@ public class DialogScript : MonoBehaviour
             index = text.Length;
         }
 
+        
+        
         string substr = text.Substring(0, index);
         yield return new WaitForSeconds(textspeed);
         TextMeshProUGUI textc = textcomp.transform.Find("DialogText").gameObject.GetComponent<TextMeshProUGUI>();
         textc.SetText(substr);
 
-        if (text.Length == index)
+        
+        if ((text.Length == index))
         {
-            StartCoroutine(closeDialog());
-            skipDialog = false;
+            skipDialog = true;
+           
         }
-        else {
+        if (text.Length > index) { 
             StartCoroutine(textRoutine(text, index+1));
         }
 
@@ -92,7 +110,7 @@ public class DialogScript : MonoBehaviour
 
     IEnumerator closeDialog()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0.01f);
         messageComplete = true;
         activeDialog = false;
 
