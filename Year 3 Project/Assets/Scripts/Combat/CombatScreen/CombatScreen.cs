@@ -92,7 +92,7 @@ public class CombatScreen : MonoBehaviour
         enemyTurnTimer = 0;
         playerTurnTimerDone = true;
         playerTurnTimer = 0;
-        
+
         playergameover = false;
 
         hudTransform = player.transform.Find("HUD");
@@ -108,6 +108,7 @@ public class CombatScreen : MonoBehaviour
         // get enemy and player
         enemy = setEnemy;
         player = GameObject.Find("PlayerCharacter");
+        // player.GetComponent<PlayerCharacterMovement>().fixRight();
         // create sprites of characters
         Instantiate(player.GetComponent<CombatSprite>().getCombatSprite(), PlayerSpriteSpawn.transform);
         Instantiate(enemy.GetComponent<CombatSprite>().getCombatSprite(), EnemySpriteSpawn.transform);
