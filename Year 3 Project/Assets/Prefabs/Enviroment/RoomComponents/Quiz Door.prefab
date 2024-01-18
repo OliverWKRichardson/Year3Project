@@ -251,8 +251,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quizScreenPrefab: {fileID: 867143569586200930, guid: 5b4cb2495a367ff40805c46fa3ebbcce, type: 3}
+  inputPrefab: {fileID: 867143569586200930, guid: 76cdd0b9e84a00e4899dd2a2336586f2, type: 3}
   questions: []
-  quizManager: {fileID: 0}
 --- !u!61 &8077088322568585245
 BoxCollider2D:
   m_ObjectHideFlags: 0

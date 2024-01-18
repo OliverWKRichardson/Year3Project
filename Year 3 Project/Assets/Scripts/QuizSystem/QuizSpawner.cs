@@ -73,7 +73,8 @@ public class QuizSpawner : MonoBehaviour
                 quizManager = QuizManager.Instance;
                 //  Debug.Log(quizManager);
                 
-                prefabPicked = true;
+
+               Debug.Log("prefab is + " + prefabPicked);
                 setQuestions(prefabPicked);
 
             }
@@ -133,7 +134,7 @@ public class QuizSpawner : MonoBehaviour
             Transform question = menuCenter.transform.Find("Canvas/QuestionText");
 
             Transform button1 = menuCenter.transform.Find("Canvas/Answer 1 Button");
-            Transform btn1 = button1.transform.Find("Button");
+           // Transform btn1 = button1.transform.Find("Button");
             Transform inputField = button1.transform.Find("InputField");
 
             questionData = quizManager.GetRandomQuestion();
