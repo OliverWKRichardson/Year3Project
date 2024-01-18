@@ -325,6 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialog: {fileID: 798228989}
+  img: {fileID: 21300000, guid: a81dc8094b263ef4eb23cb7ebbf9a3b7, type: 3}
 --- !u!4 &1222604417
 Transform:
   m_ObjectHideFlags: 0
