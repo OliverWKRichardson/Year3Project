@@ -73,24 +73,18 @@
         {
             "question": "What is password hashing?",
             "correctAnswer": "Converting a password into a fixed-length strong of characters using a mathemetical algorithm",
-            "incorrectAnswer1": "B",
-            "incorrectAnswer2": "C",
-            "incorrectAnswer3": "D"
+            "incorrectAnswer1": "Storing passwords in plain text format",
+            "incorrectAnswer2": "Encrypting a password with a secret key for secure storage",
+            "incorrectAnswer3": "Randomly generating a password for user authentication"
         },
         {
             "question": "What is a common issue with biometric authentication systems?",
             "correctAnswer": "They match markers or key points aganist a saved template, leading to false postivies / false positives",
-            "incorrectAnswer1": "B",
-            "incorrectAnswer2": "C",
-            "incorrectAnswer3": "D"
+            "incorrectAnswer1": "Limited accuracy in distinguishing between identical twins",
+            "incorrectAnswer2": "High susceptibility to brute force attacks",
+            "incorrectAnswer3": "Inability to adapt to changes in user appearance over time"
         },
-        {
-            "question": "What is a common issue with biometric authentication systems?",
-            "correctAnswer": "They match markers or key points aganist a saved template, leading to false postivies / false positives",
-            "incorrectAnswer1": "B",
-            "incorrectAnswer2": "C",
-            "incorrectAnswer3": "D"
-        },
+        
         {
             "question": "What is the most common 'route' to cybercrime?",
             "correctAnswer": "Online gaming forums",
@@ -103,7 +97,7 @@
             "correctAnswer": "Ethical hacking practices to identify and rectify security vulnerabilities",
             "incorrectAnswer1": "Unauthorized infiltration into systems for personal gain",
             "incorrectAnswer2": "Conducting cyber attacks to exploit security weaknesses",
-            "incorrectAnswer3": "A"
+            "incorrectAnswer3": "Interpretive dance and performing arts"
         },
         {
             "question": "What type of security attack involves an unauthorized party gaining access to an asset without permission?",
@@ -187,7 +181,7 @@
             "correctAnswer": "CIS Controls",
             "incorrectAnswer1": "NIST",
             "incorrectAnswer2": "ISO",
-            "incorrectAnswer3": "A"
+            "incorrectAnswer3": "IEEE"
         },
         {
             "question": "A company is planning to secure its systems by controlling access to data and services. Which step from the NCSC 10 Steps to Cyber Security should they prioritize?",
@@ -214,29 +208,29 @@
             "question": "What access control policy is based on the roles that users have within the system?",
             "correctAnswer": "Role-based access control (RBAC)",
             "incorrectAnswer1": "Attribute-based access control (ABAC)",
-            "incorrectAnswer2": "A",
-            "incorrectAnswer3": "A"
+            "incorrectAnswer2": "The user's job title and organizational hierarchy",
+            "incorrectAnswer3": "The time of day and the system's current workload"
         },
         {
             "question": "In a highly regulated government agency, access to sensitive data is determined by specific rules established by a central authority. Which access control policy is likely to be enforced here?",
-            "correctAnswer": "Mandatory access control (MAC)",
-            "incorrectAnswer1": "A",
-            "incorrectAnswer2": "A",
-            "incorrectAnswer3": "A"
+            "correctAnswer": "MAC",
+            "incorrectAnswer1": "ABAC",
+            "incorrectAnswer2": "DAC",
+            "incorrectAnswer3": "RBAC"
         },
         {
             "question": "What access control policy takes into account the attributes of entities and the environment relevant to a request?",
             "correctAnswer": "Attribute-based access control (ABAC)",
-            "incorrectAnswer1": "A",
-            "incorrectAnswer2": "A",
-            "incorrectAnswer3": "A"
+            "incorrectAnswer1": "DAC",
+            "incorrectAnswer2": "RBAC",
+            "incorrectAnswer3": "MAC"
         },
         {
             "question": "What does unauthorized access to computer material mean in the Computer Misuse Act (1990)?",
             "correctAnswer": "Knowingly accessing a computer – or parts of a computer system – that you are not allowed to.",
             "incorrectAnswer1": "Accessing computer material after accidentally stumbling upon it online",
-            "incorrectAnswer2": "A",
-            "incorrectAnswer3": "A"
+            "incorrectAnswer2": "Legitimate use of computer material",
+            "incorrectAnswer3": "Accessing computer material with explicit permission"
         },
         {
             "question": "Why might a disgruntled employee be held liable when intentionally launching a computer virus in the company's network, causing temporary disruption to the email system?",
@@ -250,7 +244,7 @@
             "correctAnswer": "Unauthorized access facilitation",
             "incorrectAnswer1": "Cybersecurity awareness training",
             "incorrectAnswer2": "Ethical Hacking",
-            "incorrectAnswer3": "A"
+            "incorrectAnswer3": "Legally providing network security consultation"
         }
     ]
 }
