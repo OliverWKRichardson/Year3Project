@@ -12,52 +12,71 @@ public class QuizManager : MonoBehaviour
     public static QuizManager Instance { get; private set; }
 
 
-public string jsonFilePath;
+    public string jsonFilePath;
 
-public Questions questions;
+    public Questions questions, inputQs;
 
-public TextAsset jsonFile;
+    public TextAsset jsonFile;
 
-public QuestionData[] allQuestions;
+    public QuestionData[] allQuestions;
 
-// private static List<Question> remainingQuestions; // List to track remaining questions
+    public QuestionData[] allInputQuestions;
 
-private void Awake()
-{
-    // Only one instance exists -- should be already handled by QuizSpawner
+    // private static List<Question> remainingQuestions; // List to track remaining questions
 
-    Instance = this;
-    // DontDestroyOnLoad(gameObject); 
+    private void Awake()
+    {
+        // Only one instance exists -- should be already handled by QuizSpawner
 
-
-}
-
-private void Start()
-{
-    // Initialize remainingQuestions with allQuestions data
-    questions = GetComponent<JSONReader>().questionsInJSON;
-    allQuestions = questions.questions;
-
-}
-
-public QuestionData GetRandomQuestion()
-{
+        Instance = this;
+        // DontDestroyOnLoad(gameObject); 
 
 
-    int index = Random.Range(0, allQuestions.Length - 1);
-    Debug.Log(index);
+    }
 
-    return getQuestionData(index);
+    private void Start()
+    {
+        // Initialize remainingQuestions with allQuestions data
+        questions = GetComponent<JSONReader>().questionsInJSON;
+        inputQs = GetComponent<JSONReader>().inputQuestions;
+        allQuestions = questions.questions;
+        allInputQuestions = inputQs.questions;
+
+    }
+
+    public QuestionData GetRandomQuestion()
+    {
 
 
-}
+        int index = Random.Range(0, allQuestions.Length - 1);
+        Debug.Log(index);
 
-public QuestionData getQuestionData(int index)
-{
-    return allQuestions[index];
-}
+        return getQuestionData(index);
 
 
+    }
+
+    public QuestionData getQuestionData(int index)
+    {
+        return allQuestions[index];
+    }
+
+    public QuestionData getRandomInputQuestion()
+    {
+
+
+        int index = Random.Range(0, allInputQuestions.Length - 1);
+        Debug.Log(index);
+
+        return getQuestionData(index);
+
+
+    }
+
+    public QuestionData getInputQuestionData(int index)
+    {
+        return allInputQuestions[index];
+    }
 
 
 

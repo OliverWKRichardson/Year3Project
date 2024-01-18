@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using System;
 using Pathfinding;
 // using Newtonsoft.Json;
 
@@ -15,6 +16,10 @@ public class QuizSpawner : MonoBehaviour
 
     private bool quizTriggered = false;
     public GameObject quizScreenPrefab;
+
+    public GameObject inputPrefab;
+
+    private bool prefabPicked;
 
     public string[] questions;
 
@@ -33,6 +38,7 @@ public class QuizSpawner : MonoBehaviour
     private void Start()
     {
         quizManager = this.GetComponent<QuizManager>();
+        prefabPicked = true;
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -48,14 +54,27 @@ public class QuizSpawner : MonoBehaviour
                 playerMovement = other.GetComponent<PlayerCharacterMovement>();
                 playerMovement.DisablePlayerMovement();
 
+                if (rand.Next(2) == 0)
+                {
+                    quizScreenPrefab = quizScreenPrefab;
+                    prefabPicked = true;
+                }
+                else
+                {
+                    quizScreenPrefab = inputPrefab;
+                    prefabPicked = false;
+                }
+
                 generatedQuiz = Instantiate(quizScreenPrefab, other.transform.position, Quaternion.identity);
                 //   Debug.Log(!generatedQuiz);
                 quizTriggered = true;
                 GetComponent<Collider2D>().enabled = false;
 
                 quizManager = QuizManager.Instance;
-                Debug.Log(quizManager);
-                setQuestions();
+                //  Debug.Log(quizManager);
+                
+                prefabPicked = true;
+                setQuestions(prefabPicked);
 
             }
         }
@@ -63,45 +82,69 @@ public class QuizSpawner : MonoBehaviour
 
     private void Update()
     {
+
         if (quizTriggered && answerSelected && Input.GetMouseButtonDown(0)) // Check if answer is selected and the mouse is clicked
         {
-           QuizCleared();
+            QuizCleared();
         }
     }
 
-    public void setQuestions()
+    public void setQuestions(bool whichPrefabPicked)
     {
-        Transform menuCenter = generatedQuiz.transform.Find("QA/Menu Center");
-        Transform question = menuCenter.transform.Find("Canvas/QuestionText");
 
-        Transform button1 = menuCenter.transform.Find("Canvas/Answer 1 Button");
-        Transform button2 = menuCenter.transform.Find("Canvas/Answer 2 Button");
-        Transform button3 = menuCenter.transform.Find("Canvas/Answer 3 Button");
-        Transform answerText1 = button1.transform.Find("AnswerText1");
-        Transform answerText2 = button2.transform.Find("AnswerText2");
-        Transform answerText3 = button3.transform.Find("AnswerText3");
+        if (whichPrefabPicked == true)
+        {
+            Transform menuCenter = generatedQuiz.transform.Find("QA/Menu Center");
+            Transform question = menuCenter.transform.Find("Canvas/QuestionText");
 
-        questionData = quizManager.GetRandomQuestion();
-        Debug.Log(questionData.question);
-        question.gameObject.GetComponent<Text>().text = questionData.question;
+            Transform button1 = menuCenter.transform.Find("Canvas/Answer 1 Button");
+            Transform button2 = menuCenter.transform.Find("Canvas/Answer 2 Button");
+            Transform button3 = menuCenter.transform.Find("Canvas/Answer 3 Button");
+            Transform answerText1 = button1.transform.Find("AnswerText1");
+            Transform answerText2 = button2.transform.Find("AnswerText2");
+            Transform answerText3 = button3.transform.Find("AnswerText3");
 
-        List<Transform> answerButtons = new List<Transform> { button1, button2, button3 };
+            questionData = quizManager.GetRandomQuestion();
+            Debug.Log(questionData.question);
+            question.gameObject.GetComponent<Text>().text = questionData.question;
 
-        List<string> answers = new List<string> {
+            List<Transform> answerButtons = new List<Transform> { button1, button2, button3 };
+
+            List<string> answers = new List<string> {
             questionData.correctAnswer,
             questionData.incorrectAnswer1,
             questionData.incorrectAnswer2
         };
 
-        Shuffle(answerButtons);
-        Shuffle(answers);
+            Shuffle(answerButtons);
+            Shuffle(answers);
 
-        for (int i = 0; i < answerButtons.Count; i++)
-        {
-            answerButtons[i].gameObject.GetComponentInChildren<Text>().text = answers[i];
+            for (int i = 0; i < answerButtons.Count; i++)
+            {
+                answerButtons[i].gameObject.GetComponentInChildren<Text>().text = answers[i];
+            }
+
+            RegisterButtonClicks();
         }
 
-        RegisterButtonClicks();
+        else
+        {
+            Transform menuCenter = generatedQuiz.transform.Find("QA/Menu Center");
+            Transform question = menuCenter.transform.Find("Canvas/QuestionText");
+
+            Transform button1 = menuCenter.transform.Find("Canvas/Answer 1 Button");
+            Transform btn1 = button1.transform.Find("Button");
+            Transform inputField = button1.transform.Find("InputField");
+
+            questionData = quizManager.GetRandomQuestion();
+            Debug.Log(questionData.question);
+            question.gameObject.GetComponent<Text>().text = questionData.question;
+
+            InputField submission = inputField.GetComponent<InputField>();
+
+            submission.onEndEdit.AddListener(submissionInput);
+
+        }
 
     }
 
@@ -149,7 +192,7 @@ public class QuizSpawner : MonoBehaviour
             }
 
             string correctAnswer = questionData.correctAnswer;
-          //  Debug.Log(correctAnswer);
+            //  Debug.Log(correctAnswer);
 
             foreach (Transform button in answerButtons)
             {
@@ -157,7 +200,7 @@ public class QuizSpawner : MonoBehaviour
 
                 if (button.GetComponent<Button>() == clickedButton)
                 {
-                  //  Debug.Log($"Clicked Button Text: {buttonText.text} | Correct Answer: {correctAnswer}");
+                    //  Debug.Log($"Clicked Button Text: {buttonText.text} | Correct Answer: {correctAnswer}");
 
                     if (buttonText.text == correctAnswer)
                     {
@@ -171,7 +214,7 @@ public class QuizSpawner : MonoBehaviour
                             if (answerButton.GetComponentInChildren<Text>().text == correctAnswer)
                             {
                                 answerButton.GetComponentInChildren<Text>().color = Color.green; // Highlight correct answer in green
-                               // break;
+                                                                                                 // break;
                             }
                             else { answerButton.GetComponentInChildren<Text>().color = Color.red; }
                         }
@@ -205,5 +248,31 @@ public class QuizSpawner : MonoBehaviour
             list[n] = value;
         }
     }
+
+    // rename + do whitespace
+
+    private void submissionInput(string arg0)
+    {
+
+        questionData = quizManager.getRandomInputQuestion();
+        string correctAnswer = questionData.correctAnswer;
+        Debug.Log("Correct answer is" + correctAnswer);
+
+        string userInput = arg0; // trim later
+
+        if (userInput.Equals(correctAnswer, StringComparison.OrdinalIgnoreCase))
+        {
+            Debug.Log("Correct Answer!");
+        }
+        else
+        {
+            Debug.Log("Incorrect Answer!");
+        }
+
+        answerSelected = true;
+        Debug.Log(arg0);
+
+    }
+
 
 }

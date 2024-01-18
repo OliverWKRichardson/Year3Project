@@ -9,6 +9,7 @@ public class QuizJournal : MonoBehaviour
     public GameObject questions;
     private bool active;
     private Questions questionsInJSON;
+    private Questions inputQuestionsInJSON;
 
     void Start()
     {
@@ -19,6 +20,7 @@ public class QuizJournal : MonoBehaviour
             questions.transform.GetChild(i).gameObject.SetActive(false);
         }
         questionsInJSON = GetComponent<JSONReader>().questionsInJSON;
+        inputQuestionsInJSON = GetComponent<JSONReader>().inputQuestions;
         int textIndex = 0;
         foreach(QuestionData question in questionsInJSON.questions)
         {
