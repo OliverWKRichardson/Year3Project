@@ -3088,7 +3088,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1849941934820656552
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4310,7 +4310,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Bandwidth:'
+  m_Text: 'Power:'
 --- !u!1 &6007027114964017421
 GameObject:
   m_ObjectHideFlags: 0
@@ -5886,7 +5886,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Bandwidth:'
+  m_Text: 'Power:'
 --- !u!1 &7789262014810117583
 GameObject:
   m_ObjectHideFlags: 0
