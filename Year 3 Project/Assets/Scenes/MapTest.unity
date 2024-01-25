@@ -540,7 +540,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 970210284488907277, guid: 23b46e99eb3ed774b9f315d7e74a3eb9, type: 3}
       propertyPath: m_Name
-      value: DialogManager
+      value: OverlayGUI
       objectReference: {fileID: 0}
     - target: {fileID: 970210284488907279, guid: 23b46e99eb3ed774b9f315d7e74a3eb9, type: 3}
       propertyPath: m_RootOrder

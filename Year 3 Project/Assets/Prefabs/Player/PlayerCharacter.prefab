@@ -122,6 +122,7 @@ MonoBehaviour:
   MP: 0
   MaxMP: 0
   ATK: 0
+  Money: 0
 --- !u!114 &250476102596973631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,8 +267,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.95075846, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 577bb006c7063e5418c0c1bb05d84fcd, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1078,6 +1079,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6091448959253969903, guid: cf42eff475ec4b34283c91c30cb8b8d6, type: 3}
       propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6130916623228215679, guid: cf42eff475ec4b34283c91c30cb8b8d6, type: 3}
+      propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6821965181734834975, guid: cf42eff475ec4b34283c91c30cb8b8d6, type: 3}

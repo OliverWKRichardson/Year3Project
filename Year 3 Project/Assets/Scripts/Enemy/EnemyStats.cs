@@ -22,6 +22,8 @@ public class EnemyStats : MonoBehaviour
     public float MaxMP;
     // Attack of enemy
     public float ATK;
+    // Enemy type (for tutorial only)
+    public bool tutorialEnemy;
 
     // Sets MaxHP of enemy
     public void setMaxHP(float setMaxHP)
@@ -112,6 +114,10 @@ public class EnemyStats : MonoBehaviour
     public float getATK()
     {
         return ATK;
+    }
+    public bool getTutorialStatus()
+    {
+        return tutorialEnemy;
     }
     public void spendMP(float amount)
     {

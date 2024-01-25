@@ -7,6 +7,8 @@ public class PlayerCharacterMovement : MonoBehaviour
     public float SPEED = 3;
     public bool movementDisabled = false;
 
+    bool facingRight;
+
     public void DisablePlayerMovement()
     {
         movementDisabled = true;
@@ -32,6 +34,7 @@ public class PlayerCharacterMovement : MonoBehaviour
         playerStats.setMaxMP(200);
         playerStats.setMP(200);
         playerStats.setATK(200);
+        facingRight = true;
     }
 
     // Update is called once per frame
@@ -53,10 +56,18 @@ public class PlayerCharacterMovement : MonoBehaviour
         else if(Input.GetKey(KeyCode.A)||Input.GetKey(KeyCode.LeftArrow))
         {
             direction.x = -1;
+            if (facingRight == true)
+            {
+                // Flip();
+            }
         }
         else if(Input.GetKey(KeyCode.D)||Input.GetKey(KeyCode.RightArrow))
         {
             direction.x = 1;
+            if (facingRight == false)
+            {
+                // Flip();
+            }
         }
         else
         {
@@ -90,4 +101,23 @@ public class PlayerCharacterMovement : MonoBehaviour
         // Add velocity to the character
         GetComponent<Rigidbody2D>().velocity = SPEED * direction;
     }
+
+    // void Flip()
+    // {
+    //     // Switch the way the player is labelled as facing
+    //     facingRight = !facingRight;
+
+    //     // Multiply the player's x local scale by -1
+    //     Vector3 theScale = transform.localScale;
+    //     theScale.x *= -1;
+    //     transform.localScale = theScale;
+    // }
+
+    // public void fixRight()
+    // {
+    //     if (facingRight == false)
+    //     {
+    //         Flip();
+    //     }
+    // }
 }

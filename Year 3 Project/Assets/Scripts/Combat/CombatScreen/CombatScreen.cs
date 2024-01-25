@@ -13,6 +13,7 @@ public class CombatScreen : MonoBehaviour
     public GameObject PlayerSpriteSpawn;
     public GameObject EnemySpriteSpawn;
     public GameObject MenuCenter;
+    public GameObject TutorialCanvas;
 
     public GameObject enemy;
     public GameObject player;
@@ -30,6 +31,23 @@ public class CombatScreen : MonoBehaviour
     public GameObject winText;
     public GameObject loseText;
 
+    public GameObject buttonAB;
+    public GameObject buttonPR;
+    public GameObject buttonSU;
+    public GameObject tutorialText1;
+    public GameObject tutorialText2;
+    public GameObject tutorialText3;
+    public GameObject tutorialText4;
+    public GameObject tutorialText5;
+	public GameObject tutorialText6;
+    public GameObject tutorialSkip;
+    public GameObject tutorialContinue;
+    public GameObject tutorialNext1;
+    public GameObject tutorialNext2;
+    public GameObject tutorialNext3;
+    public GameObject tutorialNext4;
+    public GameObject tutorialNext5;
+
     public GameObject enemyActionText;
     public GameObject playerActionText;
 
@@ -38,6 +56,10 @@ public class CombatScreen : MonoBehaviour
     private System.Action<GameObject> skill3;
 
     private Transform hudTransform;
+
+    int turnNumber;
+
+    public bool tutorialMode;
 
     public enum TurnType { playerTurn, enemyTurn, END, START, combatover };
     
@@ -70,11 +92,15 @@ public class CombatScreen : MonoBehaviour
         enemyTurnTimer = 0;
         playerTurnTimerDone = true;
         playerTurnTimer = 0;
-        
+
         playergameover = false;
 
         hudTransform = player.transform.Find("HUD");
         hudTransform.gameObject.SetActive(false);
+
+        turnNumber = 0;
+
+        runCombatTutorial();
     }
 
     public void setEnemy(GameObject setEnemy)
@@ -82,6 +108,7 @@ public class CombatScreen : MonoBehaviour
         // get enemy and player
         enemy = setEnemy;
         player = GameObject.Find("PlayerCharacter");
+        // player.GetComponent<PlayerCharacterMovement>().fixRight();
         // create sprites of characters
         Instantiate(player.GetComponent<CombatSprite>().getCombatSprite(), PlayerSpriteSpawn.transform);
         Instantiate(enemy.GetComponent<CombatSprite>().getCombatSprite(), EnemySpriteSpawn.transform);
@@ -139,6 +166,8 @@ public class CombatScreen : MonoBehaviour
             Debug.Log("Waiting for 1 second");
             playerTurnTimer = 1;
             playerTurnTimerDone = false;
+            turnNumber++;
+            tutorialManager();
             // -- Continued in player timer --
         }
     }
@@ -161,6 +190,8 @@ public class CombatScreen : MonoBehaviour
             Debug.Log("Waiting for 1 second");
             playerTurnTimer = 1;
             playerTurnTimerDone = false;
+            turnNumber++;
+            tutorialManager();
             // -- Continued in player timer --
         }
     }
@@ -183,6 +214,8 @@ public class CombatScreen : MonoBehaviour
             Debug.Log("Waiting for 1 second");
             playerTurnTimer = 1;
             playerTurnTimerDone = false;
+            turnNumber++;
+            tutorialManager();
             // -- Continued in player timer --
         }
     }
@@ -317,6 +350,10 @@ public class CombatScreen : MonoBehaviour
             }
             else
             {
+                //Award Player Money For Win
+                player.GetComponent<PlayerStats>().WinMoney();
+                GameObject.FindWithTag("Money").GetComponent<MoneyManager>().UpdateMoney();
+
                 player.GetComponent<PlayerStats>().WipeConditions();
                 enemy.GetComponent<EnemyStats>().WipeConditions();
                 player.GetComponent<CombatStatus>().outCombat();
@@ -370,6 +407,130 @@ public class CombatScreen : MonoBehaviour
             playerActionText.SetActive(true);
             enemyActionText.SetActive(false);
             playerActionText.GetComponent<Text>().text = text;
+        }
+    }
+
+    public void runCombatTutorial()
+    {
+        if (enemy.GetComponent<EnemyStats>().getTutorialStatus() == true)
+        {
+            TutorialCanvas.SetActive(true);
+            MenuCenter.transform.GetChild(1).GetComponent<Canvas>().worldCamera = Camera.main;
+            tutorialText1.SetActive(true);
+            tutorialText2.SetActive(false);
+            tutorialText3.SetActive(false);
+            tutorialText4.SetActive(false);
+            tutorialText5.SetActive(false);
+            tutorialText6.SetActive(false);
+            tutorialNext1.SetActive(false);
+            tutorialNext2.SetActive(false);
+            tutorialNext3.SetActive(false);
+            tutorialNext4.SetActive(false);
+            tutorialNext5.SetActive(false);
+            buttonAB.SetActive(false);
+            buttonPR.SetActive(false);
+            buttonSU.SetActive(false);
+            tutorialContinue.SetActive(true);
+            tutorialSkip.SetActive(true);
+            tutorialSkip.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(leaveTutorial);
+            tutorialContinue.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(doTutorial);
+            tutorialMode = true;
+        }
+        else 
+        {
+            TutorialCanvas.SetActive(false);
+            tutorialMode = false;
+            MenuCenter.transform.GetChild(0).GetComponent<Canvas>().worldCamera = Camera.main;
+            return;
+        }
+    }
+    
+    public void doTutorial()
+    {
+        Debug.Log("Tutorial Started");
+        tutorialContinue.SetActive(false);
+        tutorialSkip.SetActive(false);
+        tutorialText1.SetActive(false);
+        tutorialText2.SetActive(true);
+        tutorialNext1.SetActive(true);
+        tutorialNext1.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(cycleTutorialOn);
+    }
+    public void leaveTutorial()
+    {
+        TutorialCanvas.SetActive(false);
+        MenuCenter.transform.GetChild(0).GetComponent<Canvas>().worldCamera = Camera.main;
+        tutorialMode = false;
+    }
+    public void cycleTutorialOn()
+    {
+        tutorialText2.SetActive(false);
+        tutorialText3.SetActive(true);
+        buttonPR.SetActive(true);
+        tutorialNext1.SetActive(false);
+        tutorialNext2.SetActive(true);
+        tutorialNext2.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(cycleTutorialOff);
+    }
+    public void cycleTutorialOff()
+    {
+        tutorialText3.SetActive(false);
+        buttonPR.SetActive(false);
+        tutorialNext2.SetActive(false);
+        TutorialCanvas.SetActive(false);
+        MenuCenter.transform.GetChild(0).GetComponent<Canvas>().worldCamera = Camera.main;
+    }
+    public void supportGuide()
+    {
+        MenuCenter.transform.GetChild(1).GetComponent<Canvas>().worldCamera = Camera.main;
+        TutorialCanvas.SetActive(true);
+        tutorialText4.SetActive(true);
+        tutorialNext3.SetActive(true);
+        buttonSU.SetActive(true);
+        tutorialNext3.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(leaveSupport);
+    }
+    public void leaveSupport()
+    {
+        tutorialText4.SetActive(false);
+        buttonSU.SetActive(false);
+        tutorialNext3.SetActive(false);
+        TutorialCanvas.SetActive(false);
+        MenuCenter.transform.GetChild(0).GetComponent<Canvas>().worldCamera = Camera.main;
+    }
+    public void abilityGuide()
+    {
+        MenuCenter.transform.GetChild(1).GetComponent<Canvas>().worldCamera = Camera.main;
+        TutorialCanvas.SetActive(true);
+        tutorialText5.SetActive(true);
+        buttonAB.SetActive(true);
+        tutorialNext4.SetActive(true);
+        tutorialNext4.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(tutorialFinal);
+    }
+    public void tutorialFinal()
+    {
+        tutorialText5.SetActive(false);
+        buttonAB.SetActive(false);
+        tutorialText6.SetActive(true);
+        tutorialNext4.SetActive(false);
+        tutorialNext5.SetActive(true);
+        tutorialNext5.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(tutorialLeaving);
+    }
+    public void tutorialLeaving()
+    {
+        TutorialCanvas.SetActive(false);
+        tutorialMode = false;
+        MenuCenter.transform.GetChild(0).GetComponent<Canvas>().worldCamera = Camera.main;
+    }
+    public void tutorialManager()
+    {
+        if (tutorialMode == true)
+        {
+            if (turnNumber == 1)
+            {
+                supportGuide();
+            }
+            else if (turnNumber == 2)
+            {
+                abilityGuide();
+            }
         }
     }
 }
