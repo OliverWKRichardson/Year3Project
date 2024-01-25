@@ -1244,7 +1244,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jsonFile: {fileID: 4900000, guid: ce3140d3233763d4c8e64530444e58fe, type: 3}
+  inputFile: {fileID: 4900000, guid: 4519121f309485944acadaa7bfdb83a0, type: 3}
   questionsInJSON:
+    questions: []
+  inputQuestions:
     questions: []
 --- !u!1 &2559781962571837019
 GameObject:

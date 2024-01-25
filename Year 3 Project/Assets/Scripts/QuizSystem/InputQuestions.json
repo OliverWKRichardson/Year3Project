@@ -1,0 +1,27 @@
+{
+    "questions": [
+        {
+            "question": "What is the expected monetary loss of a security risk with an asset value (AV) of £100,000 and an exposure factor (EF) of 0.2, i.e., the single loss expectancy?",
+            "correctAnswer": "20000",
+            "incorrectAnswer1": "A",
+            "incorrectAnswer2": "B",
+            "incorrectAnswer3": "C"
+        },
+        {
+            "question": "What form of cyberattack is it when an attacker is attempting to deceive individuals by sending fake emails that appear to be from a trusted source, asking for personal information like passwords and financial details?",
+            "correctAnswer": "Phishing",
+            "incorrectAnswer1": "A",
+            "incorrectAnswer2": "B",
+            "incorrectAnswer3": "C"
+        },
+        {
+            "question": "What form of cyberattack is it when a cybercriminal floods a legitimate website with a massive number of fabricated requests, rendering it inaccessible to genuine users?",
+            "correctAnswer": "DoS",
+            "incorrectAnswer1": "A",
+            "incorrectAnswer2": "B",
+            "incorrectAnswer3": "C"
+        }
+        
+
+    ]
+}

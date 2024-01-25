@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quizScreenPrefab: {fileID: 867143569586200930, guid: 5b4cb2495a367ff40805c46fa3ebbcce, type: 3}
+  inputPrefab: {fileID: 867143569586200930, guid: 76cdd0b9e84a00e4899dd2a2336586f2, type: 3}
   questions: []
 --- !u!114 &341495645651012967
 MonoBehaviour:
@@ -60,7 +61,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jsonFile: {fileID: 4900000, guid: ce3140d3233763d4c8e64530444e58fe, type: 3}
+  inputFile: {fileID: 4900000, guid: 4519121f309485944acadaa7bfdb83a0, type: 3}
   questionsInJSON:
+    questions: []
+  inputQuestions:
     questions: []
 --- !u!114 &4781848047746613564
 MonoBehaviour:

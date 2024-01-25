@@ -6326,6 +6326,44 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3725697767213990040, guid: 65ad7bab792b22e44b39a2b20fdb9a8e, type: 3}
   m_PrefabInstance: {fileID: 1586759791}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1600540441 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6822916851388016536, guid: af1957a5d031ad144875cee72a4848b4, type: 3}
+  m_PrefabInstance: {fileID: 3846906303957780402}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1600540442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600540441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feb5b871d43a65b4398599a600d64cb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jsonFile: {fileID: 4900000, guid: ce3140d3233763d4c8e64530444e58fe, type: 3}
+  inputFile: {fileID: 4900000, guid: 4519121f309485944acadaa7bfdb83a0, type: 3}
+  questionsInJSON:
+    questions: []
+  inputQuestions:
+    questions: []
+--- !u!114 &1600540443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600540441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b23420beb43db9498b9780495ba18be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quizScreenPrefab: {fileID: 867143569586200930, guid: 5b4cb2495a367ff40805c46fa3ebbcce, type: 3}
+  inputPrefab: {fileID: 867143569586200930, guid: 76cdd0b9e84a00e4899dd2a2336586f2, type: 3}
+  questions: []
 --- !u!1 &1601161048
 GameObject:
   m_ObjectHideFlags: 0
@@ -7611,6 +7649,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6595793590371778618, guid: 457dc93474c8499459b7852259d4d72e, type: 3}
+      propertyPath: inputFile
+      value: 
+      objectReference: {fileID: 4900000, guid: 4519121f309485944acadaa7bfdb83a0, type: 3}
     - target: {fileID: 6744722292932467203, guid: 457dc93474c8499459b7852259d4d72e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
