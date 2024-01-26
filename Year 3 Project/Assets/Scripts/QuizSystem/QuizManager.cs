@@ -64,11 +64,10 @@ public class QuizManager : MonoBehaviour
     public QuestionData getRandomInputQuestion()
     {
 
-
         int index = Random.Range(0, allInputQuestions.Length - 1);
         Debug.Log(index);
 
-        return getQuestionData(index);
+        return getInputQuestionData(index);
 
 
     }

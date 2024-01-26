@@ -15,6 +15,7 @@ public class QuizSpawner : MonoBehaviour
     private bool answerSelected = false;
 
     private bool quizTriggered = false;
+
     public GameObject quizScreenPrefab;
 
     public GameObject inputPrefab;
@@ -40,6 +41,7 @@ public class QuizSpawner : MonoBehaviour
         quizManager = this.GetComponent<QuizManager>();
         prefabPicked = true;
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -72,9 +74,9 @@ public class QuizSpawner : MonoBehaviour
 
                 quizManager = QuizManager.Instance;
                 //  Debug.Log(quizManager);
-                
 
-               Debug.Log("prefab is + " + prefabPicked);
+
+                Debug.Log("prefab is + " + prefabPicked);
                 setQuestions(prefabPicked);
 
             }
@@ -134,11 +136,14 @@ public class QuizSpawner : MonoBehaviour
             Transform question = menuCenter.transform.Find("Canvas/QuestionText");
 
             Transform button1 = menuCenter.transform.Find("Canvas/Answer 1 Button");
-           // Transform btn1 = button1.transform.Find("Button");
+            // Transform btn1 = button1.transform.Find("Button");
             Transform inputField = button1.transform.Find("InputField");
 
-            questionData = quizManager.GetRandomQuestion();
+            questionData = quizManager.getRandomInputQuestion();
+
             Debug.Log(questionData.question);
+            Debug.Log(questionData.correctAnswer);
+
             question.gameObject.GetComponent<Text>().text = questionData.question;
 
             InputField submission = inputField.GetComponent<InputField>();
@@ -206,6 +211,14 @@ public class QuizSpawner : MonoBehaviour
                     if (buttonText.text == correctAnswer)
                     {
                         buttonText.color = Color.green; // Correct answer picked
+                        foreach (Transform answerButton in answerButtons)
+                        {
+                            if (answerButton.GetComponentInChildren<Text>().text != correctAnswer)
+                            {
+                                answerButton.GetComponentInChildren<Text>().color = Color.red; // Highlight correct answer in green
+                            }
+
+                        }
                     }
                     else
                     {
@@ -255,23 +268,46 @@ public class QuizSpawner : MonoBehaviour
     private void submissionInput(string arg0)
     {
 
-        questionData = quizManager.getRandomInputQuestion();
+        //questionData = quizManager.getRandomInputQuestion();
         string correctAnswer = questionData.correctAnswer;
         Debug.Log("Correct answer is" + correctAnswer);
 
-        string userInput = arg0; // trim later
+        string userInput = arg0.Trim().ToLower();
 
-        if (userInput.Equals(correctAnswer, StringComparison.OrdinalIgnoreCase))
+        if (keywordSearch(userInput))
         {
-            Debug.Log("Correct Answer!");
+            Debug.Log("Correct!");
         }
         else
         {
-            Debug.Log("Incorrect Answer!");
+            Debug.Log("Incorrect!");
         }
+
+        
 
         answerSelected = true;
         Debug.Log(arg0);
+
+    }
+
+    public bool keywordSearch(string userInput)
+    {
+       
+        string correctAnswer = questionData.correctAnswer;
+        userInput = userInput.ToLower();
+        correctAnswer = correctAnswer.ToLower();
+        string[] keywords = correctAnswer.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+        List<string> foundKeywords = new List<string>();
+
+        foreach (string keyword in keywords)
+        {
+            if (!userInput.Contains(keyword))
+            {
+                return false;
+            }
+        }
+        return true;
 
     }
 
