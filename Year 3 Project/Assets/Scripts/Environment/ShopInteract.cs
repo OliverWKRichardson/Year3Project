@@ -28,7 +28,7 @@ public class ShopInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((entered == true && Input.GetKeyDown(KeyCode.E)))
+        if ((entered == true && Input.GetKeyDown(KeyCode.F)))
         {
             if (debounce == false)
             {
