@@ -8,6 +8,8 @@ TagManager:
   - Barrier
   - DialogueSystem
   - Money
+  - Enemy
+  - ShopItems
   layers:
   - Default
   - TransparentFX
