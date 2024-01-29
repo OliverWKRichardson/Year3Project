@@ -32,7 +32,7 @@ public class CombatStarter : MonoBehaviour
             if(hit.collider != null)
             {
 
-                
+                Debug.Log(hit.collider.gameObject.name);
                 // if is the player
                 if(hit.collider.gameObject == GameObject.Find("PlayerCharacter") && (AIDestinationSetter.inCombat == false))
                 {
@@ -86,6 +86,7 @@ public class CombatStarter : MonoBehaviour
             GameObject enemy = gameObject.transform.parent.gameObject;
             StunBehavior enemyscript = enemy.GetComponent<StunBehavior>();
             enemyscript.StartCoroutine(enemyscript.Stun());
+            GameObject.FindWithTag("Player").transform.Find("Firewall").gameObject.SetActive(false);
         }
     }
 
