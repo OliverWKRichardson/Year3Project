@@ -11,6 +11,8 @@ TagManager:
   - Enemy
   - ShopItems
   - HealthBars
+  - Boss
+  - Router
   layers:
   - Default
   - TransparentFX

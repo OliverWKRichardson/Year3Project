@@ -8,6 +8,8 @@ using Random = UnityEngine.Random;
 
 public class PlayerStats : MonoBehaviour
 {
+
+    
     // Type of enemy
     public EnemyGenerator.enemyType type;
     // Speed of enemy
@@ -27,6 +29,7 @@ public class PlayerStats : MonoBehaviour
     // Attack of enemy
     public float ATK;
     public int Money;
+    public int level;
 
     // Sets MaxHP of enemy
     public void setMaxC(float setMaxC)
@@ -273,5 +276,15 @@ public class PlayerStats : MonoBehaviour
     public int GetMoney()
     {
         return Money;
+    }
+
+    public int GetLevel()
+    {
+        return level;
+    }
+
+    public void IncrementLevel()
+    {
+        level++;
     }
 }

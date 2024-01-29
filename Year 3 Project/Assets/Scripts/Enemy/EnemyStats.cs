@@ -8,6 +8,8 @@ using UnityEditor;
 
 public class EnemyStats : MonoBehaviour
 {
+
+    public GameObject trapdoor; 
     // Type of enemy
     public EnemyGenerator.enemyType type;
     // Speed of enemy
@@ -80,6 +82,17 @@ public class EnemyStats : MonoBehaviour
         }
         // reduce hp by amount 
         HP = Mathf.Clamp(HP - amount, 0, MaxHP);
+
+        if (HP <= 0 && gameObject.CompareTag("Boss"))
+        {
+            GameObject player = GameObject.FindWithTag("Player");
+            int level = player.gameObject.GetComponent<PlayerStats>().GetLevel();
+            Debug.Log("Spawn Router");
+            GameObject td = Instantiate(trapdoor);
+            td.transform.position = gameObject.transform.position;
+            td.GetComponent<LevelScript>().setSceneIndex(3);
+            player.gameObject.GetComponent<PlayerStats>().IncrementLevel();
+        }
     }
     // heal self
     public void Heal(float amount)
