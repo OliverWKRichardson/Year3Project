@@ -272,6 +272,8 @@ public class ShopInteract : MonoBehaviour
 
         if (money >= price)
         {
+            PlayerStats ps = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
+            GameObject hb = GameObject.FindWithTag("HealthBars");
             gameObject.GetComponent<PlayerStats>().SetMoney(money - price);
             GameObject.FindWithTag("Money").gameObject.GetComponent<MoneyManager>().UpdateMoney();
             switch (ctrl)
@@ -304,15 +306,22 @@ public class ShopInteract : MonoBehaviour
                 case "AVS":
                     stats.setA(stats.getMaxA());
                     sendMsg("Antivirus system enabled, running TECHNICAL control to REACT to active viruses & malware from your system and remove them, increases the availability of your system.");
+                    GameObject abar = hb.transform.Find("Abar").gameObject;
+                    abar.GetComponent<ResourceBar>().Setf(ps.getA() / ps.getMaxA());
                     break;
                 case "RS":
                     stats.setI(stats.getMaxI());
                     sendMsg("Recovery system booted, running TECHNICAL control to REACT to active data loss from your system, restores lost data using back-ups and other protocols. Increases the integrity of your system. .");
+                    GameObject ibar = hb.transform.Find("Ibar").gameObject;
+                    ibar.GetComponent<ResourceBar>().Setf(ps.getI() / ps.getMaxI());
+
                     break;
                 case "AC":
                     Debug.Log("AC1");
                     stats.setC(stats.getMaxC());
                     sendMsg("Access Control designated, running TECHNICAL control to REACT to bad actors in the network. Changes access levels of roles/members in the organization's network and increases the confidentiality of your system. ");
+                    GameObject cbar = hb.transform.Find("Cbar").gameObject;
+                    cbar.GetComponent<ResourceBar>().Setf(ps.getC() / ps.getMaxC());
                     //
                     break;
                 default:
