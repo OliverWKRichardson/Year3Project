@@ -32,10 +32,7 @@ public class DialogScript : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(messageComplete);
-        Debug.Log(size);
-        Debug.Log(msgIndex);
-        Debug.Log(activeDialog);
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             if ((skipDialog == true))
@@ -116,7 +113,6 @@ public class DialogScript : MonoBehaviour
 
         if (DialogQ.Count > 0)
         {
-            Debug.Log("here too");
             wipeDialog();
         }
         if ((DialogQ.Count == 0))
@@ -131,7 +127,6 @@ public class DialogScript : MonoBehaviour
     public void SendMessages(string[] messages)
     {
 
-        Debug.Log("Sendingg messages!");
         activeDialog = true;
         size = messages.Length;
         msgIndex = 0;

@@ -47,14 +47,12 @@ public class MapgenScript : MonoBehaviour
     void Start()
     {
         generateMap();
-        Debug.Log(bossDistance(startcoords.getx(),startcoords.gety()));
         if (bossDistance(startcoords.getx(), startcoords.gety()) < 3) {
             shopcounter = 0;
             coincounter = 0;
             roomcounter = 0;
             spawnroomexists = false;
             coordstack = new Stack<coordinates>();
-            Debug.Log("generatin map");
             Start(); }
         
     }
@@ -187,12 +185,8 @@ public class MapgenScript : MonoBehaviour
             return new Room(5, null, null, null, null);
         }
 
-        Debug.Log("hello");
         int rng = Random.Range(0, 20);
-        Debug.Log("rng is : " + rng);
-        Debug.Log("max shops: "+MAX_SHOPS);
-        Debug.Log("shop counter:" + shopcounter);
-        Debug.Log("boss distance: " + bossDistance(x, y));
+
            if ((shopcounter < MAX_SHOPS) && roomcounter >= 4 && (rng>=10 && rng <=15 ))
         {
             roomcounter++;

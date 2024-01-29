@@ -47,11 +47,10 @@ public class MapCreate : MonoBehaviour
                 Room temp = map[i, j];
                 if (temp == null)
                 {
-                    Debug.Log("E");
                 }
                 else
                 {
-                    Debug.Log(temp.getType());
+                    temp.getType();
                 }
             }
         }

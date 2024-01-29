@@ -6,7 +6,7 @@ using UnityEngine;
 public class MoneyManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    private int previousval;
+    private int previousval = 0;
     private GameObject moneyval;
     private GameObject moneyanim;
     void Start()
@@ -27,8 +27,21 @@ public class MoneyManager : MonoBehaviour
         int val = GameObject.FindWithTag("Player").GetComponent<PlayerStats>().GetMoney();
         moneyval.GetComponent<TextMeshProUGUI>().text = val.ToString();
         int newmoney = val-previousval;
-        moneyanim.GetComponent<TextMeshProUGUI>().SetText("+" + newmoney);
-        if (newmoney > 0) { StartCoroutine(MoneyNotification()); }
+        previousval = val;
+
+        if (newmoney > 0)
+        {
+            moneyanim.GetComponent<TextMeshProUGUI>().SetText("+" + newmoney);
+            StartCoroutine(MoneyNotification());
+
+        }
+        else if (newmoney < 0)
+        {
+            
+            moneyanim.GetComponent<TextMeshProUGUI>().SetText(newmoney.ToString());
+            StartCoroutine(MoneyNotification());
+
+        }
     }
 
     IEnumerator MoneyNotification()

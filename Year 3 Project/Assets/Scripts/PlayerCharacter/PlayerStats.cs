@@ -261,8 +261,13 @@ public class PlayerStats : MonoBehaviour
 
     public void WinMoney()
     {
-       int netcoin = Random.Range(0, 2);
+       int netcoin = Random.Range(1, 4);
         Money = Money + netcoin;
+    }
+
+    public void SetMoney(int givenmoney)
+    {
+        Money = givenmoney;
     }
 
     public int GetMoney()
