@@ -84,6 +84,8 @@ public class CombatScreen : MonoBehaviour
     // Decide starting turn
     void Start()
     {
+        GameObject ui = GameObject.FindWithTag("DialogueSystem");
+        ui.transform.localScale = new Vector3(0, 0, 0);
         MenuCenter.transform.GetChild(0).GetComponent<Canvas>().worldCamera = Camera.main;
         button1.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(useSkill1);
         button2.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(useSkill2);
@@ -350,9 +352,24 @@ public class CombatScreen : MonoBehaviour
             }
             else
             {
+                GameObject ui = GameObject.FindWithTag("DialogueSystem");
+                ui.transform.localScale = new Vector3(1, 1, 1);
+
                 //Award Player Money For Win
-                player.GetComponent<PlayerStats>().WinMoney();
+                PlayerStats ps = player.GetComponent<PlayerStats>();
+                ps.WinMoney();
                 GameObject.FindWithTag("Money").GetComponent<MoneyManager>().UpdateMoney();
+                GameObject hb = GameObject.FindWithTag("HealthBars");
+
+                GameObject abar = hb.transform.Find("Abar").gameObject;
+                GameObject cbar = hb.transform.Find("Cbar").gameObject;
+                GameObject ibar = hb.transform.Find("Ibar").gameObject;
+                Debug.Log(ps.getC());
+                Debug.Log(ps.getMaxC());
+                cbar.GetComponent<ResourceBar>().Setf(ps.getC()/ps.getMaxC());
+                ibar.GetComponent<ResourceBar>().Setf(ps.getI() / ps.getMaxI());
+                abar.GetComponent<ResourceBar>().Setf(ps.getA()/ps.getMaxA());
+
 
                 player.GetComponent<PlayerStats>().WipeConditions();
                 enemy.GetComponent<EnemyStats>().WipeConditions();

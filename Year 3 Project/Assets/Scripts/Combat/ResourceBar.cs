@@ -16,4 +16,9 @@ public class ResourceBar : MonoBehaviour
     {
         slider.value = Amount;
     }
+
+    public void Setf(float Amount)
+    {
+        slider.value = Amount;
+    }
 }
