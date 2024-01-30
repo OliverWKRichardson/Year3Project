@@ -157,17 +157,12 @@ public class QuizSpawner : MonoBehaviour
 
     public void QuizCleared()
     {
-        
         // Enable enemy AI
         AIDestinationSetter.inCombat = false;
         playerMovement.EnablePlayerMovement();
 
         Destroy(generatedQuiz);
-        if (!transform.parent.gameObject.CompareTag("Router"))
-        {
-            Destroy(transform.parent.gameObject);
-
-        }
+        Destroy(transform.parent.gameObject);
     }
 
 
