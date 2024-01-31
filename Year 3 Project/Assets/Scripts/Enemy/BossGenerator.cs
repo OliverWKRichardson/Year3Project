@@ -22,7 +22,7 @@ public class BossGenerator : MonoBehaviour
     {
         Transform pos = gameObject.transform;
         hostile = Instantiate(boss); // Add Vector2(x, y) for the position of the newly generated boss
-        hostile.transform.position = gameObject.transform.position;
+        hostile.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -1);
         hostile.GetComponent<EnemyStats>().setSPD(UnityEngine.Random.Range(11, 15));
         hostile.GetComponent<EnemyStats>().setMaxHP(UnityEngine.Random.Range(800, 1000));
         hostile.GetComponent<EnemyStats>().setHP(hostile.GetComponent<EnemyStats>().getMaxHP());
