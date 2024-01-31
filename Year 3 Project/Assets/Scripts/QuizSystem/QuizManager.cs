@@ -72,7 +72,7 @@ public class QuizManager : MonoBehaviour
 
     public QuestionData getInputQuestionData(int index)
     {
-        return allInputQuestionData(index);
+        return allInputQuestions[index];
     }
 
 
