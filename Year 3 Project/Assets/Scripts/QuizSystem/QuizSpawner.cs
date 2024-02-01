@@ -52,7 +52,8 @@ public class QuizSpawner : MonoBehaviour
             {
                 //Disable enemy AI
                 AIDestinationSetter.inCombat = true;
-
+                GameObject ui = GameObject.FindWithTag("DialogueSystem");
+                ui.transform.localScale = new Vector3(0, 0, 0);
                 playerMovement = other.GetComponent<PlayerCharacterMovement>();
                 playerMovement.DisablePlayerMovement();
 
@@ -159,6 +160,8 @@ public class QuizSpawner : MonoBehaviour
     public void QuizCleared()
     {
         // Enable enemy AI
+        GameObject ui = GameObject.FindWithTag("DialogueSystem");
+        ui.transform.localScale = new Vector3(1, 1, 1);
         AIDestinationSetter.inCombat = false;
         playerMovement.EnablePlayerMovement();
 
