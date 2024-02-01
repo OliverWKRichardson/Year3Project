@@ -161,8 +161,13 @@ public class QuizSpawner : MonoBehaviour
         AIDestinationSetter.inCombat = false;
         playerMovement.EnablePlayerMovement();
 
+
         Destroy(generatedQuiz);
-        Destroy(transform.parent.gameObject);
+        if (!transform.parent.gameObject.CompareTag("Router"))
+        {
+            Destroy(transform.parent.gameObject);
+
+        }
     }
 
 
