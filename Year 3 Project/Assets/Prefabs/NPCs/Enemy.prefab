@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528f0566b7198134fbb01249a1996c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trapdoor: {fileID: 0}
   type: 0
   SPD: 0
   HP: 0
@@ -390,7 +391,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9188770406790843705, guid: 6691f6660724b9b4db50a78aac323d0b, type: 3}
       propertyPath: m_Radius
-      value: 0.4
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 9188770406790843708, guid: 6691f6660724b9b4db50a78aac323d0b, type: 3}
       propertyPath: m_RootOrder
