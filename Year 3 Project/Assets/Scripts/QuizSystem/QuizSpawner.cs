@@ -136,19 +136,20 @@ public class QuizSpawner : MonoBehaviour
             Transform question = menuCenter.transform.Find("Canvas/QuestionText");
 
             Transform button1 = menuCenter.transform.Find("Canvas/Answer 1 Button");
-            // Transform btn1 = button1.transform.Find("Button");
+            Transform enterButton = menuCenter.transform.Find("Canvas/Button");
             Transform inputField = button1.transform.Find("InputField");
 
             questionData = quizManager.getRandomInputQuestion();
 
-            Debug.Log(questionData.question);
-            Debug.Log(questionData.correctAnswer);
-
             question.gameObject.GetComponent<Text>().text = questionData.question;
 
             InputField submission = inputField.GetComponent<InputField>();
+            
+            Button buttonComponent = enterButton.GetComponent<Button>();
 
-            submission.onEndEdit.AddListener(submissionInput);
+            buttonComponent.onClick.AddListener(() => submissionInput(submission.text));
+
+           
 
         }
 
@@ -163,6 +164,7 @@ public class QuizSpawner : MonoBehaviour
 
 
         Destroy(generatedQuiz);
+
         if (!transform.parent.gameObject.CompareTag("Router"))
         {
             Destroy(transform.parent.gameObject);
@@ -268,30 +270,34 @@ public class QuizSpawner : MonoBehaviour
         }
     }
 
-    // rename + do whitespace
 
     private void submissionInput(string arg0)
     {
 
-        //questionData = quizManager.getRandomInputQuestion();
-        string correctAnswer = questionData.correctAnswer;
-        Debug.Log("Correct answer is" + correctAnswer);
+        // worst code imaginable
+
+        Transform menuCenter = generatedQuiz.transform.Find("QA/Menu Center");
+        Transform question = menuCenter.transform.Find("Canvas/QuestionText");
+
+        Transform button1 = menuCenter.transform.Find("Canvas/Answer 1 Button");
+        Transform inputField = button1.transform.Find("InputField");
+        Text textComponent = inputField.GetComponentInChildren<Text>();
+        InputField submission = inputField.GetComponent<InputField>();
 
         string userInput = arg0.Trim().ToLower();
 
         if (keywordSearch(userInput))
         {
-            Debug.Log("Correct!");
+           submission.image.color = Color.green;
+           
         }
         else
         {
-            Debug.Log("Incorrect!");
+           submission.image.color = Color.red;
+
         }
 
-        
-
         answerSelected = true;
-        Debug.Log(arg0);
 
     }
 
