@@ -1,0 +1,3 @@
+- For midwalls, use X = 0.4, Y = 1.4 in the editor
+- For cornerwalls, use X = 0.2, Y = 0.2 in the editor
+- To use cornerwalls, use the X location of the top wall that ends at the lighter colour and the Y location of the bottom wall with the darker colour
