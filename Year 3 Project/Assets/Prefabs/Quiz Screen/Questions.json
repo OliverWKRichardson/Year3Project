@@ -16,7 +16,7 @@
         },
         {
             "question": "What does confidentiality, in the context of cybersecurity, mean?",
-            "correctAnswer": "Only authorized parties can access, or even know about the existence of, a particular asset.",
+            "correctAnswer": "Only authorized parties can access a particular asset.",
             "incorrectAnswer1": "Encrypting all your data to make it acccessible to everyone",
             "incorrectAnswer2": "Making information avaliable to anyone who requests it",
             "incorrectAnswer3": "Ensuring information is kept secret from competitions to gain a competitive advantage"
@@ -37,14 +37,14 @@
         },
         {
             "question": "What does 'non-repudiation' mean, in the context of information security?",
-            "correctAnswer": "The ability for parties to prove that a message has been sent by a specific person and received by a specific person.",
+            "correctAnswer": "Ability for parties to prove that a message has been sent/received by a specific person",
             "incorrectAnswer1": "Process of concealing the identity of a sender / recipient",
             "incorrectAnswer2": "Act of encrypting data to prvent anyone from accessing it",
             "incorrectAnswer3": "Allow parties to deny who sent / recieved a message"
         },
         {
             "question": "What is the best definition of a vulnerability?",
-            "correctAnswer": "A weakness or flaw in a system, application, or network that can be exploited by malicious actors to compromise the confidentiality, integrity, or availability of data or systems.",
+            "correctAnswer": "A weakness or flaw in a system, that can be exploited by malicious actors.",
             "incorrectAnswer1": "Refers to the physical damage caused by external factors",
             "incorrectAnswer2": "Any software that enhances the performance of a system or application",
             "incorrectAnswer3": "?"
@@ -194,7 +194,7 @@
             "question": "In a discretionary access control (DAC) policy, access is controlled based on:",
             "correctAnswer": "The identity of the requestor and access rules.",
             "incorrectAnswer1": "Access rules determined by a central authority.",
-            "incorrectAnswer2": "A",
+            "incorrectAnswer2": "Access rules determined by roles",
             "incorrectAnswer3": "A"
         },
         {
@@ -220,14 +220,14 @@
         },
         {
             "question": "What access control policy takes into account the attributes of entities and the environment relevant to a request?",
-            "correctAnswer": "Attribute-based access control (ABAC)",
+            "correctAnswer": "ABAC",
             "incorrectAnswer1": "DAC",
             "incorrectAnswer2": "RBAC",
             "incorrectAnswer3": "MAC"
         },
         {
             "question": "What does unauthorized access to computer material mean in the Computer Misuse Act (1990)?",
-            "correctAnswer": "Knowingly accessing a computer – or parts of a computer system – that you are not allowed to.",
+            "correctAnswer": "Knowingly accessing a computer that you are not allowed to.",
             "incorrectAnswer1": "Accessing computer material after accidentally stumbling upon it online",
             "incorrectAnswer2": "Legitimate use of computer material",
             "incorrectAnswer3": "Accessing computer material with explicit permission"
