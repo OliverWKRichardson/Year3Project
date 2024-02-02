@@ -196,10 +196,10 @@ MonoBehaviour:
   repathRateCompatibility: NaN
   canSearchCompability: 0
   orientation: 1
-  enableRotation: 0
+  enableRotation: 1
   autoRepath:
     mode: 1
-    interval: 1
+    interval: 0.5
     sensitivity: 15
     maximumInterval: 1
     visualizeSensitivity: 0
@@ -208,10 +208,10 @@ MonoBehaviour:
   rotationSpeed: 360
   slowdownDistance: 0.6
   pickNextWaypointDist: 1.2
-  endReachedDistance: 0.2
+  endReachedDistance: 0.1
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 0
-  whenCloseToDestination: 0
+  whenCloseToDestination: 1
   constrainInsideGraph: 0
 --- !u!114 &-7212916893925198505
 MonoBehaviour:
