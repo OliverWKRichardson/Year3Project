@@ -7,6 +7,7 @@ using Pathfinding;
 using UnityEngine.UIElements;
 using System;
 using UnityEngine.UI;
+using TMPro;
 
 public class CombatScreen : MonoBehaviour
 {
@@ -50,6 +51,7 @@ public class CombatScreen : MonoBehaviour
 
     public GameObject enemyActionText;
     public GameObject playerActionText;
+    public GameObject enemyTypeText;
 
     private System.Action<GameObject> skill1;
     private System.Action<GameObject> skill2;
@@ -102,6 +104,7 @@ public class CombatScreen : MonoBehaviour
 
         turnNumber = 0;
 
+        
         runCombatTutorial();
     }
 
@@ -129,7 +132,7 @@ public class CombatScreen : MonoBehaviour
         playerMPBar.GetComponent<ResourceBar>().SetMax((int)player.GetComponent<PlayerStats>().getMaxMP());
         enemyMPBar.GetComponent<ResourceBar>().Set((int)enemy.GetComponent<EnemyStats>().getMP());
         playerMPBar.GetComponent<ResourceBar>().Set((int)player.GetComponent<PlayerStats>().getMP());
-
+        setEnemyTypeText(enemy.GetComponent<EnemyStats>());
         // set up player skills
         skill1 = player.GetComponent<Skills>().skill1;
         skill2 = player.GetComponent<Skills>().skill2;
@@ -548,6 +551,37 @@ public class CombatScreen : MonoBehaviour
             {
                 abilityGuide();
             }
+        }
+    }
+
+
+    public void setEnemyTypeText(EnemyStats es)
+    {
+        EnemyGenerator.enemyType type = es.getType();
+        switch (type)
+        {
+            case EnemyGenerator.enemyType.malware:
+                enemyTypeText.GetComponent<Text>().text = "Malware";
+                break;
+
+            case EnemyGenerator.enemyType.hacker:
+                enemyTypeText.GetComponent<Text>().text = ("Hacker");
+
+                break;
+            case EnemyGenerator.enemyType.scriptkiddie:
+                enemyTypeText.GetComponent<Text>().text = ("Script Kiddie");
+
+                break;
+            case EnemyGenerator.enemyType.socialengineer:
+                enemyTypeText.GetComponent<Text>().text = ("Social Engineer");
+
+                break;
+            case EnemyGenerator.enemyType.nationstateactor:
+                enemyTypeText.GetComponent<Text>().text = ("Nation State Actor");
+
+                break;
+
+
         }
     }
 }

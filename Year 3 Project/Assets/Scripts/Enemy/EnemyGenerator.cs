@@ -7,7 +7,7 @@ using System;
 public class EnemyGenerator : MonoBehaviour
 {
     // Enemy Type
-    public enum enemyType{none, light, heavy, malware, hacker}
+    public enum enemyType{none,malware, hacker, socialengineer, scriptkiddie, nationstateactor}
     private int enemyTypeCount = Enum.GetNames(typeof(enemyType)).Length;
     // Enemy class
     public GameObject enemy;
@@ -38,7 +38,7 @@ public class EnemyGenerator : MonoBehaviour
 
         switch(enemyType) // every enemy needs a 0 cost skill for when they run out of mana
         {
-            case enemyType.light:
+            /**case enemyType.light:
                 hostile.GetComponent<EnemyStats>().setType(enemyType.light);
                 hostile.GetComponent<EnemyStats>().setSPD(UnityEngine.Random.Range(5, 11));
                 hostile.GetComponent<EnemyStats>().setMaxHP(UnityEngine.Random.Range(400, 600));
@@ -57,7 +57,7 @@ public class EnemyGenerator : MonoBehaviour
                 hostile.GetComponent<EnemyStats>().setMP(hostile.GetComponent<EnemyStats>().getMaxMP());
                 hostile.GetComponent<EnemyStats>().setATK(UnityEngine.Random.Range(80, 180));
                 hostile.GetComponent<EnemySkills>().SetSkills("Light Attack", LightAttack, LightAttackCost,"Heavy Attack" , HeavyAttack, HeavyAttackCost,"Heavy Attack" , HeavyAttack, HeavyAttackCost);
-                break;
+                break;**/
             case enemyType.malware:
                 hostile.GetComponent<EnemyStats>().setType(enemyType.malware);
                 hostile.GetComponent<EnemyStats>().setSPD(UnityEngine.Random.Range(3, 7));
@@ -78,6 +78,44 @@ public class EnemyGenerator : MonoBehaviour
                 hostile.GetComponent<EnemyStats>().setATK(UnityEngine.Random.Range(80, 130));
                 hostile.GetComponent<EnemySkills>().SetSkills("Botnet Attack", BotnetAttack,BotnetCost, "Phishing Attack", PhishingAttack,LightAttackCost, "Dictionary Password Attack", DictionaryPasswordAttack, HeavyAttackCost);
                 break;
+
+            case enemyType.socialengineer:
+                hostile.GetComponent<EnemyStats>().setType(enemyType.socialengineer);
+                hostile.GetComponent<EnemyStats>().setSPD(UnityEngine.Random.Range(5, 11));
+                hostile.GetComponent<EnemyStats>().setMaxHP(UnityEngine.Random.Range(500, 600));
+                hostile.GetComponent<EnemyStats>().setHP(hostile.GetComponent<EnemyStats>().getMaxHP());
+                hostile.GetComponent<EnemyStats>().setMaxMP(UnityEngine.Random.Range(100, 150));
+                hostile.GetComponent<EnemyStats>().setMP(hostile.GetComponent<EnemyStats>().getMaxMP());
+                hostile.GetComponent<EnemyStats>().setATK(UnityEngine.Random.Range(80, 130));
+                hostile.GetComponent<EnemySkills>().SetSkills("Phishing Attack", PhishingAttack, LightAttackCost, "Spear Phishing", SpearPhishingAttack, BotnetCost, "Smishing", PhishingAttack, LightAttackCost);
+                break;
+
+            case enemyType.scriptkiddie:
+                hostile.GetComponent<EnemyStats>().setType(enemyType.scriptkiddie);
+                hostile.GetComponent<EnemyStats>().setSPD(UnityEngine.Random.Range(3, 7));
+                hostile.GetComponent<EnemyStats>().setMaxHP(UnityEngine.Random.Range(350, 500));
+                hostile.GetComponent<EnemyStats>().setHP(hostile.GetComponent<EnemyStats>().getMaxHP());
+                hostile.GetComponent<EnemyStats>().setMaxMP(UnityEngine.Random.Range(100, 150));
+                hostile.GetComponent<EnemyStats>().setMP(hostile.GetComponent<EnemyStats>().getMaxMP());
+                hostile.GetComponent<EnemyStats>().setATK(UnityEngine.Random.Range(80, 130));
+                hostile.GetComponent<EnemySkills>().SetSkills("DOS Attack", DoSAttack, VirusCost, "SQL Injection", SQLInjectionAttack, RansomwareCost, "Trojan", TrojanAttack, VirusCost);
+                break;
+
+                //Edit this later to give nation state actor its own moves
+            case enemyType.nationstateactor:
+                hostile.GetComponent<EnemyStats>().setType(enemyType.nationstateactor);
+                hostile.GetComponent<EnemyStats>().setSPD(UnityEngine.Random.Range(5, 10));
+                hostile.GetComponent<EnemyStats>().setMaxHP(UnityEngine.Random.Range(500, 600));
+                hostile.GetComponent<EnemyStats>().setHP(hostile.GetComponent<EnemyStats>().getMaxHP());
+                hostile.GetComponent<EnemyStats>().setMaxMP(UnityEngine.Random.Range(100, 150));
+                hostile.GetComponent<EnemyStats>().setMP(hostile.GetComponent<EnemyStats>().getMaxMP());
+                hostile.GetComponent<EnemyStats>().setATK(UnityEngine.Random.Range(80, 130));
+                hostile.GetComponent<EnemySkills>().SetSkills("Botnet Attack", BotnetAttack, BotnetCost, "Phishing Attack", PhishingAttack, LightAttackCost, "Dictionary Password Attack", DictionaryPasswordAttack, HeavyAttackCost);
+                break;
+
+
+
+
         }
 
     }
@@ -113,12 +151,29 @@ public class EnemyGenerator : MonoBehaviour
     }
     private int DoTCCost = 50;
 
+    public void DoSAttack(GameObject target)
+    {
+        Debug.Log("Enemy Used DoTA Attack On " + target.name);
+        Condition DoS = new Condition("DoTA", 2, CombatScreen.TurnType.playerTurn, 50.0f);
+        target.GetComponent<PlayerStats>().AddCondition(DoS);
+        hostile.GetComponent<EnemyStats>().spendMP(50);
+    }
     public void BotnetAttack(GameObject target)
     {
         Debug.Log("Enemy Used DoTA Attack On " + target.name);
         Condition DDoS = new Condition("DoTA", 5, CombatScreen.TurnType.playerTurn, 75.0f);
         target.GetComponent<PlayerStats>().AddCondition(DDoS);
         hostile.GetComponent<EnemyStats>().spendMP(80);
+    }
+
+    public void SpearPhishingAttack(GameObject target)
+    {
+
+        Debug.Log("Enemy Used Spear Phishing Attack On " + target.name);
+        hostile.GetComponent<EnemyStats>().spendMP(100);
+        float amount = hostile.GetComponent<EnemyStats>().getATK();
+        float MULT = 1.3f;
+        target.GetComponent<PlayerStats>().DamageC(amount * MULT);
     }
     public void HeavyAttack(GameObject target)
     {
@@ -181,6 +236,26 @@ public class EnemyGenerator : MonoBehaviour
         Debug.Log("Enemy used Phishing Attack On" + target.name);
         float amount = hostile.GetComponent<EnemyStats>().getATK();
         float cmult = 1.1f;
+        target.GetComponent<PlayerStats>().DamageC(cmult * amount);
+    }
+
+    public void SQLInjectionAttack(GameObject target)
+    {
+        Debug.Log("Enemy used SQL Injection Attack On" + target.name);
+        float amount = hostile.GetComponent<EnemyStats>().getATK();
+        float imult = 1.3f;
+        target.GetComponent<PlayerStats>().DamageI(imult * amount);
+
+    }
+
+    public void TrojanAttack(GameObject target)
+    {
+        Debug.Log("Enemy used Trojan Attack On" + target.name);
+        float amount = hostile.GetComponent<EnemyStats>().getATK();
+        float imult = 1.2f;
+        float cmult = 0.8f;
+
+        target.GetComponent<PlayerStats>().DamageI(imult * amount);
         target.GetComponent<PlayerStats>().DamageC(cmult * amount);
     }
     
