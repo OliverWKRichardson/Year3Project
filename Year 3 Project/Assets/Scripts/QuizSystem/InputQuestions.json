@@ -15,12 +15,70 @@
             "incorrectAnswer3": "C"
         },
         {
-            "question": "What form of cyberattack is it when a cybercriminal floods a legitimate website with a massive number of fabricated requests, rendering it inaccessible to genuine users?",
-            "correctAnswer": "DoS",
+            "question": "What does CIA stand for?",
+            "correctAnswer": "Confidentiality, Integrity and Availability",
+            "incorrectAnswer1": "A",
+            "incorrectAnswer2": "B",
+            "incorrectAnswer3": "C"
+        },
+        {
+            "question": "Which term refers to malware that uses encryption to hold a victim's data at ransom, demanding payment for decryption?",
+            "correctAnswer": "Ransomware",
+            "incorrectAnswer1": "A",
+            "incorrectAnswer2": "B",
+            "incorrectAnswer3": "C"
+        },
+        {
+            "question": "Which term refers to when an attacker gains access to a wireless network and eavesdrops on the communication between two devices?",
+            "correctAnswer": "Eavesdropping",
+            "incorrectAnswer1": "A",
+            "incorrectAnswer2": "B",
+            "incorrectAnswer3": "C"
+        },
+        {
+            "question": "What is it called when a cybercriminal floods a legitimate website with fabricated requests?",
+            "correctAnswer": "DDoS, DoS",
+            "incorrectAnswer1": "A",
+            "incorrectAnswer2": "B",
+            "incorrectAnswer3": "C"
+        },
+        {
+            "question": "What form of cyberattack is it called when an attacker repeatedly attempts various passwords until the correct one is found?",
+            "correctAnswer": "Brute force attack, brute force",
+            "incorrectAnswer1": "A",
+            "incorrectAnswer2": "B",
+            "incorrectAnswer3": "C"
+        },
+        {
+            "question": "If an employee recieves an email with a suspicious attachment and opens it - what type of threat is this?",
+            "correctAnswer": "Malware",
+            "incorrectAnswer1": "A",
+            "incorrectAnswer2": "B",
+            "incorrectAnswer3": "C"
+        },
+        {
+            "question": "According to the lecture, what is an example of a (potential) asset?",
+            "correctAnswer": "Money, Physical, Assets, Information, Facilities, People, Reputation, Intangibles",
+            "incorrectAnswer1": "A",
+            "incorrectAnswer2": "B",
+            "incorrectAnswer3": "C"
+        },
+        {
+            "question": "Which type of security attack involves altering a program, such as the introduction of viruses?",
+            "correctAnswer": "Modification, Modification attack",
             "incorrectAnswer1": "A",
             "incorrectAnswer2": "B",
             "incorrectAnswer3": "C"
         }
+        
+        
+
+        
+        
+
+
+
+
         
 
     ]

@@ -145,12 +145,12 @@ public class QuizSpawner : MonoBehaviour
             question.gameObject.GetComponent<Text>().text = questionData.question;
 
             InputField submission = inputField.GetComponent<InputField>();
-            
+
             Button buttonComponent = enterButton.GetComponent<Button>();
 
             buttonComponent.onClick.AddListener(() => submissionInput(submission.text));
 
-           
+
 
         }
 
@@ -291,12 +291,12 @@ public class QuizSpawner : MonoBehaviour
 
         if (keywordSearch(userInput))
         {
-           submission.image.color = Color.green;
-           
+            submission.image.color = Color.green;
+
         }
         else
         {
-           submission.image.color = Color.red;
+            submission.image.color = Color.red;
 
         }
 
@@ -306,22 +306,22 @@ public class QuizSpawner : MonoBehaviour
 
     public bool keywordSearch(string userInput)
     {
-       
+
         string correctAnswer = questionData.correctAnswer;
         userInput = userInput.ToLower();
         correctAnswer = correctAnswer.ToLower();
-        string[] keywords = correctAnswer.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        string[] keywords = correctAnswer.Split(new char[] { ',', ' ', ','}, StringSplitOptions.RemoveEmptyEntries);
 
-        List<string> foundKeywords = new List<string>();
 
         foreach (string keyword in keywords)
         {
-            if (!userInput.Contains(keyword))
+            Debug.Log(keyword);
+            if (userInput.Contains(keyword))
             {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
 
     }
 
