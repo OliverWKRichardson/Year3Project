@@ -57,7 +57,10 @@ public class QuizSpawner : MonoBehaviour
                 playerMovement = other.GetComponent<PlayerCharacterMovement>();
                 playerMovement.DisablePlayerMovement();
 
-                if (rand.Next(2) == 0)
+                float randomNumber = (float)rand.NextDouble();
+                float weighting = 0.75f; // adjust maybe
+
+                if (randomNumber < weighting)
                 {
                     quizScreenPrefab = quizScreenPrefab;
                     prefabPicked = true;
@@ -69,15 +72,12 @@ public class QuizSpawner : MonoBehaviour
                 }
 
                 generatedQuiz = Instantiate(quizScreenPrefab, other.transform.position, Quaternion.identity);
-                //   Debug.Log(!generatedQuiz);
+   
                 quizTriggered = true;
                 GetComponent<Collider2D>().enabled = false;
 
                 quizManager = QuizManager.Instance;
-                //  Debug.Log(quizManager);
-
-
-                Debug.Log("prefab is + " + prefabPicked);
+ 
                 setQuestions(prefabPicked);
 
             }
@@ -208,7 +208,7 @@ public class QuizSpawner : MonoBehaviour
             }
 
             string correctAnswer = questionData.correctAnswer;
-            //  Debug.Log(correctAnswer);
+    
 
             foreach (Transform button in answerButtons)
             {
@@ -225,7 +225,7 @@ public class QuizSpawner : MonoBehaviour
                         {
                             if (answerButton.GetComponentInChildren<Text>().text != correctAnswer)
                             {
-                                answerButton.GetComponentInChildren<Text>().color = Color.red; // Highlight correct answer in green
+                                answerButton.GetComponentInChildren<Text>().color = Color.red; // Correct answer in green
                             }
 
                         }
@@ -237,8 +237,8 @@ public class QuizSpawner : MonoBehaviour
                         {
                             if (answerButton.GetComponentInChildren<Text>().text == correctAnswer)
                             {
-                                answerButton.GetComponentInChildren<Text>().color = Color.green; // Highlight correct answer in green
-                                                                                                 // break;
+                                answerButton.GetComponentInChildren<Text>().color = Color.green; // Correct answer in green
+                                                                                                 
                             }
                             else { answerButton.GetComponentInChildren<Text>().color = Color.red; }
                         }
@@ -247,7 +247,7 @@ public class QuizSpawner : MonoBehaviour
             }
         }
         answerSelected = true;
-        // StartCoroutine(QuizClearedAfterDelay());
+
     }
 
 
@@ -324,6 +324,7 @@ public class QuizSpawner : MonoBehaviour
         return false;
 
     }
+
 
 
 }
