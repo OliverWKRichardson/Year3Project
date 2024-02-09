@@ -1,7 +1,7 @@
 {
     "questions": [
         {
-            "question": "What is the best password?",
+            "question": "What is the best password, according to the lecture?",
             "correctAnswer": "kent.SU2018",
             "incorrectAnswer1": "$starwars",
             "incorrectAnswer2": "p4$$w0rd",
@@ -19,7 +19,7 @@
             "correctAnswer": "Only authorized parties can access a particular asset.",
             "incorrectAnswer1": "Encrypting all your data to make it acccessible to everyone",
             "incorrectAnswer2": "Making information avaliable to anyone who requests it",
-            "incorrectAnswer3": "Ensuring information is kept secret from competitions to gain a competitive advantage"
+            "incorrectAnswer3": "Ensuring information is kept secret to gain a competitive advantage"
         },
         {
             "question": "What does integrity, in the context of cybersecurity, mean?",
@@ -79,12 +79,11 @@
         },
         {
             "question": "What is a common issue with biometric authentication systems?",
-            "correctAnswer": "They match markers or key points aganist a saved template, leading to false postivies / false positives",
+            "correctAnswer": "Match key points aganist a saved template, leading to false postivies / false positives",
             "incorrectAnswer1": "Limited accuracy in distinguishing between identical twins",
             "incorrectAnswer2": "High susceptibility to brute force attacks",
             "incorrectAnswer3": "Inability to adapt to changes in user appearance over time"
         },
-        
         {
             "question": "What is the most common 'route' to cybercrime?",
             "correctAnswer": "Online gaming forums",
@@ -245,6 +244,27 @@
             "incorrectAnswer1": "Cybersecurity awareness training",
             "incorrectAnswer2": "Ethical Hacking",
             "incorrectAnswer3": "Legally providing network security consultation"
+        },
+        {
+            "question": "An attacker injects malicious code into a legitimate website, which runs on vistors' browsers. What attack is this?",
+            "correctAnswer": "Cross site scripting (XSS)",
+            "incorrectAnswer1": "Server spoofing",
+            "incorrectAnswer2": "Data Leakage",
+            "incorrectAnswer3": "Digital impersonation"
+        },
+        {
+            "question": "An attacker disguses themselves as a legit users to access sensitive information by tricking a system admin, what attack is this?",
+            "correctAnswer": "Privilege escalation",
+            "incorrectAnswer1": "Malware Infection",
+            "incorrectAnswer2": "Network Reconnaissance",
+            "incorrectAnswer3": "Encryption evasion"
+        },
+        {
+            "question": "In the NCSC's 10 Steps, what does 'identity and access management' primarily aim to control?",
+            "correctAnswer": "Who / what can access systems and data",
+            "incorrectAnswer1": "Destorying data files",
+            "incorrectAnswer2": "Forbidding privilege escalation"
         }
+        
     ]
 }
