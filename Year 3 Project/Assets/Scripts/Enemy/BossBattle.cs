@@ -7,7 +7,6 @@ using UnityEngine.UIElements;
 
 public class BossBattle : MonoBehaviour
 {
-    public GameObject PlayerSpriteSpawn;
     public GameObject BossSpriteSpawn;
     public GameObject MenuCenter;
 

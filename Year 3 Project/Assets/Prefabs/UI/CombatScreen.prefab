@@ -1391,8 +1391,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.9818}
-  m_SizeDelta: {x: 347.0594, y: 119.5783}
+  m_AnchoredPosition: {x: 0.017101, y: 1.82}
+  m_SizeDelta: {x: 306.93, y: 118.3306}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &256687605902851232
 CanvasRenderer:
@@ -1435,14 +1435,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'The green bar below the enemy is their system health, in combat your goal
-    is to deplete the enemy''s green bar. Notice how you have three bars instead
-    of one, they represent different forms of health. They are your system''s confidentiality,
-    integrity and availability. The blue bars represent the amount of power your
-    system is able to process. Using intensive tasks tend to consume power but you
-    can regain it through upgrades and items from the shop.
+  m_Text: 'The green bar below the enemy is their system health. Notice how you have
+    three bars instead of one, they represent different forms of health (CIA). The
+    blue bars represent the amount of power your system is able to process. Using
+    intensive tasks tend to consume power but it regenerates after battle.
 
-    Press next to continue'
+    Press
+    next to continue'
 --- !u!1 &2098870855608380956
 GameObject:
   m_ObjectHideFlags: 0
@@ -2436,8 +2435,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0171, y: 2.8728}
-  m_SizeDelta: {x: 346.7274, y: 75.143}
+  m_AnchoredPosition: {x: 0.19, y: 2.28}
+  m_SizeDelta: {x: 307.5105, y: 76.4724}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1973200502162753567
 CanvasRenderer:
@@ -2595,8 +2594,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000038147, y: 3.08}
-  m_SizeDelta: {x: 354.1, y: 73.7749}
+  m_AnchoredPosition: {x: 0.017101, y: 2.45}
+  m_SizeDelta: {x: 305.4778, y: 68.2181}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6892094036528349546
 CanvasRenderer:
@@ -3228,8 +3227,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.19, y: 2.74}
-  m_SizeDelta: {x: 352.7, y: 85.69}
+  m_AnchoredPosition: {x: 0.017101, y: 2.28}
+  m_SizeDelta: {x: 329.4358, y: 85.676}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3013777757834580520
 CanvasRenderer:
@@ -4234,7 +4233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.5764706}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.80784315}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5013,10 +5012,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Welcome to the threat neutralizing training module, here we will train
-    you to deal with malicious systems. If you are already aware of how to combat
-    your adversaries then please press the skip button above to skip the tutorial.
-    Otherwise, please press the continue button above.
+  m_Text: Welcome to the combat tutorial. If you are already aware of how to play
+    then please press the skip button above to skip the tutorial. Otherwise, please
+    press the continue button above.
 --- !u!1 &7547592867969396061
 GameObject:
   m_ObjectHideFlags: 0
@@ -6192,7 +6190,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1630685816687608228
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6209,8 +6207,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.017101, y: 2.74}
-  m_SizeDelta: {x: 350.1473, y: 83.646}
+  m_AnchoredPosition: {x: 0.017101, y: 2.45}
+  m_SizeDelta: {x: 274.4356, y: 78.0892}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8903390475390595798
 CanvasRenderer:
