@@ -4,7 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Runtime.InteropServices;
+using UnityEditorInternal;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 using Random = UnityEngine.Random;
 
 public class MapCreate : MonoBehaviour
@@ -12,7 +14,7 @@ public class MapCreate : MonoBehaviour
 
     public List<GameObject> rooms;
 
-
+    private Room[,] mapdata;
     public int roomx;
     public int roomy;
     public MapgenScript mapscript;
@@ -36,9 +38,9 @@ public class MapCreate : MonoBehaviour
     [ContextMenu("TestCreate")]
     public void createMap()
     {
-
-
+        mapdata = mapscript.getMap();
         Room[,] map = mapscript.getMap();
+        mapscript.testprint();
 
         for (int i = 0; i < map.GetLength(0); i++)
         {
@@ -120,8 +122,11 @@ public class MapCreate : MonoBehaviour
 
         if (roomcode.Contains("D"))
         {
+            //Instantiate Left Door Wall
             instantiateRoomComp(2, floor, -0.265f, -0.495f, 90);
-            instantiateRoomComp(2, floor, 0.265f, -0.495f, 90);
+            //Instantiate Right Door Wall
+            GameObject rw = instantiateRoomComp(2, floor, 0.265f, -0.495f, 90);
+            rw.transform.Find("WallSprite").gameObject.GetComponent<SpriteRenderer>().flipY = true;
             instantiateRoomComp(6, floor, -7.5e-05f, -0.495f, 90);
 
 
@@ -133,23 +138,219 @@ public class MapCreate : MonoBehaviour
         }
         else
         {
-            instantiateRoomComp(1, floor, 0f, -0.495f, 90);
+            GameObject wwall = instantiateRoomComp(1, floor, 0f, -0.495f, 90);
 
+            if (i == mapscript.getSmallestX())
+            {
+
+
+                GameObject ws = wwall.gameObject.transform.Find("wallsprite").gameObject;
+                ws.gameObject.GetComponent<SpriteRenderer>().flipX = true;
+                GameObject ws2 = wwall.gameObject.transform.Find("wallsprite2").gameObject;
+                ws2.GetComponent<SpriteRenderer>().flipX = true;  
+                /**
+                 * Check For Vertical Walls
+                 */
+                Boolean checkNeighbourColumnsLeft = false;
+                Boolean checkNeighbourColumnsRight = false;
+                for (int x = mapscript.getSmallestX(); x < mapscript.getGreatestX();x++)
+                {
+                    if (j == mapscript.getGreatestY())
+                    {
+                        checkNeighbourColumnsLeft = (checkNeighbourColumnsLeft || mapdata[i, j - 1] == null);
+
+                    }
+                    else if (j == mapscript.getSmallestY())
+                    {
+                        checkNeighbourColumnsRight = (checkNeighbourColumnsRight || mapdata[i, j + 1] == null);
+
+                    }
+                    else
+                    {
+                        checkNeighbourColumnsLeft = (checkNeighbourColumnsLeft || mapdata[i, j - 1] == null);
+                        checkNeighbourColumnsRight = (checkNeighbourColumnsRight || mapdata[i, j + 1] == null);
+                    }
+
+                }
+
+                if (checkNeighbourColumnsLeft == false)
+                {
+                    ws.gameObject.transform.Find("LeftCorner").gameObject.SetActive(true);
+
+                }
+                if (checkNeighbourColumnsRight == false)
+                {
+                    ws2.gameObject.transform.Find("RightCorner").gameObject.SetActive(true);
+
+                }
+            }
+
+            else
+            {
+
+            }
 
 
         }
 
         if (roomcode.Contains("L"))
         {
-            instantiateRoomComp(4, floor, -0.49695f, 0.27625f, 0f);
-            instantiateRoomComp(4, floor, -0.49695f, -0.27625f, 0f);
+            GameObject TopWall = instantiateRoomComp(4, floor, -0.49695f, 0.27625f, 0f);
+            GameObject TWSprite = TopWall.transform.Find("TopWall").gameObject;
+            TWSprite.SetActive(false);
 
+            TopWall.transform.Find("TopWallDark").gameObject.SetActive(true);
+
+
+            //TDSprite.GetComponent<SpriteRenderer>().flipX = true;
+
+
+            //Wall that spawns on bottom side of door needs sprite dark version.
+            GameObject BotWall = instantiateRoomComp(4, floor, -0.49695f, -0.27625f, 0f);
+            
             instantiateRoomComp(6, floor, -0.497f, -0.0004166667f, 0);
         }
 
         else
         {
-            instantiateRoomComp(3, floor, -0.49725f, 0f, 0f);
+            GameObject wall = instantiateRoomComp(3, floor, -0.49725f, 0.005f, 0f);
+
+            //Debug.Log("J:" + j + " greatest Y:" + mapscript.getGreatestY());
+            if (j == mapscript.getSmallestY())
+            {
+                GameObject ws = wall.transform.Find("wallsprite").gameObject;
+                ws.SetActive(true);
+                ws.GetComponent<SpriteRenderer>().flipX = true;
+                GameObject ws2 = wall.transform.Find("wallsprite2").gameObject;
+                ws2.SetActive(true);
+                ws2.GetComponent<SpriteRenderer>().flipX = true;
+                ws.transform.localPosition = new Vector3(-ws.transform.localPosition.x, ws.transform.localPosition.y, ws.transform.localPosition.z);
+                ws2.transform.localPosition = new Vector3(-ws2.transform.localPosition.x, ws2.transform.localPosition.y, ws2.transform.localPosition.z);
+                ws2.transform.Find("LeftThreeWay").gameObject.SetActive(true);
+
+                if (i == mapscript.getSmallestX())
+                {
+                    ws2.transform.Find("RightThreeWay").gameObject.SetActive(false);
+                    ws2.transform.Find("LeftThreeWay").gameObject.SetActive(false);
+                }
+
+                else
+                {
+                    Boolean checkNeighbourColumnsLeft = false;
+                    Boolean checkNeighbourColumnsRight = false;
+                    for (int x = mapscript.getSmallestX(); x < mapscript.getGreatestX(); x++)
+                    {
+                        if (j == mapscript.getGreatestY())
+                        {
+                            checkNeighbourColumnsLeft = (checkNeighbourColumnsLeft || (mapdata[i, j - 1] != null));
+
+                        }
+                        else if (j == mapscript.getSmallestY())
+                        {
+                            checkNeighbourColumnsRight = (checkNeighbourColumnsRight || mapdata[i, j + 1] != null);
+
+                        }
+                        else
+                        {
+                            checkNeighbourColumnsLeft = (checkNeighbourColumnsLeft || mapdata[i, j - 1] != null);
+                            checkNeighbourColumnsRight = (checkNeighbourColumnsRight || mapdata[i, j + 1] != null);
+                        }
+
+                    }
+
+                    if (checkNeighbourColumnsLeft == false)
+                    {
+                        ws2.gameObject.transform.Find("SlantWallCorner").gameObject.SetActive(true);
+
+                        if (i > mapscript.getSmallestX())
+                        {
+                            if (mapdata[i-1,j] != null)
+                            {
+                                ws2.gameObject.transform.Find("SlantWallCorner").gameObject.SetActive(false);
+                            }
+                            //ws2.gameObject.transform.Find("SlantWallCorner").gameObject.SetActive(false);
+
+                        }
+
+
+
+
+                    }
+                    if (checkNeighbourColumnsRight == false)
+                    {
+                        // ws2.gameObject.transform.Find("SlantWallCorner").gameObject.SetActive(true);
+
+                    }
+                }
+
+                if (i > mapscript.getSmallestX())
+                {
+                    if (mapdata[i - 1, j] == null)
+                    {
+                        ws2.transform.Find("RightThreeWay").gameObject.SetActive(false);
+                        ws2.transform.Find("LeftThreeWay").gameObject.SetActive(false);
+                    }
+                }
+                
+                /**Boolean checkNeighbourColumnsLeft = false;
+                Boolean checkNeighbourColumnsRight = false;
+                for (int x = mapscript.getSmallestX(); x < mapscript.getGreatestX(); x++)
+                {
+                    if (j == mapscript.getGreatestY())
+                    {
+                        checkNeighbourColumnsLeft = (checkNeighbourColumnsLeft || (mapdata[i, j - 1] != null));
+
+                    }
+                    else if (j == mapscript.getSmallestY())
+                    {
+                        checkNeighbourColumnsRight = (checkNeighbourColumnsRight || mapdata[i, j + 1] != null);
+
+                    }
+                    else
+                    {
+                        checkNeighbourColumnsLeft = (checkNeighbourColumnsLeft || mapdata[i, j - 1] != null);
+                        checkNeighbourColumnsRight = (checkNeighbourColumnsRight || mapdata[i, j + 1] != null);
+                    }
+
+                }
+
+                if (checkNeighbourColumnsLeft == false)
+                {
+                    //ws.gameObject.transform.Find("SlantWallCorner").gameObject.SetActive(true);
+
+                }
+                if (checkNeighbourColumnsRight == false)
+                {
+                    ws2.gameObject.transform.Find("SlantWallCorner").gameObject.SetActive(true);
+
+                }
+            }**/
+                
+            
+            
+                /**if (i > mapscript.getSmallestX())
+                {
+                    if (mapdata[i - 1, j] == null)
+                    {
+                        ws2.transform.Find("RightThreeWay").gameObject.SetActive(false);
+                        ws2.transform.Find("LeftThreeWay").gameObject.SetActive(false);
+                    }
+                }
+                **/
+
+            }
+            else
+            {
+                wall.transform.Find("TopWall").gameObject.SetActive(true);
+            }
+            
+
+            /**GameObject ws = wall.transform.Find("wallsprite").gameObject;
+            ws.GetComponent<SpriteRenderer>().flipX = true;
+            GameObject ws2 = wall.transform.Find("wallsprite2").gameObject;
+            ws2.GetComponent<SpriteRenderer>().flipX = true;
+            ws.transform.localPosition = new Vector3(-ws.transform.localPosition.x, ws.transform.localPosition.y, ws.transform.localPosition.z);
+            ws2.transform.localPosition = new Vector3(-ws2.transform.localPosition.x, ws2.transform.localPosition.y, ws2.transform.localPosition.z);**/
         }
 
         if (roomcode.Contains("R"))
@@ -160,7 +361,75 @@ public class MapCreate : MonoBehaviour
         }
         else
         {
-            instantiateRoomComp(3, floor, 0.49725f, 0f, 0f);
+            GameObject wall = instantiateRoomComp(3, floor, 0.49725f, 0.005f, 0f);
+
+
+            Debug.Log("J:" + j + " greatest Y:" + mapscript.getGreatestY());
+            if (j == mapscript.getGreatestY())
+            {
+                GameObject ws = wall.transform.Find("wallsprite").gameObject;
+                ws.SetActive(true);
+                GameObject ws2 = wall.transform.Find("wallsprite2").gameObject;
+                ws2.SetActive(true);
+
+                ws2.transform.Find("RightThreeWay").gameObject.SetActive(true);
+                
+                if (i == mapscript.getSmallestX())
+                {
+                    ws2.transform.Find("RightThreeWay").gameObject.SetActive(false);
+                    ws2.transform.Find("LeftThreeWay").gameObject.SetActive(false);
+                }
+
+
+
+
+
+
+
+                else if (mapdata[i-1,j] == null)
+                {
+                        ws2.transform.Find("RightThreeWay").gameObject.SetActive(false);
+                        ws2.transform.Find("LeftThreeWay").gameObject.SetActive(false);
+                }
+
+
+
+                if (i > mapscript.getSmallestX()+1)
+                    Debug.Log("current i!: " + i);
+                Debug.Log("smallest X: " + mapscript.getSmallestX());
+
+                {
+                    try
+                    {
+                        //Check if room underneath exists
+                        Debug.Log(i +"  "+j);
+                        if (mapdata[i-1,j] == null)
+                        {
+                            ws2.transform.Find("CornerWall").gameObject.SetActive(true);
+
+                        }
+                        
+
+                        
+
+                    }
+                    catch (Exception e)
+                    {
+                       // ws2.transform.Find("CornerWall").gameObject.SetActive(true);
+
+                        
+                        //No Room Underneath create corner wall.
+
+                    }
+
+                }
+              
+
+            }
+            else
+            {
+                wall.transform.Find("TopWall").gameObject.SetActive(true);
+            }
         }
 
         roomFill(roomcode, floor, map[i, j]);
