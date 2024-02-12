@@ -376,7 +376,10 @@ public class CombatScreen : MonoBehaviour
                 ibar.GetComponent<ResourceBar>().Setf(ps.getI() / ps.getMaxI());
                 abar.GetComponent<ResourceBar>().Setf(ps.getA()/ps.getMaxA());
 
+                // restore energy after combat
+                player.GetComponent<PlayerStats>().restoreAllMP();
 
+                // remove conditions
                 player.GetComponent<PlayerStats>().WipeConditions();
                 enemy.GetComponent<EnemyStats>().WipeConditions();
                 player.GetComponent<CombatStatus>().outCombat();
