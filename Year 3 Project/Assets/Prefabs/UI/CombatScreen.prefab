@@ -967,6 +967,7 @@ MonoBehaviour:
   button3: {fileID: 8307090689772405388}
   winText: {fileID: 4973278409395577394}
   loseText: {fileID: 4799915359099756458}
+  continueText: {fileID: 5184472265238172396}
   buttonAB: {fileID: 7365235204476045660}
   buttonPR: {fileID: 4903144917509212449}
   buttonSU: {fileID: 895419419249060599}
@@ -1391,8 +1392,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.9818}
-  m_SizeDelta: {x: 347.0594, y: 119.5783}
+  m_AnchoredPosition: {x: 0.017101, y: 1.82}
+  m_SizeDelta: {x: 306.93, y: 118.3306}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &256687605902851232
 CanvasRenderer:
@@ -1435,14 +1436,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'The green bar below the enemy is their system health, in combat your goal
-    is to deplete the enemy''s green bar. Notice how you have three bars instead
-    of one, they represent different forms of health. They are your system''s confidentiality,
-    integrity and availability. The blue bars represent the amount of power your
-    system is able to process. Using intensive tasks tend to consume power but you
-    can regain it through upgrades and items from the shop.
+  m_Text: 'The green bar below the enemy is their system health. Notice how you have
+    three bars instead of one, they represent different forms of health (CIA). The
+    blue bars represent the amount of power your system is able to process. Using
+    intensive tasks tend to consume power but it regenerates after battle.
 
-    Press next to continue'
+    Press
+    next to continue'
 --- !u!1 &2098870855608380956
 GameObject:
   m_ObjectHideFlags: 0
@@ -1938,7 +1938,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.06, y: 2.86}
+  m_AnchoredPosition: {x: 0.64, y: 2.11}
   m_SizeDelta: {x: 150, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4843187363732880946
@@ -2096,7 +2096,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.06, y: 2.86}
+  m_AnchoredPosition: {x: 0.64, y: 2.11}
   m_SizeDelta: {x: 150, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5396120955035930674
@@ -2436,8 +2436,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0171, y: 2.8728}
-  m_SizeDelta: {x: 346.7274, y: 75.143}
+  m_AnchoredPosition: {x: 0.19, y: 2.28}
+  m_SizeDelta: {x: 307.5105, y: 76.4724}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1973200502162753567
 CanvasRenderer:
@@ -2595,8 +2595,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000038147, y: 3.08}
-  m_SizeDelta: {x: 354.1, y: 73.7749}
+  m_AnchoredPosition: {x: 0.017101, y: 2.45}
+  m_SizeDelta: {x: 305.4778, y: 68.2181}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6892094036528349546
 CanvasRenderer:
@@ -2659,7 +2659,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1849941934820656552
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3115,6 +3115,85 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Data:'
+--- !u!1 &5184472265238172396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5238345488904591906}
+  - component: {fileID: 891538125585197030}
+  - component: {fileID: 5002041892698225820}
+  m_Layer: 5
+  m_Name: Continue Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &5238345488904591906
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5184472265238172396}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.02, y: 0.02, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3827856800964401395}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -0.68}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &891538125585197030
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5184472265238172396}
+  m_CullTransparentMesh: 1
+--- !u!114 &5002041892698225820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5184472265238172396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 652f7165b7c30ab46af6c4aad90a639b, type: 2}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 70
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: Click To Continue
 --- !u!1 &5198200530286486239
 GameObject:
   m_ObjectHideFlags: 0
@@ -3228,8 +3307,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.19, y: 2.74}
-  m_SizeDelta: {x: 352.7, y: 85.69}
+  m_AnchoredPosition: {x: 0.017101, y: 2.28}
+  m_SizeDelta: {x: 329.4358, y: 85.676}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3013777757834580520
 CanvasRenderer:
@@ -4234,7 +4313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.5764706}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.80784315}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5013,10 +5092,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Welcome to the threat neutralizing training module, here we will train
-    you to deal with malicious systems. If you are already aware of how to combat
-    your adversaries then please press the skip button above to skip the tutorial.
-    Otherwise, please press the continue button above.
+  m_Text: Welcome to the combat tutorial. If you are already aware of how to play
+    then please press the skip button above to skip the tutorial. Otherwise, please
+    press the continue button above.
 --- !u!1 &7547592867969396061
 GameObject:
   m_ObjectHideFlags: 0
@@ -6093,6 +6171,7 @@ Transform:
   m_Children:
   - {fileID: 1537294640949686888}
   - {fileID: 5836674907464028717}
+  - {fileID: 5238345488904591906}
   m_Father: {fileID: 6749392223703027911}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6192,7 +6271,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1630685816687608228
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6209,8 +6288,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.017101, y: 2.74}
-  m_SizeDelta: {x: 350.1473, y: 83.646}
+  m_AnchoredPosition: {x: 0.017101, y: 2.45}
+  m_SizeDelta: {x: 274.4356, y: 78.0892}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8903390475390595798
 CanvasRenderer:
@@ -6590,13 +6669,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83269bc6d0589f74dbe3e3ee1b45c7ad, type: 3}
---- !u!224 &5468464551831911749 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4019272418221594046, guid: 83269bc6d0589f74dbe3e3ee1b45c7ad, type: 3}
-  m_PrefabInstance: {fileID: 8945469859850758395}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3917791646153492623 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5366738038940950644, guid: 83269bc6d0589f74dbe3e3ee1b45c7ad, type: 3}
+  m_PrefabInstance: {fileID: 8945469859850758395}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &5468464551831911749 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4019272418221594046, guid: 83269bc6d0589f74dbe3e3ee1b45c7ad, type: 3}
   m_PrefabInstance: {fileID: 8945469859850758395}
   m_PrefabAsset: {fileID: 0}

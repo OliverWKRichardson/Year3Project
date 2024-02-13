@@ -1,8 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Runtime.Serialization.Json;
 using Unity.Collections.LowLevel.Unsafe;
+using UnityEditor;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 using Random = UnityEngine.Random;
 
 
@@ -30,7 +36,7 @@ public class MapgenScript : MonoBehaviour
     private int mapY;
 
     private Stack<coordinates> coordstack = new Stack<coordinates>();
-    private Room[,] roomarray;
+    private Room?[,] roomarray;
     private coordinates bosscoords;
     private coordinates startcoords;
     private int MAX_SHOPS = 2;
@@ -38,6 +44,10 @@ public class MapgenScript : MonoBehaviour
     private int MAX_COINS = 2;
     private int coincounter = 0;
     private int roomcounter = 0;
+    private int greatestX {get; set; }
+    private int greatestY { get; set; }
+    private int smallestX { get; set; }
+    private int smallestY { get; set; }
 
     private Boolean spawnroomexists = false;
 
@@ -146,7 +156,23 @@ public class MapgenScript : MonoBehaviour
     {
 
         //Could clean up code here and remove some of the room counters place it after the firszt conditional.
-        
+        if (smallestX > x)
+        {
+            smallestX = x;
+        }
+        if (smallestY > y)
+        {
+            smallestY = y;
+        }
+        if (greatestX < x)
+        {
+            greatestX = x;
+        }
+
+        if (greatestY < y)
+        {
+            greatestY = y;
+        }
         if (roomcounter == 0) {
             roomcounter++;
             return new Room(1, null, null, null, null);
@@ -276,12 +302,16 @@ public class MapgenScript : MonoBehaviour
     }
     public void generateMap()
     {
-        //Randomly Define Map X & Y Size
+        //Randomly Define Map X & Y Maximum Size
         mapX = Random.Range(minMap, maxMap);
         mapY = Random.Range(minMap, maxMap);
         roomarray = new Room[mapX, mapY];
 
-        bosscoords = new coordinates(Random.Range(0,mapX), Random.Range(0,mapY));
+        greatestX = Random.Range(0, mapX);
+        greatestY = Random.Range(0, mapY);
+        smallestX = greatestX;
+        smallestY = greatestY;
+        bosscoords = new coordinates(greatestX, greatestY);
 
         //Now we have boss coords **SOMEWHERE** on the map.
 
@@ -320,4 +350,61 @@ public class MapgenScript : MonoBehaviour
         }
 
     }
-}
+
+    public int getGreatestX()
+    {
+        return greatestX;
+
+    }
+    public int getGreatestY()
+    {
+        return greatestY;
+
+    }
+    public int getSmallestX()
+    {
+        return smallestX;
+
+    }
+    public int getSmallestY()
+    {
+        return smallestY;
+
+    }
+
+    public int getArryMaxX()
+    {
+        return mapX;
+    }
+    public int getArryMaxY()
+    {
+        return mapY;
+    }
+    public Boolean CheckNeighbour(int i, int j, char output)
+    {
+
+        Boolean checkNeighbourColumns = false;
+        int num = 0;
+        if (output == 'r'){
+            num = 1;
+        }
+        else if (output == 'l')
+        {
+            num = -1;
+        }
+
+        
+
+        for (int x = getSmallestX()+1; x < getGreatestX(); x++)
+        {
+
+
+
+            checkNeighbourColumns = (checkNeighbourColumns || roomarray[i, j + num] == null);
+        }
+
+        return  checkNeighbourColumns; }
+    }
+    
+  
+
