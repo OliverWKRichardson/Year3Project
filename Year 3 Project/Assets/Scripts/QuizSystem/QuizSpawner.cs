@@ -149,7 +149,7 @@ public class QuizSpawner : MonoBehaviour
             Button buttonComponent = enterButton.GetComponent<Button>();
 
             buttonComponent.onClick.AddListener(() => submissionInput(submission.text));
-
+           
 
 
         }
@@ -197,9 +197,10 @@ public class QuizSpawner : MonoBehaviour
 
     public void ButtonClick(Button clickedButton)
     {
+        Transform menuCenter = generatedQuiz.transform.Find("QA/Menu Center");
         if (quizTriggered && !answerSelected)
         {
-            Transform menuCenter = generatedQuiz.transform.Find("QA/Menu Center");
+            
             Transform[] answerButtons = new Transform[3];
 
             for (int i = 0; i < 3; i++)
@@ -246,6 +247,10 @@ public class QuizSpawner : MonoBehaviour
                 }
             }
         }
+        Transform continueText = menuCenter.transform.Find("Canvas/ContinueText");
+        Text textComponent = continueText.GetComponent<Text>();
+        textComponent.text = "Click to continue!";
+        
         answerSelected = true;
 
     }
@@ -286,6 +291,9 @@ public class QuizSpawner : MonoBehaviour
         Transform inputField = button1.transform.Find("InputField");
         Text textComponent = inputField.GetComponentInChildren<Text>();
         InputField submission = inputField.GetComponent<InputField>();
+        Transform enterButton = menuCenter.transform.Find("Canvas/Button");
+        Button buttonComponent = enterButton.GetComponent<Button>();
+
 
         string userInput = arg0.Trim().ToLower();
 
@@ -299,7 +307,7 @@ public class QuizSpawner : MonoBehaviour
             submission.image.color = Color.red;
 
         }
-
+        buttonComponent.GetComponentInChildren<Text>().text = "Click to continue";
         answerSelected = true;
 
     }
