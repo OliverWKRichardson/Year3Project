@@ -4,9 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Runtime.InteropServices;
-using UnityEditorInternal;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 using Random = UnityEngine.Random;
 
 public class MapCreate : MonoBehaviour
@@ -127,7 +125,8 @@ public class MapCreate : MonoBehaviour
             //Instantiate Right Door Wall
             GameObject rw = instantiateRoomComp(2, floor, 0.265f, -0.495f, 90);
             rw.transform.Find("WallSprite").gameObject.GetComponent<SpriteRenderer>().flipY = true;
-            instantiateRoomComp(6, floor, -7.5e-05f, -0.495f, 90);
+            GameObject BottomDoor = instantiateRoomComp(6, floor, -7.5e-05f, -0.495f, 90);
+            BottomDoor.gameObject.transform.Find("SlantedDoorSprite").gameObject.SetActive(true);
 
 
 
@@ -146,8 +145,12 @@ public class MapCreate : MonoBehaviour
 
                 GameObject ws = wwall.gameObject.transform.Find("wallsprite").gameObject;
                 ws.gameObject.GetComponent<SpriteRenderer>().flipX = true;
+                //ws.transform.position = new Vector3(2.9f, ws.transform.position.y, ws.transform.position.z); 
                 GameObject ws2 = wwall.gameObject.transform.Find("wallsprite2").gameObject;
-                ws2.GetComponent<SpriteRenderer>().flipX = true;  
+
+                ws2.GetComponent<SpriteRenderer>().flipX = true;
+
+
                 /**
                  * Check For Vertical Walls
                  */
@@ -208,7 +211,8 @@ public class MapCreate : MonoBehaviour
             //Wall that spawns on bottom side of door needs sprite dark version.
             GameObject BotWall = instantiateRoomComp(4, floor, -0.49695f, -0.27625f, 0f);
             
-            instantiateRoomComp(6, floor, -0.497f, -0.0004166667f, 0);
+            GameObject leftdoor = instantiateRoomComp(6, floor, -0.497f, -0.0004166667f, 0);
+            leftdoor.gameObject.transform.Find("VerticalDoorSprite").gameObject.SetActive(true);
         }
 
         else
@@ -227,7 +231,20 @@ public class MapCreate : MonoBehaviour
                 ws.transform.localPosition = new Vector3(-ws.transform.localPosition.x, ws.transform.localPosition.y, ws.transform.localPosition.z);
                 ws2.transform.localPosition = new Vector3(-ws2.transform.localPosition.x, ws2.transform.localPosition.y, ws2.transform.localPosition.z);
                 ws2.transform.Find("LeftThreeWay").gameObject.SetActive(true);
+                
+                if (i < mapscript.getGreatestX())
+                {
+                    if (mapdata[i + 1, j] == null)
+                    {
+                        ws.transform.Find("TopLeftCorner").gameObject.SetActive(true);
 
+
+                    }
+                }
+                else if (i == mapscript.getGreatestX())
+                {
+                    ws.transform.Find("TopLeftCorner").gameObject.SetActive(true);
+                }
                 if (i == mapscript.getSmallestX())
                 {
                     ws2.transform.Find("RightThreeWay").gameObject.SetActive(false);
@@ -342,6 +359,32 @@ public class MapCreate : MonoBehaviour
             else
             {
                 wall.transform.Find("TopWall").gameObject.SetActive(true);
+                if (i < mapscript.getGreatestX())
+                {
+                    if (mapdata[i + 1, j] == null)
+                    {
+                        wall.transform.Find("TopWall").gameObject.transform.Find("TopLeftCornerV2").gameObject.SetActive(true);
+
+
+                    }
+                }
+                else if (i == mapscript.getGreatestX())
+                {
+                    wall.transform.Find("TopWall").gameObject.transform.Find("TopLeftCornerV2").gameObject.SetActive(true);
+                }
+
+                else if (i == mapscript.getSmallestX())
+                {
+                   // wall.transform.Find("TopWall").gameObject.transform.Find("BottomLeftCorner").gameObject.SetActive(true);
+                }
+
+                else if( i> mapscript.getSmallestX())
+                {
+                    if (mapdata[i - 1, j] == null)
+                    {
+                        wall.transform.Find("TopWall").gameObject.transform.Find("BottomLeftConer").gameObject.SetActive(true);
+                    }
+                }
             }
             
 
@@ -373,16 +416,27 @@ public class MapCreate : MonoBehaviour
                 ws2.SetActive(true);
 
                 ws2.transform.Find("RightThreeWay").gameObject.SetActive(true);
-                
+
+
+                if (i < mapscript.getGreatestX())
+                {
+                    if (mapdata[i + 1, j] == null)
+                    {
+                        ws.transform.Find("TopRightCorner").gameObject.SetActive(true);
+
+                    }
+                }
+
+                else if (i == mapscript.getGreatestX())
+                {
+                    ws.transform.Find("TopRightCorner").gameObject.SetActive(true);
+                }
+
                 if (i == mapscript.getSmallestX())
                 {
                     ws2.transform.Find("RightThreeWay").gameObject.SetActive(false);
                     ws2.transform.Find("LeftThreeWay").gameObject.SetActive(false);
                 }
-
-
-
-
 
 
 

@@ -537,7 +537,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Untitled CyberSec Game
+  m_text: <color=#190F8F>CI</color><b>A<color=#005500>.I
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ee12fff3a1408554c84ee72a13b3ed25, type: 2}
   m_sharedMaterial: {fileID: -4830949392137507718, guid: ee12fff3a1408554c84ee72a13b3ed25, type: 2}
@@ -548,13 +548,13 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
+  m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+    topLeft: {r: 0.056648254, g: 0.18924141, b: 0.6320754, a: 1}
+    topRight: {r: 0.20158125, g: 0.7264151, b: 0.044544343, a: 1}
+    bottomLeft: {r: 0.06838962, g: 0.04049486, b: 0.6603774, a: 1}
+    bottomRight: {r: 0.21534957, g: 0.5754717, b: 0.035288375, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0

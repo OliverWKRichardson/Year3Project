@@ -26,7 +26,11 @@ public class EnemyStats : MonoBehaviour
     public float ATK;
     // Enemy type (for tutorial only)
     public bool tutorialEnemy;
+<<<<<<< Updated upstream
     public bool bossEnemy;
+=======
+    private bool stunned = false;
+>>>>>>> Stashed changes
 
     // Sets MaxHP of enemy
     public void setMaxHP(float setMaxHP)
@@ -226,5 +230,16 @@ public class EnemyStats : MonoBehaviour
         return total;
     }
 
+    public bool GetStun()
+    {
+        return stunned;
+    }
+
+    IEnumerator stuncd()
+    {
+        stunned = true;
+        yield return new WaitForSeconds(3);
+        stunned = false;
+    }
 
 }

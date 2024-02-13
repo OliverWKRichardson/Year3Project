@@ -10,7 +10,9 @@ public class CombatStarter : MonoBehaviour
     bool combatCleanUp = false;
     public GameObject combatScreenPrefab;
     GameObject combatScreen;
-
+    private bool fw;
+    private bool stunned;
+    private GameObject plyr;
     public void endCombat()
     {
         inCombat = false;
@@ -19,9 +21,13 @@ public class CombatStarter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        plyr = GameObject.FindWithTag("Player");
+        fw = plyr.transform.Find("Firewall").gameObject.activeSelf;
         gameObject.transform.position = gameObject.transform.parent.transform.position;
+        Debug.Log(gameObject.transform.parent.name);
+
         // If in range to test Line of sight with player then do so
-        if(lineOfSightTesting)
+        if(lineOfSightTesting && fw == false)
         {
             // get player position
             Transform playerTransform = GameObject.Find("PlayerCharacter").transform;
@@ -32,7 +38,6 @@ public class CombatStarter : MonoBehaviour
             if(hit.collider != null)
             {
 
-                Debug.Log(hit.collider.gameObject.name);
                 // if is the player
                 if(hit.collider.gameObject == GameObject.Find("PlayerCharacter") && (AIDestinationSetter.inCombat == false))
                 {
