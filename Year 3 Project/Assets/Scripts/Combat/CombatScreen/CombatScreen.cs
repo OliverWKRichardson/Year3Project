@@ -36,6 +36,8 @@ public class CombatScreen : MonoBehaviour
     public GameObject buttonAB;
     public GameObject buttonPR;
     public GameObject buttonSU;
+    public GameObject healthBarsCIA;
+    public GameObject powerBar;
     public GameObject tutorialText1;
     public GameObject tutorialText2;
     public GameObject tutorialText3;
@@ -453,6 +455,8 @@ public class CombatScreen : MonoBehaviour
             tutorialNext3.SetActive(false);
             tutorialNext4.SetActive(false);
             tutorialNext5.SetActive(false);
+            healthBarsCIA.SetActive(false);
+            powerBar.SetActive(false);
             buttonAB.SetActive(false);
             buttonPR.SetActive(false);
             buttonSU.SetActive(false);
@@ -478,6 +482,8 @@ public class CombatScreen : MonoBehaviour
         tutorialSkip.SetActive(false);
         tutorialText1.SetActive(false);
         tutorialText2.SetActive(true);
+        healthBarsCIA.SetActive(true);
+        powerBar.SetActive(true);
         tutorialNext1.SetActive(true);
         tutorialNext1.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(cycleTutorialOn);
     }
@@ -490,6 +496,8 @@ public class CombatScreen : MonoBehaviour
     public void cycleTutorialOn()
     {
         tutorialText2.SetActive(false);
+        healthBarsCIA.SetActive(false);
+        powerBar.SetActive(false);
         tutorialText3.SetActive(true);
         buttonPR.SetActive(true);
         tutorialNext1.SetActive(false);

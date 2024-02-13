@@ -863,3 +863,4 @@ MonoBehaviour:
   scen2success: {fileID: 0}
   scen1fail: {fileID: 0}
   scen2fail: {fileID: 0}
+  combatScreen: {fileID: 1723381297295401806, guid: c059692f8a9484149bea122cab4b3065, type: 3}

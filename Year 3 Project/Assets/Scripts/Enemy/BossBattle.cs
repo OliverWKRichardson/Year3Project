@@ -19,6 +19,7 @@ public class BossBattle : MonoBehaviour
     public GameObject scen2success;
     public GameObject scen1fail;
     public GameObject scen2fail;
+    public GameObject combatScreen;
 
     // Start is called before the first frame update
     void Start()
