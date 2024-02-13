@@ -7,14 +7,13 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class MapCreate : MonoBehaviour
+public class MapCreateV2 : MonoBehaviour
 {
 
     public List<GameObject> rooms;
 
 
-    public int roomx;
-    public int roomy;
+
     public MapgenScript mapscript;
 
     public int width = 40;
@@ -47,10 +46,11 @@ public class MapCreate : MonoBehaviour
                 Room temp = map[i, j];
                 if (temp == null)
                 {
+                    Debug.Log("E");
                 }
                 else
                 {
-                    temp.getType();
+                    Debug.Log(temp.getType());
                 }
             }
         }
@@ -94,13 +94,12 @@ public class MapCreate : MonoBehaviour
         //Debug.Log(stringcode);
 
 
-        //Room base is instantiated here
-        GameObject floor = Instantiate(rooms[0], new Vector2(roomx * j, roomy * i), Quaternion.identity);
+        GameObject floor = Instantiate(rooms[0], new Vector2(40f * j, 24f * i), Quaternion.identity);
         floor.transform.position = new Vector3(floor.transform.position.x, floor.transform.position.y, 1f);
         if (roomcode.Contains("U"))
         {
-            //instantiateRoomComp(2, floor, 0.274f, 0.5f, 90f);
-            //instantiateRoomComp(6, floor, 7.5e-05f, 0.495f, 90);
+            //instantiateRoom(2, floor, 0.274f, 0.5f, 90f);
+            //instantiateRoom(6, floor, 7.5e-05f, 0.495f, 90);
 
 
 
@@ -113,16 +112,16 @@ public class MapCreate : MonoBehaviour
         }
         else
         {
-            instantiateRoomComp(1, floor, 0, 0.495f, 90);
+            instantiateRoom(1, floor, 0, 0.495f, 90);
 
 
         }
 
         if (roomcode.Contains("D"))
         {
-            instantiateRoomComp(2, floor, -0.265f, -0.495f, 90);
-            instantiateRoomComp(2, floor, 0.265f, -0.495f, 90);
-            instantiateRoomComp(6, floor, -7.5e-05f, -0.495f, 90);
+            instantiateRoom(2, floor, -0.265f, -0.495f, 90);
+            instantiateRoom(2, floor, 0.265f, -0.495f, 90);
+            instantiateRoom(6, floor, -7.5e-05f, 0.495f, 90);
 
 
 
@@ -133,7 +132,7 @@ public class MapCreate : MonoBehaviour
         }
         else
         {
-            instantiateRoomComp(1, floor, 0f, -0.495f, 90);
+            instantiateRoom(1, floor, 0f, -0.495f, 90);
 
 
 
@@ -141,33 +140,29 @@ public class MapCreate : MonoBehaviour
 
         if (roomcode.Contains("L"))
         {
-            instantiateRoomComp(4, floor, -0.49695f, 0.27625f, 0f);
-            instantiateRoomComp(4, floor, -0.49695f, -0.27625f, 0f);
+            instantiateRoom(4, floor, -0.49695f, 0.27625f, 0f);
+            instantiateRoom(4, floor, -0.49695f, -0.27625f, 0f);
 
-            instantiateRoomComp(6, floor, -0.497f, -0.0004166667f, 0);
+            instantiateRoom(6, floor, -0.497f, -0.0004166667f, 0);
         }
-
+         
         else
         {
-            instantiateRoomComp(3, floor, -0.49725f, 0f, 0f);
+            instantiateRoom(3, floor, -0.49725f, 0f, 0f);
         }
 
         if (roomcode.Contains("R"))
         {
-            //instantiateRoomComp(4, floor, 0.49695f, 0.27625f, 0f);
-            //instantiateRoomComp(4, floor, 0.49695f, -0.27625f, 0f);
+            //instantiateRoom(4, floor, 0.49695f, 0.27625f, 0f);
+            //instantiateRoom(4, floor, 0.49695f, -0.27625f, 0f);
 
         }
         else
         {
-            instantiateRoomComp(3, floor, 0.49725f, 0f, 0f);
+            instantiateRoom(3, floor, 0.49725f, 0f, 0f);
         }
 
         roomFill(roomcode, floor, map[i, j]);
-
-        //Adjust Room Size here
-
-        floor.transform.localScale = new Vector3(roomx, roomy, 1);
 
 
 
@@ -176,6 +171,7 @@ public class MapCreate : MonoBehaviour
     public void roomFill(string roomcode, GameObject floor, Room givenroom)
     {
         float roomlayout = Random.Range(0, 2);
+
         //Attack Room Generation
         if (givenroom.getType() == 2)
         {
@@ -184,12 +180,11 @@ public class MapCreate : MonoBehaviour
                 {
                     if (roomlayout == 0f)
                     {
-                        GameObject formation =instantiateRoomComp(8, floor, 0, 0, 0);
-                        formation.transform.localScale = new Vector3(1f, 1f, 1f);
+                        instantiateRoom(8, floor, 0, 0, 0);
                     }
                     if (roomlayout == 1f)
                     {
-                        GameObject formation = instantiateRoomComp(9, floor, 0, 0, 90);
+                        GameObject formation = instantiateRoom(9, floor, 0, 0, 90);
                         formation.transform.localScale = new Vector3(1.5f, 0.699999988f, 1f);
                     }
                     return;
@@ -199,48 +194,36 @@ public class MapCreate : MonoBehaviour
             {
                 if (roomlayout == 0f)
                 {
-                    GameObject formation = instantiateRoomComp(8, floor, 0, 0, 90);
+                    GameObject formation = instantiateRoom(8, floor, 0, 0, 90);
                     formation.transform.localScale = new Vector3(1f, 0.800000012f, 1f);
                 }
 
                 if (roomlayout == 1f)
                 {
-                    GameObject formation = instantiateRoomComp(9, floor, 0, 0, 0);
+                    GameObject formation =instantiateRoom(9, floor, 0, 0, 0);
                     formation.transform.localScale = new Vector3(0.9f, 0.9f, 1f);
                 }
                 return;
             }
-            instantiateRoomComp(7, floor, 0, 0, 0);
+            instantiateRoom(7, floor, 0, 0, 0);
             return;
         }
 
         //
         if (givenroom.getType() == 1)
         {
-            instantiateRoomComp(10, floor, 0, 0, 0);
+            instantiateRoom(10, floor, 0, 0, 0);
         }
 
         if (givenroom.getType() == 5)
         {
-            GameObject spawner = instantiateRoomComp(5, floor, 0, 0, 0);
-            GameObject respawnpad = instantiateRoomComp(11, floor, 0, 0, 0);
+            GameObject spawner = instantiateRoom(5, floor, 0, 0, 0);
             spawner.name = "StartPoint";
         }
         //
 
-        if (givenroom.getType() == 4)
-        {
-            instantiateRoomComp(13, floor, 0f, 0f, 0f);
-        }
-
-        if (givenroom.getType() == 3)
-        {
-            instantiateRoomComp(13, floor, 0.07f, 0f, 0f);
-        }
-
-
     }
-    public GameObject instantiateRoomComp(int roomid, GameObject floor, float xoffset, float yoffset, float zrotation)
+    public GameObject instantiateRoom(int roomid, GameObject floor, float xoffset, float yoffset, float zrotation)
     {
         GameObject wall = Instantiate(rooms[roomid], new Vector2(floor.transform.position.x, floor.transform.position.y), Quaternion.Euler(0f, 0f, zrotation));
         wall.transform.parent = floor.transform;

@@ -33,17 +33,19 @@ public class QuizJournal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(false)// disabled journal
+        if(Input.GetKeyDown(KeyCode.J))
         {
             if(active)
             {
                 canvas.SetActive(false);
                 active = false;
+                Cursor.visible = false;
             }
             else
             {
                 canvas.SetActive(true);
                 active = true;
+                Cursor.visible = true;
             }
         }
     }

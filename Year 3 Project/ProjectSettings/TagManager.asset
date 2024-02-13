@@ -13,7 +13,6 @@ TagManager:
   - HealthBars
   - Boss
   - Router
-  - AbilityBox
   layers:
   - Default
   - TransparentFX

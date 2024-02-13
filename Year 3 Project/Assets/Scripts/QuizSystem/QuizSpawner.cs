@@ -35,15 +35,9 @@ public class QuizSpawner : MonoBehaviour
     private System.Random rand = new System.Random();
 
     private QuestionData questionData;
-    GameObject plyr;
-
-    private GameObject mmap;
 
     private void Start()
     {
-
-        plyr = GameObject.FindWithTag("Player");
-        mmap = plyr.transform.Find("HUD").gameObject;
         quizManager = this.GetComponent<QuizManager>();
         prefabPicked = true;
     }
@@ -60,7 +54,6 @@ public class QuizSpawner : MonoBehaviour
                 AIDestinationSetter.inCombat = true;
                 GameObject ui = GameObject.FindWithTag("DialogueSystem");
                 ui.transform.localScale = new Vector3(0, 0, 0);
-                mmap.SetActive(false);
                 playerMovement = other.GetComponent<PlayerCharacterMovement>();
                 playerMovement.DisablePlayerMovement();
 
@@ -169,8 +162,6 @@ public class QuizSpawner : MonoBehaviour
         // Enable enemy AI
         GameObject ui = GameObject.FindWithTag("DialogueSystem");
         ui.transform.localScale = new Vector3(1, 1, 1);
-        mmap.SetActive(true);
-
         AIDestinationSetter.inCombat = false;
         playerMovement.EnablePlayerMovement();
 
@@ -181,11 +172,6 @@ public class QuizSpawner : MonoBehaviour
         {
             Destroy(transform.parent.gameObject);
 
-        }
-        else
-        {
-            GameObject Router = gameObject.transform.parent.gameObject;
-            Router.GetComponent<LevelScript>().reloadScene();
         }
     }
 
