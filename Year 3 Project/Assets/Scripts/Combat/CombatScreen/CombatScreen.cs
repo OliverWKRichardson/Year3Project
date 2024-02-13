@@ -16,6 +16,8 @@ public class CombatScreen : MonoBehaviour
     public GameObject MenuCenter;
     public GameObject TutorialCanvas;
 
+    public GameObject bossBattle;
+
     public GameObject enemy;
     public GameObject player;
 
@@ -64,6 +66,8 @@ public class CombatScreen : MonoBehaviour
 
     int turnNumber;
 
+    GameObject bossMenu;
+
     public bool tutorialMode;
 
     public enum TurnType { playerTurn, enemyTurn, END, START, combatover };
@@ -107,7 +111,6 @@ public class CombatScreen : MonoBehaviour
 
         turnNumber = 0;
 
-        
         runCombatTutorial();
     }
 
@@ -136,7 +139,13 @@ public class CombatScreen : MonoBehaviour
         enemyMPBar.GetComponent<ResourceBar>().Set((int)enemy.GetComponent<EnemyStats>().getMP());
         playerMPBar.GetComponent<ResourceBar>().Set((int)player.GetComponent<PlayerStats>().getMP());
         setEnemyTypeText(enemy.GetComponent<EnemyStats>());
-        // set up player skills
+
+        // check enemy boss
+        if (enemy.GetComponent<EnemyStats>().getBossStatus() == true)
+        {
+            bossMenu = Instantiate(bossBattle);
+        }
+        // set up player skills        
         skill1 = player.GetComponent<Skills>().skill1;
         skill2 = player.GetComponent<Skills>().skill2;
         skill3 = player.GetComponent<Skills>().skill3;

@@ -954,6 +954,7 @@ MonoBehaviour:
   EnemySpriteSpawn: {fileID: 1723381296530845610}
   MenuCenter: {fileID: 7558474874051876076}
   TutorialCanvas: {fileID: 4676869572308714853}
+  bossBattle: {fileID: 6153202490596698513, guid: 188c8c765ad918342828e8dc01ebe419, type: 3}
   enemy: {fileID: 0}
   player: {fileID: 0}
   enemyHPBar: {fileID: 8415755196186037974}

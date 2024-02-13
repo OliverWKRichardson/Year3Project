@@ -20,16 +20,17 @@ public class BossBattle : MonoBehaviour
     public GameObject scen1fail;
     public GameObject scen2fail;
     public GameObject combatScreen;
-
-    // Start is called before the first frame update
+    public GameObject scenarioPrefab;
+    
     void Start()
     {
-        
+        scenario1.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(launchScenarios);
+        scenario2.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(launchScenarios);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void launchScenarios()
     {
-        
+        Instantiate(scenarioPrefab);
+        Destroy(gameObject);
     }
 }
