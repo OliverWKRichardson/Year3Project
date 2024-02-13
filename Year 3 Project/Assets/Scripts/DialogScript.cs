@@ -80,26 +80,14 @@ public class DialogScript : MonoBehaviour
 
     IEnumerator textRoutine(string text, int index)
     {
-        Debug.Log(index);
-
-        if ((text.Length > index))
-        {
-            if (text[index] == '<')
-            {
-                index = text.IndexOf('>', index) + 1;
-            }
-        }
-
         
         if (skipDialog == true){
             index = text.Length;
         }
 
-
-
+        
+        
         string substr = text.Substring(0, index);
-        Debug.Log(substr);
-
         yield return new WaitForSeconds(textspeed);
         TextMeshProUGUI textc = textcomp.transform.Find("DialogText").gameObject.GetComponent<TextMeshProUGUI>();
         textc.SetText(substr);

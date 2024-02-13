@@ -27,9 +27,8 @@ public class Area1 : MonoBehaviour
             if (gameObject.name == "Area1")
             {
                 Debug.Log(collision.gameObject.name);
-                string[] dialog = new string[2];
-                dialog[0] = "Test Environment Loaded. Clear the simulated hostiles in the network ahead and recover stolen data to proceed. ";
-                dialog[1] = "There's a firewall ahead, a bypass script has been installed to assist in breaking the encryption. Simply walk into the <color=red> firewall </color>  to begin. [After answering a question click to continue]";
+                string[] dialog = new string[1];
+                dialog[0] = "Test Environment Loaded. Clear the simulated hostiles in the network ahead and recover stolen data to proceed. There's a firewall ahead, a bypass script has been installed to assist in breaking the encryption. Simply walk into the firewall to begin. [After answering a question click to continue]";
                 outputText(dialog);
                 
             }
