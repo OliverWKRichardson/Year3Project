@@ -31,6 +31,7 @@ public class CombatScreen : MonoBehaviour
     public GameObject button3;
     public GameObject winText;
     public GameObject loseText;
+    public GameObject continueText;
 
     public GameObject buttonAB;
     public GameObject buttonPR;
@@ -244,6 +245,7 @@ public class CombatScreen : MonoBehaviour
         {
             turn = TurnType.combatover;
             loseText.SetActive(true);
+            continueText.SetActive(true);
             if (Input.GetMouseButtonDown(0))
             {
                 playergameover = true;
@@ -254,6 +256,7 @@ public class CombatScreen : MonoBehaviour
         {
             turn = TurnType.combatover;
             winText.SetActive(true);
+            continueText.SetActive(true);
             if (Input.GetMouseButtonDown(0))
             {
                 // End Combat
@@ -373,7 +376,10 @@ public class CombatScreen : MonoBehaviour
                 ibar.GetComponent<ResourceBar>().Setf(ps.getI() / ps.getMaxI());
                 abar.GetComponent<ResourceBar>().Setf(ps.getA()/ps.getMaxA());
 
+                // restore energy after combat
+                player.GetComponent<PlayerStats>().restoreAllMP();
 
+                // remove conditions
                 player.GetComponent<PlayerStats>().WipeConditions();
                 enemy.GetComponent<EnemyStats>().WipeConditions();
                 player.GetComponent<CombatStatus>().outCombat();

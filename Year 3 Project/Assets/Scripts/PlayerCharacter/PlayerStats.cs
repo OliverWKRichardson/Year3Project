@@ -204,6 +204,11 @@ public class PlayerStats : MonoBehaviour
         // regen 5% mp
         MP = Mathf.Clamp(MP + (MaxMP/20), 0, MaxMP);
     }
+    public void restoreAllMP()
+    {
+        // restore all map
+        MP = MaxMP;
+    }
 
     public List<Condition> conditions;
     public void Start()
