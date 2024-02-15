@@ -14,7 +14,12 @@ public class ScenarioManager : MonoBehaviour
     public GameObject confid;
     public GameObject integ;
     public GameObject avail;
+    public GameObject helpbutton;
     public GameObject targetBoss;
+    public GameObject finalAnswer;
+    public GameObject confirmButton;
+    public GameObject questionText;
+    public GameObject explainationText;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +28,8 @@ public class ScenarioManager : MonoBehaviour
         virus.GetComponent<Button>().onClick.AddListener(wrongAnswer);
         ransom.GetComponent<Button>().onClick.AddListener(rightAnswer);
         troj.GetComponent<Button>().onClick.AddListener(wrongAnswer);
+        helpbutton.GetComponent<Button>().onClick.AddListener(displayHelp);
+        finalAnswer.SetActive(false);
     }
 
     public void wrongAnswer()
@@ -38,7 +45,7 @@ public class ScenarioManager : MonoBehaviour
 
         showSliderAnswers();
 
-        
+
 
         Destroy(gameObject, 3);
     }
@@ -74,7 +81,7 @@ public class ScenarioManager : MonoBehaviour
         }
         showSliderAnswers();
     }
-        public void debuffBoss()
+    public void debuffBoss()
     {
         float currentHP = targetBoss.GetComponent<EnemyStats>().getHP();
         currentHP = currentHP * 0.8f;
@@ -83,5 +90,16 @@ public class ScenarioManager : MonoBehaviour
         float currentATK = targetBoss.GetComponent<EnemyStats>().getATK();
         currentATK = currentATK * 0.6f;
         targetBoss.GetComponent<EnemyStats>().setATK(currentATK);
+    }
+
+    public void displayHelp()
+    {
+        finalAnswer.SetActive(true);
+        confirmButton.GetComponent<Button>().onClick.AddListener(disableHelp);
+    }
+
+    public void disableHelp()
+    {
+        finalAnswer.SetActive(false);
     }
 }

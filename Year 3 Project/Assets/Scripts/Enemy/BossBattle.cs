@@ -16,19 +16,27 @@ public class BossBattle : MonoBehaviour
     public GameObject scenario1;
     public GameObject scenario2;
     public GameObject combatScreen;
-    public GameObject scenarioPrefab;
+    public GameObject scenario1Prefab;
+    public GameObject scenario2Prefab;
     
     void Start()
     {
-        scenario1.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(launchScenarios);
-        scenario2.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(launchScenarios);
+        scenario1.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(launchScenario1);
+        scenario2.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(launchScenario2);
         //BossSpriteSpawn.GetComponent<CombatSprite>().sprite = boss.GetComponent<CombatSprite>().sprite;
     }
 
-    public void launchScenarios()
+    public void launchScenario1()
     {
-        scenarioPrefab.GetComponent<ScenarioManager>().targetBoss = boss;
-        Instantiate(scenarioPrefab);
+        scenario1Prefab.GetComponent<ScenarioManager>().targetBoss = boss;
+        Instantiate(scenario1Prefab);
+        bossEnd();
+    }
+
+    public void launchScenario2()
+    {
+        scenario2Prefab.GetComponent<ScenarioManager>().targetBoss = boss;
+        Instantiate(scenario2Prefab);
         bossEnd();
     }
     
