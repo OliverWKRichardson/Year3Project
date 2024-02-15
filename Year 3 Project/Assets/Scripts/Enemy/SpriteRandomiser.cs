@@ -12,6 +12,19 @@ public class SpriteRandomiser : MonoBehaviour
     void Start()
     {
         es = gameObject.gameObject.GetComponent<EnemyStats>();
+        if (es.getBossStatus() == true)
+        {
+            BossSprites();
+        }
+        else
+        {
+            enemySprites();
+        }
+    }
+
+    void enemySprites()
+    {
+        es = gameObject.gameObject.GetComponent<EnemyStats>();
         EnemyGenerator.enemyType type = es.getType();
         switch (type)
         {
@@ -39,13 +52,13 @@ public class SpriteRandomiser : MonoBehaviour
 
 
         }
-            
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    void BossSprites()
     {
-        
+        GameObject player = GameObject.Find("PlayerCharacter");
+        int currentLvl = player.GetComponent<PlayerStats>().GetLevel();
+        GetComponent<SpriteRenderer>().sprite = SpriteOptions[currentLvl];
+        GetComponent<CombatSprite>().sprite = GOSpriteOptions[currentLvl];
     }
 }

@@ -27,14 +27,14 @@ RectTransform:
   m_GameObject: {fileID: 16518784840974311}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalScale: {x: 1.5, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 6153202489922398263}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 194, y: -52.5}
+  m_AnchoredPosition: {x: 260, y: -52.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4145998655261832478
@@ -102,7 +102,7 @@ RectTransform:
   m_GameObject: {fileID: 2562673117040778113}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 6153202489922398263}
   m_RootOrder: 1
@@ -177,14 +177,14 @@ RectTransform:
   m_GameObject: {fileID: 4292531665061303791}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalScale: {x: 1.5, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 6153202489922398263}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -194, y: -52.5}
+  m_AnchoredPosition: {x: -253, y: -52.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3551196743507312244
@@ -514,7 +514,7 @@ RectTransform:
   m_GameObject: {fileID: 6153202490065294096}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 6153202490446244232}
   m_Father: {fileID: 6153202489922398263}
@@ -522,7 +522,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -194, y: -0.0000071526}
+  m_AnchoredPosition: {x: -253, y: 30}
   m_SizeDelta: {x: 80.4808, y: 76.487}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6153202490065294101
@@ -546,7 +546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -584,7 +584,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.36066428, g: 0.144927, b: 0.4339623, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.2}
     m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0.29803923}
     m_PressedColor: {r: 0, g: 0, b: 0, a: 0.5176471}
     m_SelectedColor: {r: 0, g: 0, b: 0, a: 0.5176471}
@@ -635,7 +635,7 @@ RectTransform:
   m_GameObject: {fileID: 6153202490288787908}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 6153202489390062367}
   m_Father: {fileID: 6153202489922398263}
@@ -643,8 +643,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 194, y: -0.00035095}
-  m_SizeDelta: {x: 81.96359, y: 76.4877}
+  m_AnchoredPosition: {x: 260, y: 32.475}
+  m_SizeDelta: {x: 81.5135, y: 81.4378}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6153202490288787896
 CanvasRenderer:
@@ -667,7 +667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
@@ -705,7 +705,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.24313726}
     m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0.33333334}
     m_PressedColor: {r: 0, g: 0, b: 0, a: 0.5254902}
     m_SelectedColor: {r: 0, g: 0, b: 0, a: 0.5254902}
@@ -863,3 +863,5 @@ MonoBehaviour:
   scen2success: {fileID: 0}
   scen1fail: {fileID: 0}
   scen2fail: {fileID: 0}
+  combatScreen: {fileID: 0}
+  scenarioPrefab: {fileID: 7385361261343327506, guid: 41db5461d5978b24e9664624919f8796, type: 3}

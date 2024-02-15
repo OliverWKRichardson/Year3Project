@@ -15,10 +15,6 @@ public class BossBattle : MonoBehaviour
 
     public GameObject scenario1;
     public GameObject scenario2;
-    public GameObject scen1success;
-    public GameObject scen2success;
-    public GameObject scen1fail;
-    public GameObject scen2fail;
     public GameObject combatScreen;
     public GameObject scenarioPrefab;
     
