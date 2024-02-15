@@ -853,15 +853,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc76e468cf02cd4e8776d8436b3e546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossSpriteSpawn: {fileID: 0}
+  BossSpriteSpawn: {fileID: 2562673117040778113}
   MenuCenter: {fileID: 0}
   boss: {fileID: 0}
   player: {fileID: 0}
   scenario1: {fileID: 6153202490288787908}
   scenario2: {fileID: 6153202490065294096}
-  scen1success: {fileID: 0}
-  scen2success: {fileID: 0}
-  scen1fail: {fileID: 0}
-  scen2fail: {fileID: 0}
   combatScreen: {fileID: 0}
   scenarioPrefab: {fileID: 7385361261343327506, guid: 41db5461d5978b24e9664624919f8796, type: 3}

@@ -14,6 +14,7 @@ public class ScenarioManager : MonoBehaviour
     public GameObject confid;
     public GameObject integ;
     public GameObject avail;
+    public GameObject targetBoss;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,11 @@ public class ScenarioManager : MonoBehaviour
         virus.GetComponent<Button>().colors = wrongcb;
         troj.GetComponent<Button>().colors = wrongcb;
         ransom.GetComponent<Button>().colors = rightcb;
+
         showSliderAnswers();
+
+        
+
         Destroy(gameObject, 3);
     }
     public void rightAnswer()
@@ -43,7 +48,10 @@ public class ScenarioManager : MonoBehaviour
         rightcb.pressedColor = Color.green;
         rightcb.highlightedColor = Color.green;
         rightcb.normalColor = Color.green;
+
         checkSliderAnswers();
+
+
         Destroy(gameObject, 3);
     }
     public void showSliderAnswers()
@@ -61,11 +69,19 @@ public class ScenarioManager : MonoBehaviour
     {
         if (sliderCIA.GetComponent<Slider>().value == 3)
         {
+            debuffBoss();
             return;
         }
-        else
-        {
-            showSliderAnswers();
-        }
+        showSliderAnswers();
+    }
+        public void debuffBoss()
+    {
+        float currentHP = targetBoss.GetComponent<EnemyStats>().getHP();
+        currentHP = currentHP * 0.8f;
+        targetBoss.GetComponent<EnemyStats>().setHP(currentHP);
+
+        float currentATK = targetBoss.GetComponent<EnemyStats>().getATK();
+        currentATK = currentATK * 0.6f;
+        targetBoss.GetComponent<EnemyStats>().setATK(currentATK);
     }
 }

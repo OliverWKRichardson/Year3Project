@@ -22,11 +22,18 @@ public class BossBattle : MonoBehaviour
     {
         scenario1.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(launchScenarios);
         scenario2.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(launchScenarios);
+        //BossSpriteSpawn.GetComponent<CombatSprite>().sprite = boss.GetComponent<CombatSprite>().sprite;
     }
 
     public void launchScenarios()
     {
+        scenarioPrefab.GetComponent<ScenarioManager>().targetBoss = boss;
         Instantiate(scenarioPrefab);
+        bossEnd();
+    }
+    
+    public void bossEnd()
+    {
         Destroy(gameObject);
     }
 }

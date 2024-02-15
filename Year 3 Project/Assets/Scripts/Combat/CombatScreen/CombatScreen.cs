@@ -144,6 +144,7 @@ public class CombatScreen : MonoBehaviour
         if (enemy.GetComponent<EnemyStats>().getBossStatus() == true)
         {
             bossMenu = Instantiate(bossBattle);
+            bossMenu.GetComponent<BossBattle>().boss = enemy;
         }
         // set up player skills        
         skill1 = player.GetComponent<Skills>().skill1;
