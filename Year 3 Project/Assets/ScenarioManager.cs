@@ -59,7 +59,7 @@ public class ScenarioManager : MonoBehaviour
         checkSliderAnswers();
 
 
-        Destroy(gameObject, 3);
+        Destroy(gameObject, 1);
     }
     public void showSliderAnswers()
     {
