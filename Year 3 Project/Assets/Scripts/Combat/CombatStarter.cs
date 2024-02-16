@@ -88,11 +88,19 @@ public class CombatStarter : MonoBehaviour
         // if player has a FireWall barrier active
         if(other.gameObject.tag == "Barrier")
         {
-            Debug.Log("FireWalled");
-            GameObject enemy = gameObject.transform.parent.gameObject;
-            StunBehavior enemyscript = enemy.GetComponent<StunBehavior>();
-            enemyscript.StartCoroutine(enemyscript.Stun());
-            GameObject.FindWithTag("Player").transform.Find("Firewall").gameObject.SetActive(false);
+            if (transform.parent.gameObject.tag == "Boss")
+            {
+                other.gameObject.SetActive(false);
+                fw = false;
+            }
+            else
+            {
+                Debug.Log("FireWalled");
+                GameObject enemy = gameObject.transform.parent.gameObject;
+                StunBehavior enemyscript = enemy.GetComponent<StunBehavior>();
+                enemyscript.StartCoroutine(enemyscript.Stun());
+                GameObject.FindWithTag("Player").transform.Find("Firewall").gameObject.SetActive(false);
+            }
         }
     }
 
