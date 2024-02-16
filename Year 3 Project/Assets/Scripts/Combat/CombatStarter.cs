@@ -11,7 +11,7 @@ public class CombatStarter : MonoBehaviour
     public GameObject combatScreenPrefab;
     GameObject combatScreen;
     private bool fw;
-    private bool stunned;
+    private bool canFight = true;
     private GameObject plyr;
     public void endCombat()
     {
@@ -39,12 +39,13 @@ public class CombatStarter : MonoBehaviour
             {
 
                 // if is the player
-                if(hit.collider.gameObject == GameObject.Find("PlayerCharacter") && (AIDestinationSetter.inCombat == false))
+                if(hit.collider.gameObject == GameObject.Find("PlayerCharacter") && (AIDestinationSetter.inCombat == false) && (canFight == true))
                 {
-
+                    canFight = false;
                     Debug.Log("Entered Combat");
                     inCombat = true;
                     AIDestinationSetter.inCombat = true;
+
                     playerTransform.gameObject.GetComponent<CombatStatus>().inCombat();
                     combatCleanUp = true;
                     // start combat

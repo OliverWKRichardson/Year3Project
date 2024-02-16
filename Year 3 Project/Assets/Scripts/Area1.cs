@@ -29,7 +29,7 @@ public class Area1 : MonoBehaviour
                 Debug.Log(collision.gameObject.name);
                 string[] dialog = new string[2];
                 dialog[0] = "Test Environment Loaded. Clear the simulated hostiles in the network ahead and recover stolen data to proceed. ";
-                dialog[1] = "There's a firewall ahead, a bypass script has been installed to assist in breaking the encryption. Simply walk into the <color=red> firewall </color>  to begin. [After answering a question click to continue]";
+                dialog[1] = "There's a firewall ahead, a bypass script has been installed to assist in breaking the encryption. Simply walk into the <color=red> firewall </color>  to begin. <color=red> [After answering a question click to continue]";
                 outputText(dialog);
                 
             }
@@ -48,7 +48,7 @@ public class Area1 : MonoBehaviour
             if (gameObject.name == "Area3")
             {
                 string[] dialog = new string[1];
-                dialog[0] = "Well done.You are now fully-trained and optimised for defending the network from threats.Continue to enter the compromised network.";
+                dialog[0] = "Well done. You are now fully-trained and optimised for defending the network from threats. Continue to the router to enter the compromised network.";
                 outputText(dialog);
             }
 

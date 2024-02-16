@@ -30,8 +30,6 @@ public class EnemyGenerator : MonoBehaviour
         hostile = Instantiate(enemy);
         hostile.transform.position = pos.position;// Add Vector2(x, y) for the position of the newly generated enemy
 
-        hostile.GetComponent<EnemyStats>().setNormal();
-
         enemyType enemyType = (enemyType)UnityEngine.Random.Range(1, enemyTypeCount); // no need to subtract 1 from upper bound as the none type does this for us
         if(forcetype != enemyType.none)
         {

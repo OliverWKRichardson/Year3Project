@@ -860,4 +860,5 @@ MonoBehaviour:
   scenario1: {fileID: 6153202490288787908}
   scenario2: {fileID: 6153202490065294096}
   combatScreen: {fileID: 0}
-  scenarioPrefab: {fileID: 7385361261343327506, guid: 41db5461d5978b24e9664624919f8796, type: 3}
+  scenario1Prefab: {fileID: 7385361261343327506, guid: 41db5461d5978b24e9664624919f8796, type: 3}
+  scenario2Prefab: {fileID: 1516279350344003478, guid: 0d8c0825379a56349a72d0c08ee1425d, type: 3}

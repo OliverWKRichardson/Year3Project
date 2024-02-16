@@ -8,7 +8,7 @@ using UnityEditor;
 
 public class EnemyStats : MonoBehaviour
 {
-
+    public bool bossEnemy;
     public GameObject trapdoor; 
     // Type of enemy
     public EnemyGenerator.enemyType type;
@@ -26,7 +26,7 @@ public class EnemyStats : MonoBehaviour
     public float ATK;
     // Enemy type (for tutorial only)
     public bool tutorialEnemy;
-    public bool bossEnemy;
+    private bool stunned = false;
 
     // Sets MaxHP of enemy
     public void setMaxHP(float setMaxHP)
@@ -133,18 +133,6 @@ public class EnemyStats : MonoBehaviour
     {
         return tutorialEnemy;
     }
-    public void setBoss()
-    {
-        bossEnemy = true;
-    }
-    public void setNormal()
-    {
-        bossEnemy = false;
-    }
-    public bool getBossStatus()
-    {
-        return bossEnemy;
-    }
     public void spendMP(float amount)
     {
         MP = Mathf.Clamp(MP - amount, 0, MaxMP);
@@ -226,5 +214,27 @@ public class EnemyStats : MonoBehaviour
         return total;
     }
 
+    public bool GetStun()
+    {
+        return stunned;
+    }
 
+    IEnumerator stuncd()
+    {
+        stunned = true;
+        yield return new WaitForSeconds(3);
+        stunned = false;
+    }
+    public void setBoss()
+    {
+        bossEnemy = true;
+    }
+    public void setNormal()
+    {
+        bossEnemy = false;
+    }
+    public bool getBossStatus()
+    {
+        return bossEnemy;
+    }
 }
